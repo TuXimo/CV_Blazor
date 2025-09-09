@@ -39,7 +39,7 @@
         "title": "My 2D Platformer Game",
         "shortDescription": "A retro-style platformer game with unique mechanics.",
         "mainImage": "/img/mishi.png",
-        "secondaryImages": [ "/img/mishi.png", "/img/mishi.png" ],
+        "secondaryImages": [ "/img/a.png", "/img/b.png" ],
         "projectLink": "https://maximobrunetti.itch.io/my-game-1",
         "githubLink": "https://github.com/maximobrunetti/juego-1"
       }

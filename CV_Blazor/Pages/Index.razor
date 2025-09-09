@@ -1,0 +1,185 @@
+﻿@page "/"
+@using CV_Blazor.Models
+@inject CV_Blazor.Services.PortfolioService PortfolioService
+
+@code {
+    private PortfolioViewModel? Portfolio;
+    private string activeTab = "Projects";
+
+    protected override async Task OnInitializedAsync()
+    {
+        Portfolio = await PortfolioService.GetPortfolioAsync();
+    }
+
+    private void SetTab(string tab)
+    {
+        activeTab = tab;
+    }
+}
+
+@if (Portfolio == null)
+{
+    <p>Loading...</p>
+}
+else
+{
+    <!-- SECTION: ABOUT ME -->
+    <section id="about-me" class="container py-5">
+        <div class="row align-items-center">
+            <div class="col-md-8 text-center text-md-start">
+                <h1 class="display-4">Hello, I'm Máximo Brunetti</h1>
+                @foreach (var paragraph in Portfolio.Resume.Summary)
+                {
+                    <p class="lead">@paragraph</p>
+                }
+                <a href="#projects" class="btn btn-primary btn-lg mt-3">View my Projects</a>
+            </div>
+            <div class="col-md-4 mt-4 mt-md-0 text-center">
+                <!-- Aquí podrías agregar una foto de perfil si quisieras -->
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION: RESUME -->
+    <section id="resume" class="container py-5">
+        <h2 class="text-center mb-4">Resume</h2>
+        <div class="row">
+            <!-- Professional Experience -->
+            <div class="col-md-6 mb-4">
+                <h3>Professional Experience</h3>
+                @foreach (var exp in Portfolio.Resume.ProfessionalExperience)
+                {
+                    <div class="card p-3 mb-2">
+                        <h5>@exp.Title</h5>
+                        <p class="mb-1"><strong>@exp.Company</strong> | @exp.Period</p>
+                        <ul class="mb-0">
+                            @foreach (var achievement in exp.Achievements)
+                            {
+                                <li>@achievement</li>
+                            }
+                        </ul>
+                    </div>
+                }
+            </div>
+
+            <!-- Education -->
+            <div class="col-md-6 mb-4">
+                <h3>Education</h3>
+                @foreach (var edu in Portfolio.Resume.Education)
+                {
+                    <div class="card p-3 mb-2">
+                        <h5>@edu.Title</h5>
+                        <p class="mb-1"><strong>@edu.Institution</strong> | @edu.Period</p>
+                    </div>
+                }
+            </div>
+
+            <!-- Skills -->
+            <div class="col-12 mb-4">
+                <h3>Skills</h3>
+                <div class="row">
+                    @foreach (var skill in Portfolio.Resume.Skills)
+                    {
+                        <div class="col-md-6 mb-2">
+                            <div class="card p-3">
+                                <h5>@skill.Name</h5>
+                                <ul>
+                                    @foreach (var detail in skill.Details)
+                                    {
+                                        <li>@detail</li>
+                                    }
+                                </ul>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION: PORTFOLIO -->
+    <section id="portfolio" class="container py-5">
+        <h2 class="text-center mb-4">My Portfolio</h2>
+
+        <!-- Tabs -->
+        <ul class="nav nav-tabs mb-4">
+            <li class="nav-item">
+                <a class='nav-link @(activeTab == "Projects" ? "active" : "")'
+                   href=""
+                   @onclick="@(() => SetTab("Projects"))"
+                   @onclick:preventDefault>
+
+                    Projects
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class='nav-link @(activeTab == "Jams" ? "active" : "")'
+                   href=""
+                   @onclick="@(() => SetTab("Jams"))"
+                   @onclick:preventDefault>
+
+                    Jams
+                </a>
+            </li>
+        </ul>
+
+        <!-- Projects/Jams -->
+        <div class="row">
+            @if (activeTab == "Projects")
+            {
+                @foreach (var project in Portfolio.Projects)
+                {
+                    <div class="col-md-6 col-lg-4 mb-4">
+                        <div class="card project-card">
+                            <div class="project-image-container"
+                                 data-main="@project.MainImage"
+                                 data-images='@System.Text.Json.JsonSerializer.Serialize(project.SecondaryImages ?? new List<string>())'>
+                                <img src="@project.MainImage" class="card-img-top" alt="@project.Title" />
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title">@project.Title</h5>
+                                <p class="card-text">@project.ShortDescription</p>
+                                <a href="@project.ProjectLink" class="btn btn-primary" target="_blank">View Project</a>
+                                @if (!string.IsNullOrEmpty(project.GithubLink))
+                                {
+                                    <a href="@project.GithubLink" class="btn btn-dark ms-2" target="_blank">GitHub</a>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                }
+            }
+            else if (activeTab == "Jams")
+            {
+                @foreach (var jam in Portfolio.Jams)
+                {
+                    <div class="col-md-6 col-lg-4 mb-4">
+                        <div class="card project-card">
+                            <div class="project-image-container"
+                                 data-main="@jam.MainImage"
+                                 data-images='@System.Text.Json.JsonSerializer.Serialize(jam.SecondaryImages ?? new List<string>())'>
+                                <img src="@jam.MainImage" class="card-img-top" alt="@jam.Title" />
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title">@jam.Title</h5>
+                                <p class="card-text">@jam.ShortDescription</p>
+                                <a href="@jam.ProjectLink" class="btn btn-primary" target="_blank">View Project</a>
+                                @if (!string.IsNullOrEmpty(jam.GithubLink))
+                                {
+                                    <a href="@jam.GithubLink" class="btn btn-dark ms-2" target="_blank">GitHub</a>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                }
+            }
+        </div>
+    </section>
+
+    <hr />
+
+    
+
+
+    <hr />
+}

@@ -1,0 +1,70 @@
+﻿@page "/projects"
+@inject CV_Blazor.Services.PortfolioService PortfolioService
+
+@using CV_Blazor.Components
+@using CV_Blazor.Models
+
+@code {
+    private PortfolioViewModel? Portfolio;
+    private string activeTab = "Projects";
+
+    protected override async Task OnInitializedAsync()
+    {
+        Portfolio = await PortfolioService.GetPortfolioAsync();
+    }
+
+    private void SetTab(string tab)
+    {
+        activeTab = tab;
+    }
+}
+
+<section id="portfolio" class="container py-5">
+    <h2 class="text-center mb-4">My Portfolio</h2>
+
+    <!-- Tabs -->
+    <ul class="nav nav-tabs mb-4">
+        <li class="nav-item">
+            <a class='nav-link @(activeTab == "Projects" ? "active" : "")'
+                href=""
+                @onclick="@(() => SetTab("Projects"))"
+                @onclick:preventDefault>
+
+                Projects
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class='nav-link @(activeTab == "Jams" ? "active" : "")'
+                href=""
+                @onclick="@(() => SetTab("Jams"))"
+                @onclick:preventDefault>
+
+                Jams
+            </a>
+        </li>
+    </ul>
+
+
+    <div class="row">
+    @if (activeTab == "Projects")
+    {
+        @foreach (var project in Portfolio.Projects)
+        {
+            <div class="col-md-6 col-lg-4 mb-4">
+                <ProjectCard Project="project" />
+            </div>
+        }
+    }
+    else if (activeTab == "Jams")
+    {
+        @foreach (var jam in Portfolio.Jams)
+        {
+            <div class="col-md-6 col-lg-4 mb-4">
+                <ProjectCard Project="jam" />
+            </div>
+        }
+    }
+    </div>
+
+</section>
+

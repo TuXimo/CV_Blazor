@@ -3,32 +3,34 @@
 
 @inject SkillService SkillService
 
-<h2 class="text-center mb-4">Skills</h2>
+<section id="skills" class="container py-5">
+    <h2 class="text-center mb-4">Skills</h2>
 
-<div class="skills-main-container">
-    <div class="skills-icons">
-        @if (SkillsList != null)
-        {
-            @foreach (var skill in SkillsList)
+    <div class="skills-main-container">
+        <div class="skills-icons">
+            @if (SkillsList != null)
             {
-                <div class="skill-icon-container" style="top:@skill.TopPx; left:@skill.LeftPx;">
-                    <img src="@skill.IconPath" alt="@skill.Name"
-                         @onmouseover="@(() => ShowSkill(skill))"
-                         @onclick="@(() => OnClickSkill(skill))" />
-                </div>
+                @foreach (var skill in SkillsList)
+                {
+                    <div class="skill-icon-container" style="top:@skill.TopPx; left:@skill.LeftPx;">
+                        <img src="@skill.IconPath" alt="@skill.Name"
+                             @onmouseover="@(() => ShowSkill(skill))"
+                             @onclick="@(() => OnClickSkill(skill))" />
+                    </div>
+                }
             }
-        }
-    </div>
+        </div>
 
-    <div class="skills-details">
-        @if (CurrentSkill != null)
-        {
-            <h3>@CurrentSkill.Name</h3>
-            <p><strong>Level:</strong> @CurrentSkill.Proficiency</p>
-            <p>@CurrentSkill.Description</p>
-        }
+        <div class="skills-details">
+            @if (CurrentSkill != null)
+            {
+                <h3>@CurrentSkill.Name</h3>
+                <p><strong>Level:</strong> @CurrentSkill.Proficiency</p>
+                <p>@CurrentSkill.Description</p>
+            }
+        </div>
     </div>
-</div>
+</section>
 
 @code {
     private List<SkillPositioned> SkillsList;

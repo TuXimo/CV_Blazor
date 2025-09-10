@@ -29,66 +29,11 @@
 }
 else
 {
-    <!-- SECTION: ABOUT ME -->
-    <section id="about-me" class="container py-5">
-        <div class="row align-items-center">
-            <div class="col-md-8 text-center text-md-start">
-                <h1 class="display-4">Hello, I'm Máximo Brunetti</h1>
-                @foreach (var paragraph in Portfolio.Resume.Summary)
-                {
-                    <p class="lead">@paragraph</p>
-                }
-                <a href="#projects" class="btn btn-primary btn-lg mt-3">View my Projects</a>
-            </div>
-            <div class="col-md-4 mt-4 mt-md-0 text-center">
-                <!-- Aquí podrías agregar una foto de perfil si quisieras -->
-            </div>
-        </div>
-    </section>
+    <AboutMe Portfolio="Portfolio" />
 
-    <!-- SECTION: RESUME -->
-    <section id="resume" class="container py-5">
-        <h2 class="text-center mb-4">Resume</h2>
-        <div class="row">
-            <!-- Professional Experience -->
-            <div class="col-md-6 mb-4">
-                <h3>Professional Experience</h3>
-                @foreach (var exp in Portfolio.Resume.ProfessionalExperience)
-                {
-                    <div class="card p-3 mb-2">
-                        <h5>@exp.Title</h5>
-                        <p class="mb-1"><strong>@exp.Company</strong> | @exp.Period</p>
-                        <ul class="mb-0">
-                            @foreach (var achievement in exp.Achievements)
-                            {
-                                <li>@achievement</li>
-                            }
-                        </ul>
-                    </div>
-                }
-            </div>
+    <Resume Portfolio="Portfolio" />
 
-            <!-- Education -->
-            <div class="col-md-6 mb-4">
-                <h3>Education</h3>
-                @foreach (var edu in Portfolio.Resume.Education)
-                {
-                    <div class="card p-3 mb-2">
-                        <h5>@edu.Title</h5>
-                        <p class="mb-1"><strong>@edu.Institution</strong> | @edu.Period</p>
-                    </div>
-                }
-            </div>
-        </div>
-
-   
-
-    </section>
-
-    <!-- Skills -->
-    <section id="skills" class="container py-5">
-        <Skills />
-    </section>
+    <Skills />
 
     <!-- SECTION: PORTFOLIO -->
     <section id="projects" class="container py-5">
@@ -148,17 +93,17 @@ else
         <p class="text-center">You can contact me via:</p>
         <ul class="list-unstyled d-flex justify-content-center">
             <li class="mx-3">
-                <a href="mailto:your.email@example.com">
+                <a href="mailto:tuximodev@gmail.com">
                     <i class="fas fa-envelope fa-2x"></i>
                 </a>
             </li>
             <li class="mx-3">
-                <a href="[Your_LinkedIn_URL]" target="_blank">
+                <a href="https://www.linkedin.com/in/maximobrunetti/" target="_blank">
                     <i class="fab fa-linkedin fa-2x"></i>
                 </a>
             </li>
             <li class="mx-3">
-                <a href="[Your_GitHub_URL]" target="_blank">
+                <a href="https://github.com/TuXimo/" target="_blank">
                     <i class="fab fa-github fa-2x"></i>
                 </a>
             </li>

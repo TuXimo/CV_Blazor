@@ -1,0 +1,24 @@
+﻿@using CV_Blazor.Models
+@using CV_Blazor.Components
+@inherits LayoutComponentBase
+
+@code {
+    [Parameter] public PortfolioViewModel? Portfolio { get; set; }
+}
+
+
+<section id="about-me" class="container py-5">
+    <div class="row align-items-center">
+        <div class="col-md-8 text-center text-md-start">
+            <h1 class="display-4">Hello, I'm Máximo Brunetti</h1>
+            @foreach (var paragraph in Portfolio.Resume.Summary)
+            {
+                <p class="lead">@paragraph</p>
+            }
+            <a href="#projects" class="btn btn-primary btn-lg mt-3">View my Projects</a>
+        </div>
+        <div class="col-md-4 mt-4 mt-md-0 text-center">
+            <img src="img/profile.jpg" alt="Profile" class="profile-image" />
+        </div>
+    </div>
+</section>

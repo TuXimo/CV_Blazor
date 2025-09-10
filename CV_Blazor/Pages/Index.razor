@@ -1,10 +1,15 @@
 ﻿@page "/"
 @using CV_Blazor.Components
 @using CV_Blazor.Models
-@inject CV_Blazor.Services.PortfolioService PortfolioService
+@using CV_Blazor.Services
+
+@inject PortfolioService PortfolioService
+
 
 @code {
     private PortfolioViewModel? Portfolio;
+    private List<Skill> Skills;
+
     private string activeTab = "Projects";
 
     protected override async Task OnInitializedAsync()
@@ -74,32 +79,19 @@ else
                     </div>
                 }
             </div>
-
-            <!-- Skills -->
-            <div class="col-12 mb-4">
-                <h3>Skills</h3>
-                <div class="row">
-                    @foreach (var skill in Portfolio.Resume.Skills)
-                    {
-                        <div class="col-md-6 mb-2">
-                            <div class="card p-3">
-                                <h5>@skill.Name</h5>
-                                <ul>
-                                    @foreach (var detail in skill.Details)
-                                    {
-                                        <li>@detail</li>
-                                    }
-                                </ul>
-                            </div>
-                        </div>
-                    }
-                </div>
-            </div>
         </div>
+
+   
+
+    </section>
+
+    <!-- Skills -->
+    <section id="skills" class="container py-5">
+        <Skills />
     </section>
 
     <!-- SECTION: PORTFOLIO -->
-    <section id="portfolio" class="container py-5">
+    <section id="projects" class="container py-5">
         <h2 class="text-center mb-4">My Portfolio</h2>
 
         <!-- Tabs -->

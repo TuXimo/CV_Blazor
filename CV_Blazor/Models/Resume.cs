@@ -4,7 +4,6 @@
     {
         public List<Experience> ProfessionalExperience { get; set; } = new();
         public List<Education> Education { get; set; } = new();
-        public List<Skill> Skills { get; set; } = new();
         public List<string> Summary { get; set; } = new();
     }
 
@@ -21,11 +20,5 @@
         public string Title { get; set; }
         public string Institution { get; set; }
         public string Period { get; set; }
-    }
-
-    public class Skill
-    {
-        public string Name { get; set; }
-        public List<string> Details { get; set; } = new();
     }
 }

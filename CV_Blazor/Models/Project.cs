@@ -8,8 +8,6 @@
         public List<string> SecondaryImages { get; set; }
         public string ProjectLink { get; set; }
         public string GithubLink { get; set; }
-
         public string Slug => Title?.ToLower().Replace(" ", "-").Replace(".", "").Replace(",", "") ?? "";
     }
-
 }

@@ -6,6 +6,7 @@
 @inject PortfolioService PortfolioService
 
 
+
 @code {
     private PortfolioViewModel? Portfolio;
     private List<Skill> Skills;
@@ -15,6 +16,7 @@
     protected override async Task OnInitializedAsync()
     {
         Portfolio = await PortfolioService.GetPortfolioAsync();
+        Console.WriteLine($"Bruta ciega sordomuda {Portfolio.Projects.Count} y{Portfolio.Jams.Count} ");
     }
 
     private void SetTab(string tab)
@@ -29,89 +31,19 @@
 }
 else
 {
-    <AboutMe Portfolio="Portfolio" />
-
-    <Resume Portfolio="Portfolio" />
-
-    <Skills />
-
-    <!-- SECTION: PORTFOLIO -->
-    <section id="projects" class="container py-5">
-        <h2 class="text-center mb-4">My Portfolio</h2>
-
-        <!-- Tabs -->
-        <ul class="nav nav-tabs mb-4">
-            <li class="nav-item">
-                <a class='nav-link @(activeTab == "Projects" ? "active" : "")'
-                   href=""
-                   @onclick="@(() => SetTab("Projects"))"
-                   @onclick:preventDefault>
-
-                    Projects
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class='nav-link @(activeTab == "Jams" ? "active" : "")'
-                   href=""
-                   @onclick="@(() => SetTab("Jams"))"
-                   @onclick:preventDefault>
-
-                    Jams
-                </a>
-            </li>
-        </ul>
+    <p>Projects: @Portfolio.Projects.Count</p>
+    <p>Jams: @Portfolio.Jams.Count</p>
 
 
-        <div class="row">
-        @if (activeTab == "Projects")
-        {
-            @foreach (var project in Portfolio.Projects)
-            {
-                <div class="col-md-6 col-lg-4 mb-4">
-                    <ProjectCard Project="project" />
-                </div>
-            }
-        }
-        else if (activeTab == "Jams")
-        {
-            @foreach (var jam in Portfolio.Jams)
-            {
-                <div class="col-md-6 col-lg-4 mb-4">
-                    <ProjectCard Project="jam" />
-                </div>
-            }
-        }
-        </div>
+    <AboutMeSection Portfolio="Portfolio" />
 
-    </section>
+    <ResumeSection Portfolio="Portfolio" />
 
-    <hr />
+    <SkillsSection />
 
-    <!-- SECTION: CONTACT -->
-    <section id="contact" class="container py-5">
-        <h2 class="text-center mb-4">Contact</h2>
-        <p class="text-center">You can contact me via:</p>
-        <ul class="list-unstyled d-flex justify-content-center">
-            <li class="mx-3">
-                <a href="mailto:tuximodev@gmail.com">
-                    <i class="fas fa-envelope fa-2x"></i>
-                </a>
-            </li>
-            <li class="mx-3">
-                <a href="https://www.linkedin.com/in/maximobrunetti/" target="_blank">
-                    <i class="fab fa-linkedin fa-2x"></i>
-                </a>
-            </li>
-            <li class="mx-3">
-                <a href="https://github.com/TuXimo/" target="_blank">
-                    <i class="fab fa-github fa-2x"></i>
-                </a>
-            </li>
-        </ul>
-    </section>
+    <ProjectSection Portfolio="Portfolio" />
 
-    
-
+    <ContactSection />    
 
     <hr />
 }

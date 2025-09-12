@@ -1,4 +1,5 @@
 ﻿using System.Net.Http.Json;
+using System.Text.Json;
 using CV_Blazor.Models;
 
 namespace CV_Blazor.Services
@@ -14,7 +15,12 @@ namespace CV_Blazor.Services
 
         public async Task<PortfolioViewModel> GetPortfolioAsync()
         {
-            var data = await _http.GetFromJsonAsync<PortfolioViewModel>("data/portfolio.json");
+            var options = new JsonSerializerOptions
+            {
+                PropertyNameCaseInsensitive = true
+            };
+
+            var data = await _http.GetFromJsonAsync<PortfolioViewModel>("data/portfolio.json", options);
             return data ?? new PortfolioViewModel();
         }
     }

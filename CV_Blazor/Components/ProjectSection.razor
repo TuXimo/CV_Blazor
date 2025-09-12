@@ -1,0 +1,63 @@
+﻿@using CV_Blazor.Models
+@using CV_Blazor.Components
+@using System.Collections.Generic
+
+
+@code {
+    [Parameter] public PortfolioViewModel Portfolio { get; set; } = new();
+
+    private string activeTab = "Projects";
+
+    private void SetTab(string tab)
+    {
+        activeTab = tab;
+    }
+}
+
+
+
+<section id="projects" class="container py-5">
+    <h2 class="text-center mb-4">My Projects</h2>
+
+    <ul class="nav nav-tabs mb-4">
+        <li class="nav-item">
+            <a class='nav-link @(activeTab == "Projects" ? "active" : "")'
+               href=""
+               @onclick="@(() => SetTab("Projects"))"
+               @onclick:preventDefault>
+
+                Projects
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class='nav-link @(activeTab == "Jams" ? "active" : "")'
+               href=""
+               @onclick="@(() => SetTab("Jams"))"
+               @onclick:preventDefault>
+
+                Jams
+            </a>
+        </li>
+    </ul>
+
+    <div class="row">
+        @if (activeTab == "Projects")
+        {
+            @foreach (var project in Portfolio.Projects)
+            {
+                <div class="col-md-6 col-lg-4 mb-4">
+                    <ProjectCard Project="project" />
+                </div>
+            }
+        }
+        else if (activeTab == "Jams")
+        {
+            @foreach (var jam in Portfolio.Jams)
+            {
+                <div class="col-md-6 col-lg-4 mb-4">
+                    <ProjectCard Project="jam" />
+                </div>
+            }
+        }
+    </div>
+</section>

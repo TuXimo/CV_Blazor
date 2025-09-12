@@ -7,12 +7,12 @@
     ],
     "professionalExperience": [
       {
-        "title": "Pasante en ProgramaciÃ³n de AnimaciÃ³n",
+        "title": "Pasante en Programación de Animación",
         "company": "Xowen Studios",
         "period": "Julio 2025 - Septiembre 2025",
         "achievements": [
-          "RealicÃ© el proceso de limpieza y optimizaciÃ³n de animaciones (cleanup) en Unreal Engine para mejorar la fidelidad de los movimientos y la eficiencia del proyecto.",
-          "ColaborÃ© en la integraciÃ³n de animaciones en el motor del juego."
+          "Realicé el proceso de limpieza y optimización de animaciones (cleanup) en Unreal Engine para mejorar la fidelidad de los movimientos y la eficiencia del proyecto.",
+          "Colaboré en la integración de animaciones en el motor del juego."
         ]
       },
       {
@@ -20,8 +20,8 @@
         "company": "Abi Rached Studio (Estudio Independiente)",
         "period": "Abril 2024 - Agosto 2025",
         "achievements": [
-          "Desarrollo y programaciÃ³n de las mecÃ¡nicas de jugabilidad y sistemas de combate para un videojuego de rol de acciÃ³n estilo Hack and Slash.",
-          "Responsable de la implementaciÃ³n de sistemas de animaciÃ³n y lÃ³gica de enemigos en Unity."
+          "Desarrollo y programación de las mecánicas de jugabilidad y sistemas de combate para un videojuego de rol de acción estilo Hack and Slash.",
+          "Responsable de la implementación de sistemas de animación y lógica de enemigos en Unity."
         ]
       }
     ],
@@ -36,20 +36,50 @@
   "projects": [
     {
       "title": "Tightrope Walker: Gyroscope",
-      "shortDescription": "Juego para mÃ³viles desarrollado en Unity, donde el control del personaje se basa en el giroscopio del dispositivo, simulando el equilibrio de un funambulista.",
+      "shortDescription": "Juegovich para móviles desarrollado en Unity, donde el control del personaje se basa en el giroscopio del dispositivo, simulando el equilibrio de un funambulista.",
       "mainImage": "/img/projects/tw/main.png",
-      "secondaryImages": [ "/img/projects/tw/t1.png", "/img/projects/tw/t2.png", "/img/projects/tw/t3.png", "/img/projects/tw/t4.png" ],
+      "secondaryImages": [
+        "/img/projects/tw/t1.png",
+        "/img/projects/tw/t2.png",
+        "/img/projects/tw/t3.png",
+        "/img/projects/tw/t4.png"
+      ],
       "projectLink": "https://play.google.com/store/apps/details?id=com.tuximo.tightropewalker",
       "githubLink": ""
     },
     {
-      "title": "PÃ¡gina Web Interactiva",
-      "shortDescription": "Un currÃ­culum interactivo alojado en www.3d.maximobrunetti.com.ar, desarrollado con Needle Engine y Three.js para crear una experiencia inmersiva.",
+      "title": "Página Web Interactiva",
+      "shortDescription": "Un currículum interactivo alojado en www.3d.maximobrunetti.com.ar, desarrollado con Needle Engine y Three.js para crear una experiencia inmersiva.",
       "mainImage": "/img/curriculum-3d.png",
       "secondaryImages": [],
       "projectLink": "https://3d.maximobrunetti.com.ar",
       "githubLink": ""
     }
   ],
-  "jams": []
+  "jams": [
+    {
+      "title": "Simulador de Terremotos (Proyecto Universitario)",
+      "shortDescription": "Simulador académico desarrollado para la universidad, enfocado en simular un terremoto y localizado en varios idiomas para una audiencia global.",
+      "mainImage": null,
+      "secondaryImages": [],
+      "projectLink": "https://tuximo.itch.io/school-earthquake-quiz",
+      "githubLink": null
+    },
+    {
+      "title": "Sorpresas Amargas",
+      "shortDescription": "Juego de horror psicológico en 2D desarrollado en 3 días para una Game Jam.",
+      "mainImage": null,
+      "secondaryImages": [],
+      "projectLink": "https://amrasmithandir.itch.io/sorpresas-amargas",
+      "githubLink": null
+    },
+    {
+      "title": "La Última Risa",
+      "shortDescription": "Juego desarrollado en 48 horas para la Global Game Jam 2024.",
+      "mainImage": null,
+      "secondaryImages": [],
+      "projectLink": "https://tinincho.itch.io/la-ultima-risa",
+      "githubLink": null
+    }
+  ]
 }

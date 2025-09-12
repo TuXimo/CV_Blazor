@@ -16,7 +16,6 @@
     protected override async Task OnInitializedAsync()
     {
         Portfolio = await PortfolioService.GetPortfolioAsync();
-        Console.WriteLine($"Bruta ciega sordomuda {Portfolio.Projects.Count} y{Portfolio.Jams.Count} ");
     }
 
     private void SetTab(string tab)
@@ -31,10 +30,6 @@
 }
 else
 {
-    <p>Projects: @Portfolio.Projects.Count</p>
-    <p>Jams: @Portfolio.Jams.Count</p>
-
-
     <AboutMeSection Portfolio="Portfolio" />
 
     <ResumeSection Portfolio="Portfolio" />

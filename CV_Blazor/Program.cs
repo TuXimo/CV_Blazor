@@ -11,5 +11,7 @@ builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.
 builder.Services.AddScoped<PortfolioService>();
 builder.Services.AddScoped<SkillService>();
 
+Console.WriteLine("Hola amigo");
+
 
 await builder.Build().RunAsync();

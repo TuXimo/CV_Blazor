@@ -1,22 +1,45 @@
 [
   {
     "Name": "C#",
-    "IconPath": "icons/skills/csharp.png"
+    "IconPath": "icons/skills/csharp.png",
+    "Proficiency": 4,
+    "Description": "a"
   },
   {
     "Name": "Unity",
-    "IconPath": "icons/skills/unity.png"
+    "IconPath": "icons/skills/unity.png",
+    "Proficiency": 4,
+    "Description": "a"
   },
   {
     "Name": "Unreal",
-    "IconPath": "icons/skills/unreal.png"
+    "IconPath": "icons/skills/unreal.png",
+    "Proficiency": 3,
+    "Description": "a"
+
   },
   {
     "Name": "Blender",
-    "IconPath": "icons/skills/blender.png"
+    "IconPath": "icons/skills/blender.png",
+    "Proficiency": 3,
+    "Description": "a"
   },
   {
     "Name": "JS/TS",
-    "IconPath": "icons/skills/ts.png"
+    "IconPath": "icons/skills/ts.png",
+    "Proficiency": 2,
+    "Description": "a"
+  }, 
+  {
+    "Name": "Git",
+    "IconPath":"icons/skills/git.png",
+    "Proficiency": 4,
+    "Description": "a"
+  },
+  {
+    "Name": "Photoshop",
+    "IconPath": "icons/skills/photoshop.png",
+    "Proficiency": 3,
+    "Description": "a"
   }
 ]

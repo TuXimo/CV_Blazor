@@ -47,3 +47,31 @@
     padding: 1rem;
     border-radius: 8px;
 }
+
+.skill-level {
+    display: flex;
+    gap: 6px; /* separación entre bloques */
+    margin: 10px 0;
+}
+
+.level-block {
+    width: 25px;
+    height: 25px;
+    border: 2px solid #444; /* contorno oscuro */
+    border-radius: 4px; /* leve redondeo gamer */
+    background-color: transparent; /* vacío */
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.level-block.filled {
+    background-color: #00ff66; /* verde brillante estilo gamer */
+    box-shadow: 0 0 10px #00ff66; /* glow */
+}
+
+.level-block.empty {
+    background-color: transparent;
+}
+
+.level-block.filled:hover {
+    transform: scale(1.1); /* efecto al pasar el mouse */
+}

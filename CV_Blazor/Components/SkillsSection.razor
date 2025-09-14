@@ -12,7 +12,7 @@
             {
                 @foreach (var skill in SkillsList)
                 {
-                    <div class="skill-icon-container" style="top:@skill.TopPx; left:@skill.LeftPx;">
+                    <div class="skill-icon-container">
                         <img src="@skill.IconPath" alt="@skill.Name"
                              @onmouseover="@(() => ShowSkill(skill))"
                              @onclick="@(() => OnClickSkill(skill))" />
@@ -21,18 +21,18 @@
             }
         </div>
 
-       <div class="skills-details">
+        <div class="skills-details">
             @if (CurrentSkill != null)
             {
                 <h3>@CurrentSkill.Name</h3>
-                
+
                 <div class="skill-level">
                     @for (int i = 1; i <= 5; i++)
                     {
                         <span class="level-block @(i <= CurrentSkill.Proficiency ? "filled" : "empty")"></span>
                     }
                 </div>
-                
+
                 <p>@CurrentSkill.Description</p>
             }
         </div>
@@ -41,39 +41,13 @@
 </section>
 
 @code {
-    private List<SkillPositioned> SkillsList;
-    private SkillPositioned CurrentSkill;
-    private bool _isClickActive = false; // Nuevo estado para bloquear el hover
-
-    // Dimensiones del contenedor de íconos
-    private const int ContainerWidth = 320;
-    private const int ContainerHeight = 220;
-    private const int IconSize = 80;
+    private List<Skill> SkillsList;
+    private Skill CurrentSkill;
+    private bool _isClickActive = false;
 
     protected override async Task OnInitializedAsync()
     {
-        var skills = await SkillService.GetSkillsAsync();
-        var rand = new Random();
-        var placedSkills = new List<SkillPositioned>();
-
-        foreach (var skill in skills)
-        {
-            var newPosition = GetNonOverlappingPosition(placedSkills, rand);
-            if (newPosition != null)
-            {
-                var newSkill = new SkillPositioned
-                {
-                    Name = skill.Name,
-                    IconPath = skill.IconPath,
-                    Proficiency = skill.Proficiency,
-                    Description = skill.Description,
-                    TopPx = $"{newPosition.Item1}px",
-                    LeftPx = $"{newPosition.Item2}px"
-                };
-                placedSkills.Add(newSkill);
-            }
-        }
-        SkillsList = placedSkills;
+        SkillsList = (await SkillService.GetSkillsAsync()).ToList();
 
         // Establecer la primera habilidad como predeterminada
         if (SkillsList.Any())
@@ -82,69 +56,25 @@
         }
     }
 
-    private void ShowSkill(SkillPositioned skill)
+    private void ShowSkill(Skill skill)
     {
-        // Solo actualiza la habilidad si no hay un clic activo
         if (!_isClickActive)
         {
             CurrentSkill = skill;
         }
     }
 
-    private async Task OnClickSkill(SkillPositioned skill)
+    private async Task OnClickSkill(Skill skill)
     {
-        // Si ya hay un clic activo, no hacer nada
         if (_isClickActive) return;
 
         _isClickActive = true;
         CurrentSkill = skill;
 
-        // Espera 1 segundo para "bloquear" el hover
         await Task.Delay(1000);
 
-        // Libera el bloqueo
         _isClickActive = false;
     }
 
-    private Tuple<int, int> GetNonOverlappingPosition(List<SkillPositioned> placedSkills, Random rand)
-    {
-        const int maxAttempts = 50;
-        for (int i = 0; i < maxAttempts; i++)
-        {
-            int top = rand.Next(0, ContainerHeight - IconSize);
-            int left = rand.Next(0, ContainerWidth - IconSize);
-
-            bool isOverlapping = false;
-            foreach (var existingSkill in placedSkills)
-            {
-                int existingTop = int.Parse(existingSkill.TopPx.Replace("px", ""));
-                int existingLeft = int.Parse(existingSkill.LeftPx.Replace("px", ""));
-
-                if (
-                    left < existingLeft + IconSize &&
-                    left + IconSize > existingLeft &&
-                    top < existingTop + IconSize &&
-                    top + IconSize > existingTop
-                )
-                {
-                    isOverlapping = true;
-                    break;
-                }
-            }
-
-            if (!isOverlapping)
-            {
-                return new Tuple<int, int>(top, left);
-            }
-        }
-
-        return null;
-    }
-
-    // Clase auxiliar para posiciones
-    private class SkillPositioned : Skill
-    {
-        public string TopPx { get; set; }
-        public string LeftPx { get; set; }
-    }
+    // La clase SkillPositioned y el método GetNonOverlappingPosition ya no son necesarios
 }

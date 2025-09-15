@@ -1,55 +1,57 @@
-﻿.skills-main-container {
+﻿/* Main container for the 50/50 split */
+.skills-main-container {
     display: flex;
     width: 100%;
-    height: 300px;
-    gap: 2rem;
-    position: relative;
+    height: 400px; /* Set a fixed height for the whole section */
+    border: 2px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.skills-icons {
-    flex: 0 0 40%;
-    /* --- Cambio clave aquí --- */
-    display: flex;
-    flex-wrap: wrap; /* Permite que los elementos pasen a la siguiente línea */
-    justify-content: center; /* Centra los íconos horizontalmente */
-    align-items: center; /* Centra los íconos verticalmente */
-    gap: 15px; /* Espacio entre los íconos */
-    /* ------------------------ */
-    background: #f0f0f0;
-    border-radius: 8px;
-    height: 100%;
+/* Left side: The animation area */
+.skills-icons-animation-area {
+    flex: 0 0 50%;
+    position: relative; /* This is the key: icons are absolute within this area */
+    overflow: hidden;
+    background-color: #f5f5f5;
 }
 
+/* Individual icon container */
 .skill-icon-container {
-    /* Ya no es necesario el posicionamiento absoluto */
+    position: absolute;
     width: 80px;
     height: 80px;
+    cursor: pointer;
     display: flex;
     justify-content: center;
     align-items: center;
-    transition: transform 0.2s;
-    cursor: pointer;
 }
 
-.skill-icon-container img {
-    width: 100%;
-    height: 100%;
-    border-radius: 12px;
-    transition: transform 0.2s;
-}
+    .skill-icon-container img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        border-radius: 12px;
+        transition: transform 0.2s, box-shadow 0.2s;
+    }
 
-.skill-icon-container img:hover {
-    transform: scale(1.3);
-    z-index: 10;
-}
+        .skill-icon-container img:hover {
+            transform: scale(1.3);
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+            z-index: 10;
+        }
 
+/* Right side: The details section */
 .skills-details {
-    flex: 1; /* derecha 60% */
-    background: #f5f5f5;
-    padding: 1rem;
-    border-radius: 8px;
+    flex: 1; /* This will take up the remaining space (50%) */
+    background-color: #fff;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Center the content vertically */
 }
 
+/* Styling for the level blocks */
 .skill-level {
     display: flex;
     gap: 6px;
@@ -72,8 +74,4 @@
 
 .level-block.filled:hover {
     transform: scale(1.1);
-}
-
-.level-block.empty {
-    background-color: transparent;
 }

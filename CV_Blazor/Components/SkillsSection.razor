@@ -2,37 +2,39 @@
 @using CV_Blazor.Models
 
 @inject SkillService SkillService
+@implements IDisposable
 
 <section id="skills" class="container py-5">
     <h2 class="text-center mb-4">Skills</h2>
-
     <div class="skills-main-container">
-        <div class="skills-icons">
-            @if (SkillsList != null)
+
+        @* Left side for the moving icons *@
+        <div class="skills-icons-animation-area">
+            @if (SkillsWithPosition != null)
             {
-                @foreach (var skill in SkillsList)
+                @foreach (var skill in SkillsWithPosition)
                 {
-                    <div class="skill-icon-container">
-                        <img src="@skill.IconPath" alt="@skill.Name"
-                             @onmouseover="@(() => ShowSkill(skill))"
-                             @onclick="@(() => OnClickSkill(skill))" />
+                    <div class="skill-icon-container"
+                         style="left: @(skill.X)px; top: @(skill.Y)px;"
+                         @onmouseover="@(() => OnHoverSkill(skill))"
+                         @onmouseout="@(() => OnMouseOutSkill())">
+                        <img src="@skill.IconPath" alt="@skill.Name" />
                     </div>
                 }
             }
         </div>
 
+        @* Right side for the details *@
         <div class="skills-details">
             @if (CurrentSkill != null)
             {
                 <h3>@CurrentSkill.Name</h3>
-
                 <div class="skill-level">
                     @for (int i = 1; i <= 5; i++)
                     {
                         <span class="level-block @(i <= CurrentSkill.Proficiency ? "filled" : "empty")"></span>
                     }
                 </div>
-
                 <p>@CurrentSkill.Description</p>
             }
         </div>
@@ -41,40 +43,146 @@
 </section>
 
 @code {
-    private List<Skill> SkillsList;
+    private List<SkillWithPosition> SkillsWithPosition;
     private Skill CurrentSkill;
-    private bool _isClickActive = false;
+    private System.Threading.Timer _timer;
+    private SkillWithPosition _hoveredSkill = null;
+    private bool _isExplosionActive = false;
+
+    private const int AnimationWidth = 600;
+    private const int AnimationHeight = 400;
+    private const int IconSize = 80;
+
+    private class SkillWithPosition : Skill
+    {
+        public double X { get; set; }
+        public double Y { get; set; }
+        public double Dx { get; set; }
+        public double Dy { get; set; }
+        public double OriginalDx { get; set; }
+        public double OriginalDy { get; set; }
+    }
 
     protected override async Task OnInitializedAsync()
     {
-        SkillsList = (await SkillService.GetSkillsAsync()).ToList();
+        var skills = (await SkillService.GetSkillsAsync()).ToList();
 
-        // Establecer la primera habilidad como predeterminada
-        if (SkillsList.Any())
+        SkillsWithPosition = skills.Select(s =>
         {
-            CurrentSkill = SkillsList.First();
+            var skill = new SkillWithPosition
+            {
+                Name = s.Name,
+                IconPath = s.IconPath,
+                Description = s.Description,
+                Proficiency = s.Proficiency,
+                X = new Random().Next(IconSize / 2, AnimationWidth - IconSize / 2),
+                Y = new Random().Next(IconSize / 2, AnimationHeight - IconSize / 2)
+            };
+            skill.Dx = skill.OriginalDx = (new Random().NextDouble() * 2 - 1) * 2;
+            skill.Dy = skill.OriginalDy = (new Random().NextDouble() * 2 - 1) * 2;
+            return skill;
+        }).ToList();
+
+        if (SkillsWithPosition.Any())
+        {
+            CurrentSkill = SkillsWithPosition.First();
+        }
+
+        _timer = new System.Threading.Timer(UpdatePositions, null, 0, 16);
+    }
+
+    private void UpdatePositions(object state)
+    {
+        foreach (var skill in SkillsWithPosition)
+        {
+            // Only update position if the skill is not the one being hovered
+            if (skill != _hoveredSkill)
+            {
+                // Update position
+                skill.X += skill.Dx;
+                skill.Y += skill.Dy;
+
+                // --- Improved Boundary Collision Logic ---
+                if (skill.X <= 0)
+                {
+                    skill.X = 0;
+                    skill.Dx = Math.Abs(skill.Dx);
+                }
+                else if (skill.X >= AnimationWidth - IconSize)
+                {
+                    skill.X = AnimationWidth - IconSize;
+                    skill.Dx = -Math.Abs(skill.Dx);
+                }
+
+                if (skill.Y <= 0)
+                {
+                    skill.Y = 0;
+                    skill.Dy = Math.Abs(skill.Dy);
+                }
+                else if (skill.Y >= AnimationHeight - IconSize)
+                {
+                    skill.Y = AnimationHeight - IconSize;
+                    skill.Dy = -Math.Abs(skill.Dy);
+                }
+            }
+        }
+        InvokeAsync(StateHasChanged);
+    }
+
+    private async Task OnHoverSkill(SkillWithPosition hoveredSkill)
+    {
+        if (_hoveredSkill == hoveredSkill || _isExplosionActive) return;
+
+        _hoveredSkill = hoveredSkill;
+        CurrentSkill = hoveredSkill;
+        _isExplosionActive = true;
+
+        hoveredSkill.Dx = 0;
+        hoveredSkill.Dy = 0;
+
+        foreach (var skill in SkillsWithPosition)
+        {
+            if (skill != hoveredSkill)
+            {
+                double distanceX = skill.X - hoveredSkill.X;
+                double distanceY = skill.Y - hoveredSkill.Y;
+                double distance = Math.Sqrt(distanceX * distanceX + distanceY * distanceY);
+
+                if (distance > 0 && distance < 150)
+                {
+                    double explosionForce = 150 / distance;
+                    skill.Dx = (distanceX / distance) * explosionForce;
+                    skill.Dy = (distanceY / distance) * explosionForce;
+                }
+            }
+        }
+
+        await Task.Delay(500);
+
+        foreach (var skill in SkillsWithPosition)
+        {
+            if (skill != _hoveredSkill)
+            {
+                skill.Dx = skill.OriginalDx;
+                skill.Dy = skill.OriginalDy;
+            }
+        }
+
+        _isExplosionActive = false;
+    }
+
+    private void OnMouseOutSkill()
+    {
+        if (_hoveredSkill != null)
+        {
+            _hoveredSkill.Dx = _hoveredSkill.OriginalDx;
+            _hoveredSkill.Dy = _hoveredSkill.OriginalDy;
+            _hoveredSkill = null;
         }
     }
 
-    private void ShowSkill(Skill skill)
+    public void Dispose()
     {
-        if (!_isClickActive)
-        {
-            CurrentSkill = skill;
-        }
+        _timer?.Dispose();
     }
-
-    private async Task OnClickSkill(Skill skill)
-    {
-        if (_isClickActive) return;
-
-        _isClickActive = true;
-        CurrentSkill = skill;
-
-        await Task.Delay(1000);
-
-        _isClickActive = false;
-    }
-
-    // La clase SkillPositioned y el método GetNonOverlappingPosition ya no son necesarios
 }

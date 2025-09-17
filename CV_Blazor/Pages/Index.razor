@@ -5,8 +5,6 @@
 
 @inject PortfolioService PortfolioService
 
-
-
 @code {
     private PortfolioViewModel? Portfolio;
     private List<Skill> Skills;
@@ -26,7 +24,7 @@
 
 @if (Portfolio == null)
 {
-    <p>Loading...</p>
+    <p>Loading XD...</p>
 }
 else
 {
@@ -39,6 +37,4 @@ else
     <ProjectSection Portfolio="Portfolio" />
 
     <ContactSection />    
-
-    <hr />
 }

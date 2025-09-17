@@ -4,11 +4,13 @@
 @inject SkillService SkillService
 @implements IDisposable
 
+@* Título de la sección arriba *@
+<h2 class="section-title">Skills</h2>
+
 <section id="skills" class="container py-5">
-    <h2 class="text-center mb-4">Skills</h2>
     <div class="skills-main-container">
 
-        @* Left side for the moving icons *@
+        @* Lado izquierdo para los iconos en movimiento *@
         <div class="skills-icons-animation-area">
             @if (SkillsWithPosition != null)
             {
@@ -24,18 +26,25 @@
             }
         </div>
 
-        @* Right side for the details *@
+        @* Lado derecho para los detalles de la habilidad *@
         <div class="skills-details">
             @if (CurrentSkill != null)
             {
-                <h3>@CurrentSkill.Name</h3>
-                <div class="skill-level">
-                    @for (int i = 1; i <= 5; i++)
-                    {
-                        <span class="level-block @(i <= CurrentSkill.Proficiency ? "filled" : "empty")"></span>
-                    }
+                <div class="skill-details-content animated-fade-in">
+                    <h3 class="skill-title">@CurrentSkill.Name</h3>
+
+                    @* Nivel de habilidad en texto *@
+                    <p class="skill-level-text">Nivel: @(GetProficiencyText(CurrentSkill.Proficiency))</p>
+
+                    @* Cuadros de nivel rectangulares y discretos *@
+                    <div class="skill-level">
+                        @for (int i = 1; i <= 5; i++)
+                        {
+                            <span class="level-block @(i <= CurrentSkill.Proficiency ? "filled" : "empty")"></span>
+                        }
+                    </div>
+                    <p class="skill-description">@CurrentSkill.Description</p>
                 </div>
-                <p>@CurrentSkill.Description</p>
             }
         </div>
 
@@ -96,7 +105,6 @@
         {
             if (skill != _hoveredSkill)
             {
-                // Smoothly return to original speed if a high velocity was applied
                 double decelerationFactor = 0.95;
                 if (Math.Abs(skill.Dx) > Math.Abs(skill.OriginalDx) || Math.Abs(skill.Dy) > Math.Abs(skill.OriginalDy))
                 {
@@ -104,11 +112,9 @@
                     skill.Dy = (skill.Dy * decelerationFactor) + (skill.OriginalDy * (1 - decelerationFactor));
                 }
 
-                // Update position
                 skill.X += skill.Dx;
                 skill.Y += skill.Dy;
 
-                // Boundary correction to prevent sticking
                 if (skill.X <= 0)
                 {
                     skill.X = 0;
@@ -146,7 +152,6 @@
         _hoveredSkill = hoveredSkill;
         CurrentSkill = hoveredSkill;
 
-        // Stop the hovered skill immediately
         _hoveredSkill.Dx = 0;
         _hoveredSkill.Dy = 0;
 
@@ -172,7 +177,6 @@
     {
         if (_hoveredSkill != null)
         {
-            // Reset the hovered skill's velocity to its original state
             _hoveredSkill.Dx = _hoveredSkill.OriginalDx;
             _hoveredSkill.Dy = _hoveredSkill.OriginalDy;
             _hoveredSkill = null;
@@ -182,5 +186,18 @@
     public void Dispose()
     {
         _timer?.Dispose();
+    }
+
+    private string GetProficiencyText(int proficiency)
+    {
+        switch (proficiency)
+        {
+            case 1: return "Básico";
+            case 2: return "Principiante";
+            case 3: return "Intermedio";
+            case 4: return "Avanzado";
+            case 5: return "Experto";
+            default: return "Sin definir";
+        }
     }
 }

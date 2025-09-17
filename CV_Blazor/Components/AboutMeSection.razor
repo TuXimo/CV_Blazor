@@ -7,15 +7,21 @@
 }
 
 
-<section id="about-me" class="container py-5">
+<section id="about-me" class="container py-5 section-title">
     <div class="row align-items-center">
         <div class="col-md-8 text-center text-md-start">
-            <h1 class="display-4">Hello, I'm Máximo Brunetti</h1>
+            <h1 class="display-4">Hola, soy Máximo</h1>
             @foreach (var paragraph in Portfolio.Resume.Summary)
             {
                 <p class="lead">@paragraph</p>
             }
-            <a href="#projects" class="btn btn-primary btn-lg mt-3">View my Projects</a>
+            <a href="#projects" class="btn btn-primary btn-lg mt-3">
+                Ver mis proyectos
+            </a>
+
+            <a href="files/cv_es.pdf" class="btn btn-primary btn-lg mt-3" download>
+                Descargar Currículum
+            </a>
         </div>
         <div class="col-md-4 mt-4 mt-md-0 text-center">
             <img src="img/profile.jpg" alt="Profile" class="profile-image" />

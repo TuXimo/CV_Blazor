@@ -47,7 +47,6 @@
     private Skill CurrentSkill;
     private System.Threading.Timer _timer;
     private SkillWithPosition _hoveredSkill = null;
-    private bool _isExplosionActive = false;
 
     private const int AnimationWidth = 600;
     private const int AnimationHeight = 400;
@@ -95,34 +94,45 @@
     {
         foreach (var skill in SkillsWithPosition)
         {
-            // Only update position if the skill is not the one being hovered
             if (skill != _hoveredSkill)
             {
+                // Smoothly return to original speed if a high velocity was applied
+                double decelerationFactor = 0.95;
+                if (Math.Abs(skill.Dx) > Math.Abs(skill.OriginalDx) || Math.Abs(skill.Dy) > Math.Abs(skill.OriginalDy))
+                {
+                    skill.Dx = (skill.Dx * decelerationFactor) + (skill.OriginalDx * (1 - decelerationFactor));
+                    skill.Dy = (skill.Dy * decelerationFactor) + (skill.OriginalDy * (1 - decelerationFactor));
+                }
+
                 // Update position
                 skill.X += skill.Dx;
                 skill.Y += skill.Dy;
 
-                // --- Improved Boundary Collision Logic ---
+                // Boundary correction to prevent sticking
                 if (skill.X <= 0)
                 {
                     skill.X = 0;
                     skill.Dx = Math.Abs(skill.Dx);
+                    if (Math.Abs(skill.Dx) < Math.Abs(skill.OriginalDx)) skill.Dx = skill.OriginalDx;
                 }
                 else if (skill.X >= AnimationWidth - IconSize)
                 {
                     skill.X = AnimationWidth - IconSize;
                     skill.Dx = -Math.Abs(skill.Dx);
+                    if (Math.Abs(skill.Dx) < Math.Abs(skill.OriginalDx)) skill.Dx = -skill.OriginalDx;
                 }
 
                 if (skill.Y <= 0)
                 {
                     skill.Y = 0;
                     skill.Dy = Math.Abs(skill.Dy);
+                    if (Math.Abs(skill.Dy) < Math.Abs(skill.OriginalDy)) skill.Dy = skill.OriginalDy;
                 }
                 else if (skill.Y >= AnimationHeight - IconSize)
                 {
                     skill.Y = AnimationHeight - IconSize;
                     skill.Dy = -Math.Abs(skill.Dy);
+                    if (Math.Abs(skill.Dy) < Math.Abs(skill.OriginalDy)) skill.Dy = -skill.OriginalDy;
                 }
             }
         }
@@ -131,14 +141,14 @@
 
     private async Task OnHoverSkill(SkillWithPosition hoveredSkill)
     {
-        if (_hoveredSkill == hoveredSkill || _isExplosionActive) return;
+        if (_hoveredSkill == hoveredSkill) return;
 
         _hoveredSkill = hoveredSkill;
         CurrentSkill = hoveredSkill;
-        _isExplosionActive = true;
 
-        hoveredSkill.Dx = 0;
-        hoveredSkill.Dy = 0;
+        // Stop the hovered skill immediately
+        _hoveredSkill.Dx = 0;
+        _hoveredSkill.Dy = 0;
 
         foreach (var skill in SkillsWithPosition)
         {
@@ -156,25 +166,13 @@
                 }
             }
         }
-
-        await Task.Delay(500);
-
-        foreach (var skill in SkillsWithPosition)
-        {
-            if (skill != _hoveredSkill)
-            {
-                skill.Dx = skill.OriginalDx;
-                skill.Dy = skill.OriginalDy;
-            }
-        }
-
-        _isExplosionActive = false;
     }
 
     private void OnMouseOutSkill()
     {
         if (_hoveredSkill != null)
         {
+            // Reset the hovered skill's velocity to its original state
             _hoveredSkill.Dx = _hoveredSkill.OriginalDx;
             _hoveredSkill.Dy = _hoveredSkill.OriginalDy;
             _hoveredSkill = null;

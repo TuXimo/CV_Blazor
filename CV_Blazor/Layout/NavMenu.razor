@@ -1,30 +1,57 @@
-﻿<nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+﻿@using System.Globalization
+@using CV_Blazor.Models
+@using Microsoft.Extensions.Localization
+@inject IJSRuntime JSRuntime
+@inject IStringLocalizer<Resources> Localizer
+@inject NavigationManager NavigationManager
+<nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
     <div class="container-fluid">
         <a class="navbar-brand" href="#top">Máximo Brunetti</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                 aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-
-
         <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
             <ul class="navbar-nav flex-grow-1">
                 <li class="nav-item">
-                    <a class="nav-link text-dark" href="#about-me">Sobre mí</a>
+                    <a class="nav-link text-dark" href="#about-me">@Localizer["nav_AboutMe"]</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-dark" href="#resume">Resumen</a>
+                    <a class="nav-link text-dark" href="#resume">@Localizer["nav_Resume"]</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-dark" href="#skills">Skills</a>
+                    <a class="nav-link text-dark" href="#skills">@Localizer["nav_Skills"]</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-dark" href="#projects">Proyectos</a>
+                    <a class="nav-link text-dark" href="#projects">@Localizer["nav_Projects"]</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-dark" href="#contact">Contacto</a>
+                    <a class="nav-link text-dark" href="#contact">@Localizer["nav_Contact"]</a>
                 </li>
             </ul>
+            <div class="d-flex align-items-center ms-auto">
+                <button class="btn btn-sm btn-outline-secondary me-2" @onclick="ChangeLanguage">
+                    @CurrentLanguageName
+                </button>
+                <button class="btn btn-sm btn-outline-secondary" @onclick="ToggleTheme">
+                    @Localizer["nav_DarkMode"]
+                </button>
+            </div>
         </div>
     </div>
 </nav>
+@code {
+    [Parameter] public PortfolioViewModel? Portfolio { get; set; }
+    private string CurrentLanguageName => CultureInfo.CurrentUICulture.Name == "es-ES" ? "English" : "Español";
+    private async Task ChangeLanguage()
+    {
+        var currentCulture = CultureInfo.CurrentUICulture.Name;
+        var newCulture = currentCulture == "es-ES" ? "en-US" : "es-ES";
+        await JSRuntime.InvokeVoidAsync("blazorCulture.set", newCulture);
+        NavigationManager.NavigateTo(NavigationManager.Uri, forceLoad: true);
+    }
+    private void ToggleTheme()
+    {
+        // ¡Aquí iría la lógica para cambiar el tema!
+    }
+}

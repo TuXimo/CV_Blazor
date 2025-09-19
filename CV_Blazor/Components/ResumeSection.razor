@@ -2,16 +2,19 @@
 @using CV_Blazor.Components
 @inherits LayoutComponentBase
 
+@using Microsoft.Extensions.Localization
+@inject IStringLocalizer<Resources> Localizer
+
 @code{
     [Parameter] public PortfolioViewModel Portfolio { get; set; } = new();
 }
 
 <section id="resume" class="container py-5">
-    <h2 class="text-center mb-4 section-title">Resumen</h2>
+    <h2 class="text-center mb-4 section-title">@Localizer["nav_Resume"]</h2>
     <div class="row">
         <!-- Professional Experience -->
         <div class="col-md-6 mb-4">
-            <h3>Experiencia Profesional</h3>
+            <h3>@Localizer["rs_xp"]</h3>
             @foreach (var exp in Portfolio.Resume.ProfessionalExperience)
             {
                 <div class="card p-3 mb-2">
@@ -29,7 +32,7 @@
 
         <!-- Education -->
         <div class="col-md-6 mb-4">
-            <h3>Educación</h3>
+            <h3>@Localizer["rs_education"]</h3>
             @foreach (var edu in Portfolio.Resume.Education)
             {
                 <div class="card p-3 mb-2">

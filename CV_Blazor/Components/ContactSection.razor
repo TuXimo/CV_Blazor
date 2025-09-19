@@ -1,6 +1,9 @@
 ﻿@using Microsoft.JSInterop
 @inject IJSRuntime JSRuntime
 
+@using Microsoft.Extensions.Localization
+@inject IStringLocalizer<Resources> Localizer
+
 @code {
     private bool isCopied = false;
     private string emailAddress = "tuximodev@gmail.com";
@@ -22,7 +25,7 @@
 }
 
 <section id="contact" class="container py-5">
-    <h2 class="text-center mb-4 section-title">Datos de contacto</h2>
+    <h2 class="text-center mb-4 section-title">@Localizer["cs_contactInformation"]</h2>
     <p class="text-center">Me podés contactar por:</p>
     <ul class="list-unstyled d-flex justify-content-center">
         <li class="mx-3 d-flex flex-column align-items-center">

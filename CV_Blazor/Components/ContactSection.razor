@@ -1,8 +1,11 @@
 ﻿@using Microsoft.JSInterop
-@inject IJSRuntime JSRuntime
-
+@using CV_Blazor.Services
 @using Microsoft.Extensions.Localization
+
+@inject IJSRuntime JSRuntime
 @inject IStringLocalizer<Resources> Localizer
+
+@inject LocalizationService LocService
 
 @code {
     private bool isCopied = false;
@@ -21,6 +24,16 @@
         await Task.Delay(2000);
         isCopied = false;
         StateHasChanged();
+    }
+
+    protected override void OnInitialized()
+    {
+        LocService.OnChange += StateHasChanged;
+    }
+
+    public void Dispose()
+    {
+        LocService.OnChange -= StateHasChanged;
     }
 }
 

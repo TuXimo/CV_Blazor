@@ -1,12 +1,25 @@
 ﻿@using CV_Blazor.Models
 @using CV_Blazor.Components
+@using CV_Blazor.Services
+@using Microsoft.Extensions.Localization
+
 @inherits LayoutComponentBase
 
-@using Microsoft.Extensions.Localization
 @inject IStringLocalizer<Resources> Localizer
+@inject LocalizationService LocService
 
 @code {
     [Parameter] public PortfolioViewModel? Portfolio { get; set; }
+
+    protected override void OnInitialized()
+    {
+        LocService.OnChange += StateHasChanged;
+    }
+
+    public void Dispose()
+    {
+        LocService.OnChange -= StateHasChanged;
+    }
 }
 
 

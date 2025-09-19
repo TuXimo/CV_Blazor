@@ -1,7 +1,12 @@
 ﻿@using CV_Blazor.Services
 @using CV_Blazor.Models
+@using System.Globalization
+@using Microsoft.Extensions.Localization
+
 
 @inject SkillService SkillService
+@inject LocalizationService LocService
+
 @implements IDisposable
 
 @* Título de la sección arriba *@
@@ -71,8 +76,15 @@
         public double OriginalDy { get; set; }
     }
 
+
+
     protected override async Task OnInitializedAsync()
     {
+        LocService.OnChange += StateHasChanged;
+
+        CultureInfo.CurrentCulture = CultureInfo.InvariantCulture;
+        CultureInfo.CurrentUICulture = CultureInfo.InvariantCulture;
+
         var skills = (await SkillService.GetSkillsAsync()).ToList();
 
         SkillsWithPosition = skills.Select(s =>
@@ -185,6 +197,7 @@
 
     public void Dispose()
     {
+        LocService.OnChange -= StateHasChanged;
         _timer?.Dispose();
     }
 

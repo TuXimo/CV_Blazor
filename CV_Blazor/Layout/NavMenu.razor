@@ -1,16 +1,14 @@
-﻿@using System.Globalization
-@using CV_Blazor.Models
-@using Microsoft.Extensions.Localization
+﻿@using CV_Blazor.Services
+@using System.Globalization
+
 @inject IJSRuntime JSRuntime
 @inject IStringLocalizer<Resources> Localizer
 @inject NavigationManager NavigationManager
+@inject LocalizationService LocService
+
 <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
     <div class="container-fluid">
         <a class="navbar-brand" href="#top">Máximo Brunetti</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
         <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
             <ul class="navbar-nav flex-grow-1">
                 <li class="nav-item">
@@ -40,18 +38,25 @@
         </div>
     </div>
 </nav>
+
 @code {
-    [Parameter] public PortfolioViewModel? Portfolio { get; set; }
-    private string CurrentLanguageName => CultureInfo.CurrentUICulture.Name == "es-ES" ? "English" : "Español";
+    private string CurrentLanguageName =>
+        CultureInfo.CurrentUICulture.Name == "es-ES" ? "English" : "Español";
+
     private async Task ChangeLanguage()
     {
         var currentCulture = CultureInfo.CurrentUICulture.Name;
         var newCulture = currentCulture == "es-ES" ? "en-US" : "es-ES";
+
+        // guardo en localStorage
         await JSRuntime.InvokeVoidAsync("blazorCulture.set", newCulture);
-        NavigationManager.NavigateTo(NavigationManager.Uri, forceLoad: true);
+
+        // cambio cultura en caliente
+        LocService.SetCulture(newCulture);
     }
+
     private void ToggleTheme()
     {
-        // ¡Aquí iría la lógica para cambiar el tema!
+        // cambiar tema
     }
 }

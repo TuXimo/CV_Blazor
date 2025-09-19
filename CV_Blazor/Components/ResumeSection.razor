@@ -1,12 +1,25 @@
 ﻿@using CV_Blazor.Models
 @using CV_Blazor.Components
-@inherits LayoutComponentBase
-
+@using CV_Blazor.Services
 @using Microsoft.Extensions.Localization
-@inject IStringLocalizer<Resources> Localizer
 
-@code{
-    [Parameter] public PortfolioViewModel Portfolio { get; set; } = new();
+@inherits LayoutComponentBase
+@inject IStringLocalizer<Resources> Localizer
+@inject LocalizationService LocService
+
+
+@code {
+    [Parameter] public PortfolioViewModel? Portfolio { get; set; }
+
+    protected override void OnInitialized()
+    {
+        LocService.OnChange += StateHasChanged;
+    }
+
+    public void Dispose()
+    {
+        LocService.OnChange -= StateHasChanged;
+    }
 }
 
 <section id="resume" class="container py-5">

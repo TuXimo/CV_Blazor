@@ -19,6 +19,7 @@ public class Program
 
         builder.Services.AddScoped<PortfolioService>();
         builder.Services.AddScoped<SkillService>();
+        builder.Services.AddSingleton<LocalizationService>();
 
         builder.Services.AddLocalization();
 

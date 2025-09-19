@@ -97,6 +97,15 @@ namespace CV_Blazor.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Me podés contactar por:.
+        /// </summary>
+        public static string cs_contactMe {
+            get {
+                return ResourceManager.GetString("cs_contactMe", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to About Me.
         /// </summary>
         public static string nav_AboutMe {
@@ -147,6 +156,15 @@ namespace CV_Blazor.Resources {
         public static string nav_Skills {
             get {
                 return ResourceManager.GetString("nav_Skills", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to My projects.
+        /// </summary>
+        public static string ps_myProjects {
+            get {
+                return ResourceManager.GetString("ps_myProjects", resourceCulture);
             }
         }
         

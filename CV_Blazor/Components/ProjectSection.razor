@@ -1,6 +1,11 @@
 ﻿@using CV_Blazor.Models
 @using CV_Blazor.Components
 @using System.Collections.Generic
+@using CV_Blazor.Services
+
+@inject IStringLocalizer<Resources> Localizer
+@inject LocalizationService LocService
+
 
 
 @code {
@@ -12,12 +17,22 @@
     {
         activeTab = tab;
     }
+
+    protected override void OnInitialized()
+    {
+        LocService.OnChange += StateHasChanged;
+    }
+
+    public void Dispose()
+    {
+        LocService.OnChange -= StateHasChanged;
+    }
 }
 
 
 
 <section id="projects" class="container py-5">
-    <h2 class="text-center mb-4 section-title">Mis proyectos</h2>
+    <h2 class="text-center mb-4 section-title">@Localizer["ps_myProjects"]</h2>
 
     <ul class="nav nav-tabs mb-4">
         <li class="nav-item">

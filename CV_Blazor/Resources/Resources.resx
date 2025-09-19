@@ -156,4 +156,10 @@
   <data name="ss_level" xml:space="preserve">
     <value>Level</value>
   </data>
+  <data name="ps_myProjects" xml:space="preserve">
+    <value>My projects</value>
+  </data>
+  <data name="cs_contactMe" xml:space="preserve">
+    <value>Me podés contactar por:</value>
+  </data>
 </root>

@@ -3,14 +3,13 @@
 @using System.Globalization
 @using Microsoft.Extensions.Localization
 
-
 @inject SkillService SkillService
 @inject LocalizationService LocService
+@inject IStringLocalizer<Resources> Localizer
 
 @implements IDisposable
 
-@* Título de la sección arriba *@
-<h2 class="section-title">Skills</h2>
+<h2 class="section-title">@Localizer["nav_Skills"]</h2>
 
 <section id="skills" class="container py-5">
     <div class="skills-main-container">
@@ -22,9 +21,9 @@
                 @foreach (var skill in SkillsWithPosition)
                 {
                     <div class="skill-icon-container"
-                         style="left: @(skill.X)px; top: @(skill.Y)px;"
-                         @onmouseover="@(() => OnHoverSkill(skill))"
-                         @onmouseout="@(() => OnMouseOutSkill())">
+                                      style="left: @(FormatDouble(skill.X))px; top: @(FormatDouble(skill.Y))px;"
+                                      @onmouseover="@(() => OnHoverSkill(skill))"
+                                      @onmouseout="@(() => OnMouseOutSkill())">
                         <img src="@skill.IconPath" alt="@skill.Name" />
                     </div>
                 }
@@ -76,15 +75,9 @@
         public double OriginalDy { get; set; }
     }
 
-
-
     protected override async Task OnInitializedAsync()
     {
         LocService.OnChange += StateHasChanged;
-
-        CultureInfo.CurrentCulture = CultureInfo.InvariantCulture;
-        CultureInfo.CurrentUICulture = CultureInfo.InvariantCulture;
-
         var skills = (await SkillService.GetSkillsAsync()).ToList();
 
         SkillsWithPosition = skills.Select(s =>
@@ -212,5 +205,10 @@
             case 5: return "Experto";
             default: return "Sin definir";
         }
+    }
+
+    private string FormatDouble(double value)
+    {
+        return value.ToString(CultureInfo.InvariantCulture);
     }
 }

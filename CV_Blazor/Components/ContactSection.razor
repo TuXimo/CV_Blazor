@@ -1,21 +1,64 @@
-﻿<section id="contact" class="container py-5">
+﻿@using Microsoft.JSInterop
+@inject IJSRuntime JSRuntime
+
+@code {
+    private bool isCopied = false;
+    private string emailAddress = "tuximodev@gmail.com";
+
+    private async Task CopyEmail()
+    {
+        // Llamar a la función de JavaScript para copiar el texto
+        await JSRuntime.InvokeVoidAsync("clipboardCopy.copyText", emailAddress);
+
+        // Actualizar la interfaz de usuario
+        isCopied = true;
+        StateHasChanged(); // Forzar la actualización del componente
+
+        // Esperar 2 segundos y volver al ícono original
+        await Task.Delay(2000);
+        isCopied = false;
+        StateHasChanged();
+    }
+}
+
+<section id="contact" class="container py-5">
     <h2 class="text-center mb-4 section-title">Datos de contacto</h2>
     <p class="text-center">Me podés contactar por:</p>
     <ul class="list-unstyled d-flex justify-content-center">
-        <li class="mx-3">
+        <li class="mx-3 d-flex flex-column align-items-center">
             <a href="mailto:tuximodev@gmail.com">
                 <i class="fas fa-envelope fa-2x"></i>
             </a>
+            <button class="btn btn-link p-0 text-dark d-flex align-items-center mt-1" @onclick="CopyEmail" style="font-size: 1rem; text-decoration: none;">
+                <small class="text-muted ml-1">Email&nbsp;</small>
+
+                @if (isCopied)
+                {
+                    <i class="fas fa-check"></i>
+                }
+                else
+                {
+                    <i class="fas fa-copy"></i>
+                }
+            </button>
         </li>
-        <li class="mx-3">
+        <li class="mx-3 d-flex flex-column align-items-center">
             <a href="https://www.linkedin.com/in/maximobrunetti/" target="_blank">
                 <i class="fab fa-linkedin fa-2x"></i>
             </a>
+            <small class="text-muted mt-1">LinkedIn</small>
         </li>
-        <li class="mx-3">
+        <li class="mx-3 d-flex flex-column align-items-center">
             <a href="https://github.com/TuXimo/" target="_blank">
                 <i class="fab fa-github fa-2x"></i>
             </a>
+            <small class="text-muted mt-1">GitHub</small>
+        </li>
+        <li class="mx-3 d-flex flex-column align-items-center">
+            <a href="https://t.me/maximobrunetti" target="_blank">
+                <i class="fab fa-telegram fa-2x"></i>
+            </a>
+            <small class="text-muted mt-1">Telegram</small>
         </li>
     </ul>
 </section>

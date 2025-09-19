@@ -77,7 +77,18 @@
 
     protected override async Task OnInitializedAsync()
     {
-        LocService.OnChange += StateHasChanged;
+        LocService.OnChange += OnLocalizationChanged;
+        await LoadSkillsAsync();
+    }
+
+    private async void OnLocalizationChanged()
+    {
+        await LoadSkillsAsync();
+        StateHasChanged();
+    }
+
+    private async Task LoadSkillsAsync()
+    {
         var skills = (await SkillService.GetSkillsAsync()).ToList();
 
         SkillsWithPosition = skills.Select(s =>
@@ -190,7 +201,7 @@
 
     public void Dispose()
     {
-        LocService.OnChange -= StateHasChanged;
+        LocService.OnChange -= OnLocalizationChanged;
         _timer?.Dispose();
     }
 

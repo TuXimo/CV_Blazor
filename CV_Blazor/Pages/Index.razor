@@ -4,6 +4,8 @@
 @using CV_Blazor.Services
 
 @inject PortfolioService PortfolioService
+@inject LocalizationService LocService
+@implements IDisposable
 
 @code {
     private PortfolioViewModel? Portfolio;
@@ -13,12 +15,29 @@
 
     protected override async Task OnInitializedAsync()
     {
+        LocService.OnChange += OnLocalizationChanged;
+        await LoadPortfolioAsync();
+    }
+
+    private async void OnLocalizationChanged()
+    {
+        await LoadPortfolioAsync();
+        StateHasChanged();
+    }
+
+    private async Task LoadPortfolioAsync()
+    {
         Portfolio = await PortfolioService.GetPortfolioAsync();
     }
 
     private void SetTab(string tab)
     {
         activeTab = tab;
+    }
+
+    public void Dispose()
+    {
+        LocService.OnChange -= OnLocalizationChanged;
     }
 }
 

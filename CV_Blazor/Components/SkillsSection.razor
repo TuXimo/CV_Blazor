@@ -89,6 +89,9 @@
 
     private async Task LoadSkillsAsync()
     {
+        // Detener y eliminar el timer anterior si existe
+        _timer?.Dispose();
+
         var skills = (await SkillService.GetSkillsAsync()).ToList();
 
         SkillsWithPosition = skills.Select(s =>
@@ -112,6 +115,7 @@
             CurrentSkill = SkillsWithPosition.First();
         }
 
+        // Crear un nuevo timer
         _timer = new System.Threading.Timer(UpdatePositions, null, 0, 16);
     }
 

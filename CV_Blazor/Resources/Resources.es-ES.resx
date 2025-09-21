@@ -153,7 +153,7 @@
   <data name="rs_education" xml:space="preserve">
     <value>Educación</value>
   </data>
-  <data name="ss_level" xml:space="preserve">
+  <data name="ss_levelLabel" xml:space="preserve">
     <value>Nivel</value>
   </data>
   <data name="ps_myProjects" xml:space="preserve">
@@ -161,5 +161,23 @@
   </data>
   <data name="cs_contactMe" xml:space="preserve">
     <value>Me podés contactar por:</value>
+  </data>
+  <data name="ps_seeProject" xml:space="preserve">
+    <value>Ver proyecto</value>
+  </data>
+  <data name="ss_level1" xml:space="preserve">
+    <value>Básico</value>
+  </data>
+  <data name="ss_level2" xml:space="preserve">
+    <value>Principiante</value>
+  </data>
+  <data name="ss_level3" xml:space="preserve">
+    <value>Intermedio</value>
+  </data>
+  <data name="ss_level4" xml:space="preserve">
+    <value>Avanzado</value>
+  </data>
+  <data name="ss_level5" xml:space="preserve">
+    <value>Experto</value>
   </data>
 </root>

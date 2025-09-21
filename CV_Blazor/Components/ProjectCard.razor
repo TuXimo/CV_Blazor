@@ -1,6 +1,10 @@
 ﻿@implements IDisposable
 @using System.Timers;
 @using CV_Blazor.Models;
+@using CV_Blazor.Services
+
+@inject IStringLocalizer<Resources> Localizer
+@inject LocalizationService LocService
 
 <div class="card project-card"
      @onmouseenter="MouseEnter"
@@ -17,7 +21,7 @@
         <p class="card-text">@Project.ShortDescription</p>
 
         <a class="btn btn-primary" href="@Project.ProjectLink" target="_blank" @onclick:stopPropagation>
-            Ver proyecto
+            @Localizer["ps_seeProject"]
         </a>
 
         @if (!string.IsNullOrEmpty(Project.GithubLink))

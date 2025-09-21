@@ -38,7 +38,7 @@
                     <h3 class="skill-title">@CurrentSkill.Name</h3>
 
                     @* Nivel de habilidad en texto *@
-                    <p class="skill-level-text">Nivel: @(GetProficiencyText(CurrentSkill.Proficiency))</p>
+                    <p class="skill-level-text">@Localizer["ss_levelLabel"]: @(GetProficiencyText(CurrentSkill.Proficiency))</p>
 
                     @* Cuadros de nivel rectangulares y discretos *@
                     <div class="skill-level">
@@ -211,15 +211,15 @@
 
     private string GetProficiencyText(int proficiency)
     {
-        switch (proficiency)
+        return proficiency switch
         {
-            case 1: return "Básico";
-            case 2: return "Principiante";
-            case 3: return "Intermedio";
-            case 4: return "Avanzado";
-            case 5: return "Experto";
-            default: return "Sin definir";
-        }
+            1 => Localizer["ss_level1"],
+            2 => Localizer["ss_level2"],
+            3 => Localizer["ss_level3"],
+            4 => Localizer["ss_level4"],
+            5 => Localizer["ss_level5"],
+            _ => Localizer["ss_levelUndefined"]
+        };
     }
 
     private string FormatDouble(double value)

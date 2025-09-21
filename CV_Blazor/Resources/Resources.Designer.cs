@@ -97,7 +97,7 @@ namespace CV_Blazor.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Me podés contactar por:.
+        ///   Looks up a localized string similar to You can contact me:.
         /// </summary>
         public static string cs_contactMe {
             get {
@@ -169,6 +169,15 @@ namespace CV_Blazor.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to See project.
+        /// </summary>
+        public static string ps_seeProject {
+            get {
+                return ResourceManager.GetString("ps_seeProject", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Education.
         /// </summary>
         public static string rs_education {
@@ -187,11 +196,56 @@ namespace CV_Blazor.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Basic.
+        /// </summary>
+        public static string ss_level1 {
+            get {
+                return ResourceManager.GetString("ss_level1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Novice.
+        /// </summary>
+        public static string ss_level2 {
+            get {
+                return ResourceManager.GetString("ss_level2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Intermediate.
+        /// </summary>
+        public static string ss_level3 {
+            get {
+                return ResourceManager.GetString("ss_level3", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Advanced.
+        /// </summary>
+        public static string ss_level4 {
+            get {
+                return ResourceManager.GetString("ss_level4", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Expert.
+        /// </summary>
+        public static string ss_level5 {
+            get {
+                return ResourceManager.GetString("ss_level5", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Level.
         /// </summary>
-        public static string ss_level {
+        public static string ss_levelLabel {
             get {
-                return ResourceManager.GetString("ss_level", resourceCulture);
+                return ResourceManager.GetString("ss_levelLabel", resourceCulture);
             }
         }
     }

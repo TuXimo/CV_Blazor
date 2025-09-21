@@ -1,4 +1,4 @@
-﻿@implements IDisposable
+﻿    @implements IDisposable
 @using System.Timers;
 @using CV_Blazor.Models;
 @using CV_Blazor.Services
@@ -33,6 +33,7 @@
 
 @code {
     [Parameter] public Project Project { get; set; }
+    [Parameter] public bool IsProject { get; set; } = true;
 
     private string currentImage;
     private int currentIndex = 0;
@@ -83,7 +84,11 @@
 
     private void GoToProjectDetail()
     {
-        NavManager.NavigateTo($"/projects/{Project.Slug}");
+        if (IsProject)
+        {
+            NavManager.NavigateTo($"/projects/{Project.Slug}");
+        }
+        // If not a project, do nothing (no navigation)
     }
 
     public void Dispose()

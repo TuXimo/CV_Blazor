@@ -62,7 +62,7 @@
             @foreach (var project in Portfolio.Projects)
             {
                 <div class="col-md-6 col-lg-4 mb-4">
-                    <ProjectCard Project="project" />
+                    <ProjectCard Project="project" IsProject="true" />
                 </div>
             }
         }
@@ -71,7 +71,7 @@
             @foreach (var jam in Portfolio.Jams)
             {
                 <div class="col-md-6 col-lg-4 mb-4">
-                    <ProjectCard Project="jam" />
+                    <ProjectCard Project="jam" IsProject="false" />
                 </div>
             }
         }

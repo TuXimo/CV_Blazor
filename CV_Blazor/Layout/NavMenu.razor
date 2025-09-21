@@ -6,42 +6,45 @@
 @inject NavigationManager NavigationManager
 @inject LocalizationService LocService
 
-<nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+<nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm">
     <div class="container-fluid">
-        <a class="navbar-brand" href="#top">Máximo Brunetti</a>
-        <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-            <ul class="navbar-nav flex-grow-1">
-                <li class="nav-item">
-                    <a class="nav-link text-dark" href="#about-me">@Localizer["nav_AboutMe"]</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link text-dark" href="#resume">@Localizer["nav_Resume"]</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link text-dark" href="#skills">@Localizer["nav_Skills"]</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link text-dark" href="#projects">@Localizer["nav_Projects"]</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link text-dark" href="#contact">@Localizer["nav_Contact"]</a>
-                </li>
+        <!-- Nombre -->
+        <a class="navbar-brand brand-name" href="#top">Máximo Brunetti</a>
+
+        <!-- Menú y botones juntos en desktop -->
+        <div class="d-flex align-items-center order-lg-2">
+            <button class="btn btn-link nav-icon me-2 no-underline" @onclick="ChangeLanguage">
+                @CurrentLanguageName
+                <i class="fas fa-globe"></i>
+            </button>
+
+            <button class="btn btn-link nav-icon me-2" @onclick="ToggleTheme">
+                <i class="fas @(isDarkMode ? "fa-sun fa-fw" : "fa-moon fa-fw")"></i>
+            </button>
+
+            <!-- Botón toggle hamburguesa -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        </div>
+
+        <!-- Links del menú -->
+        <div class="collapse navbar-collapse justify-content-start order-lg-1" id="navbarNav">
+            <ul class="navbar-nav ms-3">
+                <li class="nav-item"><a class="nav-link" href="#about-me">@Localizer["nav_AboutMe"]</a></li>
+                <li class="nav-item"><a class="nav-link" href="#projects">@Localizer["nav_Projects"]</a></li>
+                <li class="nav-item"><a class="nav-link" href="#resume">@Localizer["nav_Resume"]</a></li>
+                <li class="nav-item"><a class="nav-link" href="#skills">@Localizer["nav_Skills"]</a></li>
+                <li class="nav-item"><a class="nav-link" href="#contact">@Localizer["nav_Contact"]</a></li>
             </ul>
-            <div class="d-flex align-items-center ms-auto">
-                <button class="btn btn-sm btn-outline-secondary me-2" @onclick="ChangeLanguage">
-                    @CurrentLanguageName
-                </button>
-                <button class="btn btn-sm btn-outline-secondary" @onclick="ToggleTheme">
-                    @Localizer["nav_DarkMode"]
-                </button>
-            </div>
         </div>
     </div>
 </nav>
 
 @code {
     private string CurrentLanguageName =>
-        CultureInfo.CurrentUICulture.Name == "es-ES" ? "English" : "Español";
+        CultureInfo.CurrentUICulture.Name == "es-ES" ? "EN" : "ES";
 
     private async Task ChangeLanguage()
     {
@@ -55,8 +58,11 @@
         LocService.SetCulture(newCulture);
     }
 
-    private void ToggleTheme()
+    private bool isDarkMode = false;
+
+    private async Task ToggleTheme()
     {
-        // cambiar tema
+        isDarkMode = !isDarkMode;
+        await JSRuntime.InvokeVoidAsync("toggleDarkMode", isDarkMode);
     }
 }

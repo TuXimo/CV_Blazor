@@ -112,15 +112,16 @@
     transition: background-color 0.3s, transform 0.2s;
 }
 
-    .level-block.filled {
-        background-color: #00ff66;
-        box-shadow: 0 0 5px #00ff66;
-    }
+.level-block.filled {
+    background-color: #00ff66;
+    box-shadow: 0 0 5px #00ff66;
+}
 
-        .level-block.filled:hover {
-            transform: scale(1.1);
-        }
+.level-block.filled:hover {
+    transform: scale(1.1);
+}
 
-    .level-block.empty {
-        background-color: transparent;
-    }
+.level-block.empty {
+    background-color: transparent;
+}
+

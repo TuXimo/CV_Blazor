@@ -8,10 +8,10 @@
     min-height: 400px;
 }
 
-    .project-card:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-    }
+.project-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
 
 .project-image-container {
     position: relative;
@@ -20,15 +20,15 @@
     overflow: hidden;
 }
 
-    .project-image-container img.card-img-top {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        transition: opacity 0.5s ease-in-out;
-    }
+.project-image-container img.card-img-top {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: opacity 0.5s ease-in-out;
+}
 
 .project-hover-images {
     position: absolute;

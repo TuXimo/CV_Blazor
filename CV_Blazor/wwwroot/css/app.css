@@ -114,6 +114,26 @@ a, .btn-link {
     align-items: center;
 }
 
+.brand-name {
+    font-size: 1.9rem; /* resalta más el nombre */
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+/* Estilo de los iconos */
+.nav-icon {
+    color: #333;
+    font-size: 1.2rem;
+    padding: 0.5rem;
+    transition: color 0.3s ease;
+    text-decoration: none !important; /* quita subrayado */
+}
+
+.nav-icon:hover {
+    color: #0d6efd; /* azul bootstrap */
+}
+
+
 code {
     color: #c02d76;
 }

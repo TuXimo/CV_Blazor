@@ -115,10 +115,20 @@ a, .btn-link {
 }
 
 .brand-name {
-    font-size: 1.9rem; /* resalta más el nombre */
-    font-weight: 600;
+    font-size: 1.9rem; /* más grande */
+    font-weight: 700; /* más grueso */
     letter-spacing: 0.5px;
+    display: flex;
+    align-items: center;
+    color: #333; /* o el que uses en light mode */
+    text-decoration: none !important;
 }
+
+.brand-name i {
+    color: #0d6efd; /* azul Bootstrap */
+    font-size: 1.6rem;
+}
+
 
 /* Estilo de los iconos */
 .nav-icon {

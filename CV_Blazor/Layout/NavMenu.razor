@@ -1,5 +1,7 @@
 ﻿@using CV_Blazor.Services
 @using System.Globalization
+@using Microsoft.JSInterop
+@implements IAsyncDisposable
 
 @inject IJSRuntime JSRuntime
 @inject IStringLocalizer<Resources> Localizer
@@ -46,33 +48,54 @@
     private string CurrentLanguageName =>
         CultureInfo.CurrentUICulture.Name == "es-ES" ? "EN" : "ES";
 
+    // Módulo JS aislado solo para el scroll
+    private IJSObjectReference? _scrollModule; 
+    private bool isDarkMode;
+
     private async Task ChangeLanguage()
     {
         var currentCulture = CultureInfo.CurrentUICulture.Name;
         var newCulture = currentCulture == "es-ES" ? "en-US" : "es-ES";
 
-        // guardo en localStorage
         await JSRuntime.InvokeVoidAsync("blazorCulture.set", newCulture);
-
-        // cambio cultura en caliente
         LocService.SetCulture(newCulture);
     }
-
-    private bool isDarkMode = false;
+    
 
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
         if (firstRender)
         {
+            // Lógica del modo oscuro (SIN TOCAR) - Llama a la función global de site.js
             isDarkMode = await JSRuntime.InvokeAsync<bool>("applySavedTheme");
             StateHasChanged();
+
+            // Lógica del scroll (NUEVA Y AISLADA)
+            // 1. Importa el módulo específico para el scroll.
+            _scrollModule = await JSRuntime.InvokeAsync<IJSObjectReference>("import", "./js/navmenu.js");
+            
+            // 2. Llama a la función de inicialización desde ese módulo.
+            if (_scrollModule is not null)
+            {
+                await _scrollModule.InvokeVoidAsync("initializeNavbarScroll");
+            }
         }
     }
 
     private async Task ToggleTheme()
     {
+        // Lógica del modo oscuro (SIN TOCAR) - Llama a la función global de site.js
         isDarkMode = !isDarkMode;
         await JSRuntime.InvokeVoidAsync("toggleDarkMode", isDarkMode);
     }
 
+    public async ValueTask DisposeAsync()
+    {
+        // Lógica de limpieza para el módulo de scroll (NUEVA Y AISLADA)
+        if (_scrollModule != null)
+        { 
+            await _scrollModule.InvokeVoidAsync("disposeNavbarScroll");
+            await _scrollModule.DisposeAsync();
+        }
+    }
 }

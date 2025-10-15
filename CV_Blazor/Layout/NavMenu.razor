@@ -2,9 +2,14 @@
 @using System.Globalization
 @implements IAsyncDisposable
 
+@using Microsoft.JSInterop
 @inject IJSRuntime JSRuntime
 @inject IStringLocalizer<Resources> Localizer
 @inject LocalizationService LocService
+
+@* NO BORRAR QUE ROMPE LA LOCALIZACIÓN *@
+@inject NavigationManager NavigationManager  
+
 
 <nav class="navbar navbar-expand-lg fixed-top">
     <div class="container-fluid">
@@ -82,7 +87,6 @@
 
     private async Task ToggleTheme()
     {
-        // Lógica del modo oscuro (SIN TOCAR) - Llama a la función global de site.js
         isDarkMode = !isDarkMode;
         await JSRuntime.InvokeVoidAsync("toggleDarkMode", isDarkMode);
     }

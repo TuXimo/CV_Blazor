@@ -1,6 +1,7 @@
 html, body {
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
     scroll-behavior: smooth; /* Para un desplazamiento suave al hacer clic en los enlaces del nav */
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 /* Modo claro (por defecto) */
@@ -12,7 +13,7 @@ body {
 
 /* Dark Mode */
 body.dark-mode {
-    background-color: #121212;
+    background-color: #0e0e0e; /* negro profundo */
     color: #f1f1f1;
 }
 
@@ -30,57 +31,68 @@ body.dark-mode #resume .card {
     background-color: #1e1e1e; /* fondo oscuro */
     color: #f1f1f1; /* texto claro */
     border: 1px solid #444; /* opcional: borde ms visible en dark mode */
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 body.dark-mode #resume .card h5 {
     color: #eee;
+    transition: color 0.3s ease;
 }
 
 body.dark-mode #resume .card p,
 body.dark-mode #resume .card li {
     color: #ccc;
+    transition: color 0.3s ease;
 }
 
 body.dark-mode .skills-main-container {
     background-color: #1e1e1e; /* fondo oscuro */
     border: 2px solid #444; /* opcional: borde ms visible */
     box-shadow: 0 4px 8px rgba(255, 255, 255, 0.05); /* shadow ms sutil en dark */
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 body.dark-mode .skills-details {
     background-color: #1e1e1e;
     color: #f1f1f1;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 /* Dark mode para la zona de iconos de SkillsSection */
 body.dark-mode .skills-icons-animation-area {
     background-color: #2a2a2a; /* gris oscuro */
+    transition: background-color 0.3s ease;
 }
 
 
-/* Ttulos y textos */
+/* Títulos y textos */
 body.dark-mode .skills-details .skill-title {
     color: #eee;
+    transition: color 0.3s ease;
 }
 
 body.dark-mode .skills-details .skill-description {
     color: #bbb;
+    transition: color 0.3s ease;
 }
 
 body.dark-mode .skills-details .skill-level-text {
     color: #ccc;
+    transition: color 0.3s ease;
 }
 
 /* Solo afecta la card-body de proyectos */
 body.dark-mode .project-card .card-body {
     background-color: #1e1e1e; /* fondo oscuro */
     color: #f1f1f1; /* texto claro */
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-/* Ttulos y textos dentro de la card */
+/* Títulos y textos dentro de la card */
 body.dark-mode .project-card .card-body h5,
 body.dark-mode .project-card .card-body p {
     color: #f1f1f1;
+    transition: color 0.3s ease;
 }
 
 /* Botones */
@@ -170,9 +182,9 @@ a, .btn-link {
     color: white;
 }
 
-    .blazor-error-boundary::after {
-        content: "An error has occurred."
-    }
+.blazor-error-boundary::after {
+    content: "An error has occurred.";
+}
 
 .loading-progress {
     position: relative;
@@ -182,13 +194,13 @@ a, .btn-link {
     margin: 20vh auto 1rem auto;
 }
 
-    .loading-progress circle {
-        fill: none;
-        stroke: #e0e0e0;
-        stroke-width: 0.6rem;
-        transform-origin: 50% 50%;
-        transform: rotate(-90deg);
-    }
+.loading-progress circle {
+    fill: none;
+    stroke: #e0e0e0;
+    stroke-width: 0.6rem;
+    transform-origin: 50% 50%;
+    transform: rotate(-90deg);
+}
 
 .loading-progress circle:last-child {
     stroke: #1b6ec2;
@@ -223,13 +235,17 @@ a, .btn-link {
     align-items: center;
     color: #333; /* o el que uses en light mode */
     text-decoration: none !important;
+    transition: color 0.3s ease;
+}
+
+body.dark-mode .brand-name {
+    color: #f1f1f1 !important;
 }
 
 .brand-name i {
     color: #0d6efd; /* azul Bootstrap */
     font-size: 1.6rem;
 }
-
 
 /* Estilo de los iconos */
 .nav-icon {
@@ -243,7 +259,6 @@ a, .btn-link {
 .nav-icon:hover {
     color: #0d6efd; /* azul bootstrap */
 }
-
 
 code {
     color: #c02d76;

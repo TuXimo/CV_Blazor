@@ -1,19 +1,23 @@
 ﻿window.toggleDarkMode = function (isDark) {
+    const root = document.documentElement; // <html>
     if (isDark) {
-        document.body.classList.add("dark-mode");
+        root.classList.add("dark-mode");
         localStorage.setItem("theme", "dark");
     } else {
-        document.body.classList.remove("dark-mode");
+        root.classList.remove("dark-mode");
         localStorage.setItem("theme", "light");
     }
 };
 
+
 // Al cargar, aplicar el tema guardado
 window.applySavedTheme = function () {
+    const root = document.documentElement;
     const savedTheme = localStorage.getItem("theme");
     if (savedTheme === "dark") {
-        document.body.classList.add("dark-mode");
+        root.classList.add("dark-mode");
         return true;
     }
     return false;
 };
+

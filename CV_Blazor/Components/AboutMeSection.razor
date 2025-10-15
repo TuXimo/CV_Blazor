@@ -2,12 +2,14 @@
 @using CV_Blazor.Components
 @using CV_Blazor.Services
 @using Microsoft.Extensions.Localization
+@using System.Globalization
 
 @inherits LayoutComponentBase
 @implements IDisposable
 
 @inject IStringLocalizer<Resources> Localizer
 @inject LocalizationService LocService
+
 
 
 @code {
@@ -29,17 +31,32 @@
     <div class="row align-items-center">
         <div class="col-md-8 text-center text-md-start">
             <h1 class="display-4">@Localizer["ab_Title"]</h1>
+
             @foreach (var paragraph in Portfolio.Resume.Summary)
             {
                 <p class="lead">@paragraph</p>
             }
-            <a href="#projects" class="btn btn-primary btn-lg mt-3">
-                @Localizer["ab_Projects"]
-            </a>
 
-            <a href="files/cv_es.pdf" class="btn btn-primary btn-lg mt-3" download>
-                @Localizer["ab_DownloadCV"]                
-            </a>
+            @{
+                var culture = CultureInfo.CurrentUICulture.Name;
+                var cvFile = culture switch
+                {
+                    "es-ES" => "files/cv_es.pdf",
+                    _ => "files/cv_en.pdf"
+                };
+            }
+
+            <div class="d-flex flex-wrap gap-3 mt-3">
+                <a href="#projects" class="btn btn-primary btn-lg">
+                    @Localizer["ab_Projects"]
+                </a>
+
+                <a href="@cvFile" class="btn btn-primary btn-lg" download>
+                    @Localizer["ab_DownloadCV"]
+                </a>
+            </div>
+
+            
         </div>
         <div class="col-md-4 mt-4 mt-md-0 text-center">
             <img src="img/profile.jpg" alt="Profile" class="profile-image" />

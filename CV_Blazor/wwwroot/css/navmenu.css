@@ -1,0 +1,66 @@
+/* --- NAVBAR --- */
+.navbar {
+    background-color: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(10px);
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.navbar .nav-link {
+    color: #333;
+    transition: color 0.3s ease;
+}
+
+.navbar .nav-link:hover {
+    color: #0d6efd;
+}
+
+/* --- DARK MODE --- */
+body.dark-mode .navbar {
+    background-color: rgba(18, 18, 18, 0.9);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid #333;
+}
+
+body.dark-mode .nav-link {
+    color: #f1f1f1;
+}
+
+body.dark-mode .nav-link:hover {
+    color: #00ff99; /* verde neón tipo highlight */
+}
+
+/* --- ICONOS (globo y sol/luna) --- */
+.nav-icon {
+    color: #333;
+    transition: color 0.3s ease;
+}
+
+body.dark-mode .nav-icon {
+    color: #ddd !important;
+}
+
+body.dark-mode .nav-icon:hover {
+    color: #00ff99 !important;
+}
+
+/* --- BOTÓN HAMBURGUESA --- */
+.navbar-toggler {
+    border: none;
+    filter: invert(0);
+    transition: filter 0.3s ease;
+}
+
+body.dark-mode .navbar-toggler {
+    filter: invert(1); /* invierte el ícono del menú para que se vea en fondo oscuro */
+}
+
+/* --- MARCA (Título) --- */
+.brand-name {
+    color: #333 !important;
+    font-weight: 700;
+    transition: color 0.3s ease;
+}
+
+body.dark-mode .brand-name {
+    color: #f1f1f1 !important;
+}

@@ -1,18 +1,13 @@
-/* Estilo base de la barra de navegación */
+/* Estilo base de la barra de navegación (siempre fija) */
 .navbar {
-    /* Transición suave para el cambio de fondo y la sombra */
+    /* Por defecto, el fondo es transparente */
+    background-color: transparent;
+    /* Transición suave para cuando el fondo aparezca */
     transition: background-color 0.4s ease-out, box-shadow 0.4s ease-out;
-    background-color: transparent; 
 }
 
-/* Estilos que se aplican cuando la página se ha desplazado */
+/* Estilos que se aplican SOLO cuando la página se ha desplazado */
 .navbar.navbar-scrolled {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 1030;
-
     /* Efecto de vidrio esmerilado */
     background-color: rgba(25, 25, 25, 0.7);
     backdrop-filter: blur(10px);
@@ -20,7 +15,7 @@
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Sombra sutil */
 }
 
-/* --- Colores de Enlaces e Iconos --- */
+/* --- Colores de Enlaces e Iconos (Esto ya estaba correcto) --- */
 
 /* Color por defecto para enlaces e iconos (modo claro, sin scroll) */
 .nav-link,
@@ -49,7 +44,7 @@
     color: #00ff99 !important;
 }
 
-/* --- Icono del Menú Hamburguesa --- */
+/* --- Icono del Menú Hamburguesa (Esto ya estaba correcto) --- */
 
 /* Icono por defecto (modo claro, sin scroll) */
 .navbar-toggler-icon {

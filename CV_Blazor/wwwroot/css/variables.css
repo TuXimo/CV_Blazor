@@ -17,6 +17,7 @@
     --light-skills-animation-area-background: #f0f2f5; /* Gris claro para el fondo del área de iconos */
     --navbar-light-background-blurred: rgba(255, 255, 255, 0.9);
     --navbar-toggler-light-filter: invert(0);
+    --navbar-light-border-bottom: 1px solid #e7e7e7;
 
     /* Colores base para Dark Mode */
     --dark-background: #0e0e0e;

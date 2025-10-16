@@ -4,7 +4,7 @@ function createCodeParticles() {
     const isDarkMode = document.body.classList.contains('dark-mode');
 
     // Color de las letras según el modo
-    const textColor = isDarkMode ? 'rgba(13,110,253,0.7)' : 'rgba(0,255,0,0.7)'; // azul o verde Matrix
+    const textColor = getComputedStyle(document.documentElement).getPropertyValue('--bootstrap-primary-button-dark-background').trim();
 
     // --- tsParticles ---
     tsParticles.load("particles-container", {
@@ -26,7 +26,7 @@ function createCodeParticles() {
         detectRetina: true
     });
 
-    // --- Anime.js: letras flotantes tipo Matrix ---
+    // --- Anime.js: letras flotantes ---
     const container = document.getElementById('code-text-container');
 
     // Limpiar contenido previo

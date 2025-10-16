@@ -75,7 +75,7 @@
     --project-card-padding: 1.25rem;
 
     /* Variables específicas de Profile Image */
-    --profile-image-size: 300px;
+    --profile-image-size: 350px;
     --profile-image-border-radius: 50%;
 
     /* Variables específicas de NavMenu (Layout/NavMenu.razor.css) */

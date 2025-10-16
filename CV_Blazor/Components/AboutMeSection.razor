@@ -27,39 +27,41 @@
 }
 
 
-<section id="about-me" class="container">
-    <div class="row align-items-center">
-        <div class="col-md-8 text-center text-md-start">
-            <h1 class="display-4">@Localizer["ab_Title"]</h1>
-
-            @foreach (var paragraph in Portfolio.Resume.Summary)
-            {
-                <p class="lead">@paragraph</p>
-            }
-
-            @{
-                var culture = CultureInfo.CurrentUICulture.Name;
-                var cvFile = culture switch
+<section id="about-me">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-md-8 text-center text-md-start">
+                <h1 class="display-4">@Localizer["ab_Title"]</h1>
+    
+                @foreach (var paragraph in Portfolio.Resume.Summary)
                 {
-                    "es-ES" => "files/cv_es.pdf",
-                    _ => "files/cv_en.pdf"
-                };
-            }
-
-            <div class="d-flex flex-wrap gap-3 mt-3">
-                <a href="#projects" class="btn btn-primary btn-lg">
-                    @Localizer["ab_Projects"]
-                </a>
-
-                <a href="@cvFile" class="btn btn-primary btn-lg" download>
-                    @Localizer["ab_DownloadCV"]
-                </a>
+                    <p class="lead">@paragraph</p>
+                }
+    
+                @{
+                    var culture = CultureInfo.CurrentUICulture.Name;
+                    var cvFile = culture switch
+                    {
+                        "es-ES" => "files/cv_es.pdf",
+                        _ => "files/cv_en.pdf"
+                    };
+                }
+    
+                <div class="d-flex flex-wrap gap-3 mt-3">
+                    <a href="#projects" class="btn btn-primary btn-lg">
+                        @Localizer["ab_Projects"]
+                    </a>
+    
+                    <a href="@cvFile" class="btn btn-primary btn-lg" download>
+                        @Localizer["ab_DownloadCV"]
+                    </a>
+                </div>
+    
+                
             </div>
-
-            
-        </div>
-        <div class="col-md-4 mt-4 mt-md-0 text-center">
-            <img src="img/profile.jpg" alt="Profile" class="profile-image" />
+            <div class="col-md-4 mt-4 mt-md-0 text-center">
+                <img src="img/profile.jpg" alt="Profile" class="profile-image" />
+            </div>
         </div>
     </div>
 </section>

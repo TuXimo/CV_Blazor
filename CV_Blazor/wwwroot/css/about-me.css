@@ -1,0 +1,59 @@
+/* --- Estilos para la sección About Me --- */
+
+#about-me {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    margin-top: calc(-1 * var(--navbar-height)); /* Compensa el padding del body */
+    padding-top: var(--navbar-height); /* Evita que el contenido quede debajo del navbar */
+    
+    /* --- Configuración del fondo --- */
+    /* Reemplaza 'your-background.jpg' con tu imagen. Debe estar en wwwroot/img/ */
+    background: url('img/profile.jpg') no-repeat center center;
+    background-size: cover;
+    color: #fff; /* Color de texto principal (blanco) */
+
+    /* --- Expansión a ancho completo --- */
+    width: 100vw;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+/* 
+  Capa semitransparente sobre la imagen de fondo.
+  Mejora la legibilidad del texto.
+*/
+#about-me::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5); /* Negro con 50% de opacidad */
+    z-index: 1; /* Se asegura que esté entre el fondo y el contenido */
+}
+
+/* Aseguramos que el contenido (texto, imagen, botones) esté por encima de la capa oscura */
+#about-me .container {
+    position: relative;
+    z-index: 2;
+}
+
+/* Ajustamos el color de los párrafos para que no sea un blanco tan puro */
+#about-me p {
+    color: rgba(255, 255, 255, 0.85);
+}
+
+.profile-image {
+    width: var(--profile-image-size);
+    height: var(--profile-image-size);
+    border-radius: var(--profile-image-border-radius);
+    object-fit: cover;
+    box-shadow: var(--light-profile-image-shadow);
+}
+
+body.dark-mode .profile-image {
+    box-shadow: var(--dark-profile-image-shadow);
+}

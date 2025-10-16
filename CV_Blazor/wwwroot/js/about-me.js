@@ -40,7 +40,9 @@ export async function createCodeParticles() {
         : '--bootstrap-primary-button-background';
     const particleColor = getComputedStyle(document.documentElement).getPropertyValue(colorVar).trim();
 
-    const randomWords = ["xd", "jamon", "p0lent4", "wach0s", "arg", "Xdd", "zzz"];
+    const allRandomWords = ["xd", "jamon", "p0lent4", "wach0s", "arg", "Xdd", "zzz"];
+    const maxLength = 5; // Límite máximo de caracteres para las palabras
+    const randomWords = allRandomWords.filter(word => word.length <= maxLength);
 
     // --- tsParticles ---
     activeAnimations.tsParticlesInstance = await tsParticles.load("particles-container", {

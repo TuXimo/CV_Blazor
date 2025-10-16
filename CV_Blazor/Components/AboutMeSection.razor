@@ -5,7 +5,7 @@
 @using System.Globalization
 
 @inherits LayoutComponentBase
-@implements IDisposable
+@implements IAsyncDisposable
 
 @inject IStringLocalizer<Resources> Localizer
 @inject LocalizationService LocService
@@ -14,27 +14,37 @@
 @code {
     [Parameter] public PortfolioViewModel? Portfolio { get; set; }
 
+    private IJSObjectReference? _aboutMeModule;
+
+    [Inject]
+    private IJSRuntime JSRuntime { get; set; } = null!;
+
     protected override void OnInitialized()
     {
         LocService.OnChange += StateHasChanged;
     }
 
-    public void Dispose()
-    {
-        LocService.OnChange -= StateHasChanged;
-    }
-    
-    [Inject] 
-    private IJSRuntime IjsRuntime { get; set; } = null!;
-
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
         if (firstRender)
         {
-            await IjsRuntime.InvokeVoidAsync("createCodeParticles");
+            _aboutMeModule = await JSRuntime.InvokeAsync<IJSObjectReference>("import", "./js/about-me.js");
+            if (_aboutMeModule is not null)
+            {
+                await _aboutMeModule.InvokeVoidAsync("createCodeParticles");
+            }
         }
     }
 
+    public async ValueTask DisposeAsync()
+    {
+        LocService.OnChange -= StateHasChanged;
+        if (_aboutMeModule != null)
+        {
+            await _aboutMeModule.InvokeVoidAsync("destroyCodeParticles");
+            await _aboutMeModule.DisposeAsync();
+        }
+    }
 }
 
 <section id="about-me">

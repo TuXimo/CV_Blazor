@@ -11,9 +11,10 @@
     --light-card-body-background: rgba(255, 255, 255, 1);
     --light-profile-image-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
     --light-text-secondary: #6c757d; /* Un gris para texto secundario */
+    --light-skills-details-background: #f8f9fa; /* Gris muy claro para el fondo de detalles de skills */
     --light-border-color: #dee2e6; /* Un borde claro */
     --light-skill-icon-hover-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
-    --light-skills-animation-area-background: #e8e8e8;
+    --light-skills-animation-area-background: #f0f2f5; /* Gris claro para el fondo del área de iconos */
     --navbar-light-background-blurred: rgba(255, 255, 255, 0.9);
     --navbar-toggler-light-filter: invert(0);
 

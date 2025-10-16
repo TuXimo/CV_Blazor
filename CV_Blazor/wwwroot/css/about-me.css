@@ -57,3 +57,32 @@
 body.dark-mode .profile-image {
     box-shadow: var(--dark-profile-image-shadow);
 }
+
+#about-me {
+    position: relative;
+    overflow: hidden;
+    min-height: 100vh;
+    color: #fff;
+}
+
+#particles-container {
+    position: absolute;
+    top:0; left:0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+}
+
+#code-text-container {
+    position: absolute;
+    top:0; left:0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+}
+
+#about-me .container {
+    position: relative;
+    z-index: 2;
+}

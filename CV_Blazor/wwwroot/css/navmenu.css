@@ -1,66 +1,66 @@
 /* --- NAVBAR --- */
 .navbar {
-    background-color: rgba(255, 255, 255, 0.9);
+    background-color: var(--navbar-light-background-blurred);
     backdrop-filter: blur(10px);
     transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .navbar .nav-link {
-    color: #333;
+    color: var(--light-brand-name-color);
     transition: color 0.3s ease;
 }
 
 .navbar .nav-link:hover {
-    color: #0d6efd;
+    color: var(--bootstrap-blue);
 }
 
 /* --- DARK MODE --- */
 body.dark-mode .navbar {
-    background-color: rgba(18, 18, 18, 0.9);
+    background-color: var(--navbar-dark-background-blurred);
     backdrop-filter: blur(10px);
-    border-bottom: 1px solid #333;
+    border-bottom: var(--navbar-dark-border-bottom);
 }
 
 body.dark-mode .nav-link {
-    color: #f1f1f1;
+    color: var(--dark-text-color);
 }
 
 body.dark-mode .nav-link:hover {
-    color: #00ff99; /* verde neón tipo highlight */
+    color: var(--dark-nav-link-hover-color); /* verde neón tipo highlight */
 }
 
 /* --- ICONOS (globo y sol/luna) --- */
 .nav-icon {
-    color: #333;
+    color: var(--light-brand-name-color);
     transition: color 0.3s ease;
 }
 
 body.dark-mode .nav-icon {
-    color: #ddd !important;
+    color: var(--dark-nav-icon-color) !important;
 }
 
 body.dark-mode .nav-icon:hover {
-    color: #00ff99 !important;
+    color: var(--dark-nav-link-hover-color) !important;
 }
 
 /* --- BOTÓN HAMBURGUESA --- */
 .navbar-toggler {
     border: none;
-    filter: invert(0);
+    filter: var(--navbar-toggler-light-filter);
     transition: filter 0.3s ease;
 }
 
 body.dark-mode .navbar-toggler {
-    filter: invert(1); /* invierte el ícono del menú para que se vea en fondo oscuro */
+    filter: var(--navbar-toggler-dark-filter); /* invierte el ícono del menú para que se vea en fondo oscuro */
 }
 
 /* --- MARCA (Título) --- */
 .brand-name {
-    color: #333 !important;
-    font-weight: 700;
+    color: var(--light-brand-name-color) !important;
+    font-weight: var(--font-weight-bold);
     transition: color 0.3s ease;
 }
 
 body.dark-mode .brand-name {
-    color: #f1f1f1 !important;
+    color: var(--dark-text-color) !important;
 }

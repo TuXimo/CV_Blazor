@@ -43,6 +43,7 @@
         if (_aboutMeModule != null)
         {
             await _aboutMeModule.InvokeVoidAsync("destroyCodeParticles");
+            await _aboutMeModule.InvokeVoidAsync("disposeProfileImageTilt");
             await _aboutMeModule.DisposeAsync();
         }
     }
@@ -73,11 +74,11 @@
 
                 <div class="d-flex flex-wrap gap-3 mt-3">
                     <a href="#projects" class="btn btn-primary btn-lg">@Localizer["ab_Projects"]</a>
-                    <a href="@cvFile" class="btn btn-primary btn-lg" download="Curriculum-Maximo Brunetti.pdf">@Localizer["ab_DownloadCV"]</a>
+                    <a href="@cvFile" class="btn btn-primary btn-lg" download>@Localizer["ab_DownloadCV"]</a>
                 </div>
             </div>
 
-            <div class="col-md-4 mt-4 mt-md-0 text-center">
+            <div class="col-md-4 mt-4 mt-md-0 text-center profile-image-container">
                 <img src="img/profile.jpg" alt="Maximo Brunetti" class="profile-image" />
             </div>
         </div>

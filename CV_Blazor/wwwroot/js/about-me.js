@@ -2,7 +2,8 @@
 let activeAnimations = {
     tsParticlesInstance: null,
     animeInstances: [],
-    intervals: []
+    intervals: [],
+    profileImageTilt: { handler: null, element: null } // Para el nuevo efecto
 };
 
 // Función para limpiar todas las animaciones y temporizadores activos
@@ -23,6 +24,9 @@ export function destroyCodeParticles() {
 
     // Limpiar los contenedores HTML
     const particlesContainer = document.getElementById("particles-container");
+
+    // Limpiar el efecto de la imagen de perfil
+    disposeProfileImageTilt();
     if (particlesContainer) particlesContainer.innerHTML = '';
 
     const codeTextContainer = document.getElementById('code-text-container');
@@ -95,5 +99,56 @@ export async function createCodeParticles() {
             }
         }, 8000 + Math.random() * 5000);
         activeAnimations.intervals.push(intervalId);
+    }
+}
+
+// --- Efecto de inclinación (tilt) para la imagen de perfil ---
+
+function handleProfileImageMove(e) {
+    const img = e.currentTarget;
+    const { left, top, width, height } = img.getBoundingClientRect();
+
+    // Coordenadas del mouse relativas al centro de la imagen
+    const x = e.clientX - left - width / 2;
+    const y = e.clientY - top - height / 2;
+
+    // Factor de rotación (ajústalo para más o menos efecto)
+    const factor = 0.05;
+
+    // Calcular la rotación en los ejes X e Y
+    // La rotación en Y depende de la posición X del mouse y viceversa
+    const rotateY = x * factor;
+    const rotateX = -y * factor;
+
+    // Aplicar la transformación
+    img.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+}
+
+function handleProfileImageLeave(e) {
+    // Resetear la transformación cuando el mouse sale
+    e.currentTarget.style.transform = 'rotateX(0deg) rotateY(0deg)';
+}
+
+export function initializeProfileImageTilt() {
+    const img = document.querySelector('.profile-image');
+    if (img) {
+        activeAnimations.profileImageTilt.element = img;
+        
+        // Guardamos las referencias a las funciones para poder removerlas después
+        const moveHandler = (e) => handleProfileImageMove(e);
+        const leaveHandler = (e) => handleProfileImageLeave(e);
+
+        activeAnimations.profileImageTilt.handlers = { moveHandler, leaveHandler };
+
+        img.addEventListener('mousemove', moveHandler);
+        img.addEventListener('mouseleave', leaveHandler);
+    }
+}
+
+export function disposeProfileImageTilt() {
+    const { element, handlers } = activeAnimations.profileImageTilt;
+    if (element && handlers) {
+        element.removeEventListener('mousemove', handlers.moveHandler);
+        element.removeEventListener('mouseleave', handlers.leaveHandler);
     }
 }

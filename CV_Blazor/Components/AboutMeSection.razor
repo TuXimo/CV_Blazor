@@ -32,6 +32,7 @@
             if (_aboutMeModule is not null)
             {
                 await _aboutMeModule.InvokeVoidAsync("createCodeParticles");
+                await _aboutMeModule.InvokeVoidAsync("initializeProfileImageTilt");
             }
         }
     }
@@ -72,7 +73,7 @@
 
                 <div class="d-flex flex-wrap gap-3 mt-3">
                     <a href="#projects" class="btn btn-primary btn-lg">@Localizer["ab_Projects"]</a>
-                    <a href="@cvFile" class="btn btn-primary btn-lg" download>@Localizer["ab_DownloadCV"]</a>
+                    <a href="@cvFile" class="btn btn-primary btn-lg" download="Curriculum-Maximo Brunetti.pdf">@Localizer["ab_DownloadCV"]</a>
                 </div>
             </div>
 

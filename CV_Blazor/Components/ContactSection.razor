@@ -12,6 +12,12 @@
     private bool isCopied = false;
     private string emailAddress = "tuximodev@gmail.com";
 
+    // Variables para el toggle de Git
+    private bool showGitHub = true;
+    private string gitHubUrl = "https://github.com/TuXimo/";
+    private string gitLabUrl = "https://gitlab.com/maxobrunetti"; // Asegúrate que este sea tu perfil de GitLab
+
+
     private async Task CopyEmail()
     {
         // Llamar a la función de JavaScript para copiar el texto
@@ -27,9 +33,15 @@
         StateHasChanged();
     }
 
+    private void ToggleGitPlatform()
+    {
+        showGitHub = !showGitHub;
+    }
+
     protected override void OnInitialized()
     {
         LocService.OnChange += StateHasChanged;
+        showGitHub = true;
     }
 
     public void Dispose()
@@ -66,10 +78,15 @@
             <small class="text-muted mt-1">LinkedIn</small>
         </li>
         <li class="mx-3 d-flex flex-column align-items-center">
-            <a href="https://github.com/TuXimo/" target="_blank">
-                <i class="fab fa-github fa-2x"></i>
+            <a href="@(showGitHub ? gitHubUrl : gitLabUrl)" target="_blank">
+                <i class="fab @(showGitHub ? "fa-github" : "fa-gitlab") fa-2x"></i>
             </a>
-            <small class="text-muted mt-1">GitHub</small>
+            <div class="d-flex align-items-center mt-1">
+                <small class="text-muted">@(showGitHub ? "GitHub" : "GitLab")&nbsp;</small>
+                <button class="btn btn-link p-0 text-dark" @onclick="ToggleGitPlatform" style="line-height: 1;">
+                    <i class="fas fa-exchange-alt"></i>
+                </button>
+            </div>
         </li>
         <li class="mx-3 d-flex flex-column align-items-center">
             <a href="https://t.me/maximobrunetti" target="_blank">

@@ -42,3 +42,5 @@ namespace CV_Blazor
         }
     }
 }
+
+//dotnet publish -c Release -r browser-wasm --self-contained

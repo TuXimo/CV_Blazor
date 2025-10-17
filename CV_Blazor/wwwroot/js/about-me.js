@@ -40,7 +40,7 @@ export async function createCodeParticles() {
         : '--bootstrap-primary-button-background';
     const particleColor = getComputedStyle(document.documentElement).getPropertyValue(colorVar).trim();
 
-    const allRandomWords = ["xd", "jamon", "p0lent4", "wach0s", "arg", "Xdd", "zzz"];
+    const allRandomWords = ["xd", "jamon", "wach0s", "abc", "max", "zzz"];
     const maxLength = 5; // Límite máximo de caracteres para las palabras
     const randomWords = allRandomWords.filter(word => word.length <= maxLength);
 
@@ -58,9 +58,16 @@ export async function createCodeParticles() {
         interactivity: {
             events: {
                 onhover: { enable: true, mode: "repulse" },
-                onclick: { enable: true, mode: "push" }
+                onclick: { enable: true, mode: "push" },
+            },
+            modes: {
+                repulse: {
+                    distance: 120, // Distancia a la que reaccionan las partículas (antes 200 por defecto)
+                    speed: 0.5,    // Velocidad de la repulsión (antes 1 por defecto)
+                },
             }
-        }
+        },
+        detectRetina: true,
     });
 
     // --- Anime.js: letras flotantes ---

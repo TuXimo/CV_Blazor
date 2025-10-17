@@ -6,11 +6,10 @@ namespace CV_Blazor.Services
     {
         public event Action? OnChange;
 
-        public CultureInfo CurrentCulture { get; private set; }
+        public CultureInfo CurrentCulture { get; private set; } = CultureInfo.CurrentUICulture;
 
         public LocalizationService()
         {
-            CurrentCulture = CultureInfo.CurrentUICulture;
         }
 
         public void SetCulture(string cultureCode)
@@ -21,6 +20,12 @@ namespace CV_Blazor.Services
             CurrentCulture = culture;
 
             OnChange?.Invoke();
+        }
+
+        internal void InitializeCulture(CultureInfo culture)
+        {
+            CurrentCulture = culture;
+            // No es necesario invocar OnChange aquí, ya que es la carga inicial.
         }
     }
 }

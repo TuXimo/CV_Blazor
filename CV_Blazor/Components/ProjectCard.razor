@@ -1,5 +1,5 @@
 ﻿@implements IDisposable
-@using System.Timers;
+@using System.Threading;
 @using CV_Blazor.Models;
 @using CV_Blazor.Services
 
@@ -37,12 +37,13 @@
 
     private string? currentImage;
     private int currentIndex = 0;
-    private Timer? slideshowTimer;
+    private Timer? _slideshowTimer;
 
     [Inject] private NavigationManager NavManager { get; set; } = null!;
 
     protected override void OnInitialized()
     {
+        LocService.OnChange += StateHasChanged;
         currentImage = Project.MainImage;
     }
 
@@ -54,16 +55,7 @@
         currentIndex = -1;
         ShowNextImage();
 
-        slideshowTimer = new Timer(1500);
-        slideshowTimer.Elapsed += (s, e) =>
-        {
-            InvokeAsync(() =>
-            {
-                ShowNextImage();
-                StateHasChanged();
-            });
-        };
-        slideshowTimer.Start();
+        _slideshowTimer = new Timer(TimerCallback, null, 1500, 1500);
     }
 
     private void ShowNextImage()
@@ -72,10 +64,15 @@
         currentImage = Project.SecondaryImages[currentIndex];
     }
 
+    private async void TimerCallback(object? state)
+    {
+        await InvokeAsync(ShowNextImage);
+        await InvokeAsync(StateHasChanged);
+    }
+
     private void MouseLeave()
     {
-        slideshowTimer?.Stop();
-        slideshowTimer?.Dispose();
+        _slideshowTimer?.Dispose();
 
         currentImage = Project.MainImage;
         StateHasChanged();
@@ -92,6 +89,7 @@
 
     public void Dispose()
     {
-        slideshowTimer?.Dispose();
+        LocService.OnChange -= StateHasChanged;
+        _slideshowTimer?.Dispose();
     }
 }

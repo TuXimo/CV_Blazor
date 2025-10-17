@@ -38,6 +38,9 @@ namespace CV_Blazor
             CultureInfo.DefaultThreadCurrentCulture = culture;
             CultureInfo.DefaultThreadCurrentUICulture = culture;
 
+            var localizationService = host.Services.GetRequiredService<LocalizationService>();
+            localizationService.InitializeCulture(culture);
+
             await host.RunAsync();
         }
     }

@@ -180,4 +180,7 @@
   <data name="ss_level5" xml:space="preserve">
     <value>Experto</value>
   </data>
+  <data name="nav_Home" xml:space="preserve">
+    <value>Inicio</value>
+  </data>
 </root>

@@ -32,14 +32,14 @@
 </div>
 
 @code {
-    [Parameter] public Project Project { get; set; }
+    [Parameter] public Project Project { get; set; } = null!;
     [Parameter] public bool IsProject { get; set; } = true;
 
-    private string currentImage;
+    private string? currentImage;
     private int currentIndex = 0;
-    private Timer slideshowTimer;
+    private Timer? slideshowTimer;
 
-    [Inject] private NavigationManager NavManager { get; set; }
+    [Inject] private NavigationManager NavManager { get; set; } = null!;
 
     protected override void OnInitialized()
     {
@@ -76,7 +76,6 @@
     {
         slideshowTimer?.Stop();
         slideshowTimer?.Dispose();
-        slideshowTimer = null;
 
         currentImage = Project.MainImage;
         StateHasChanged();

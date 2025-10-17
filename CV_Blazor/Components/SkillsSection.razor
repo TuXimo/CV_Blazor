@@ -58,10 +58,10 @@
 </section>
 
 @code {
-    private List<SkillWithPosition> SkillsWithPosition;
-    private Skill CurrentSkill;
-    private System.Threading.Timer _timer;
-    private SkillWithPosition _hoveredSkill = null;
+    private List<SkillWithPosition> SkillsWithPosition = new();
+    private Skill? CurrentSkill;
+    private System.Threading.Timer? _timer;
+    private SkillWithPosition? _hoveredSkill;
 
     private const int AnimationWidth = 600;
     private const int AnimationHeight = 400;
@@ -121,7 +121,7 @@
         _timer = new System.Threading.Timer(UpdatePositions, null, 0, 16);
     }
 
-    private void UpdatePositions(object state)
+    private void UpdatePositions(object? state)
     {
         foreach (var skill in SkillsWithPosition)
         {
@@ -167,7 +167,7 @@
         InvokeAsync(StateHasChanged);
     }
 
-    private async Task OnHoverSkill(SkillWithPosition hoveredSkill)
+    private void OnHoverSkill(SkillWithPosition hoveredSkill)
     {
         if (_hoveredSkill == hoveredSkill) return;
 

@@ -1,4 +1,4 @@
-﻿namespace CV_Blazor.Models
+﻿﻿namespace CV_Blazor.Models
 {
     public class Resume
     {
@@ -9,16 +9,16 @@
 
     public class Experience
     {
-        public string Title { get; set; }
-        public string Company { get; set; }
-        public string Period { get; set; }
+        public string Title { get; set; } = string.Empty;
+        public string Company { get; set; } = string.Empty;
+        public string Period { get; set; } = string.Empty;
         public List<string> Achievements { get; set; } = new();
     }
 
     public class Education
     {
-        public string Title { get; set; }
-        public string Institution { get; set; }
-        public string Period { get; set; }
+        public string Title { get; set; } = string.Empty;
+        public string Institution { get; set; } = string.Empty;
+        public string Period { get; set; } = string.Empty;
     }
 }

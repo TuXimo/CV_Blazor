@@ -1,13 +1,13 @@
-﻿namespace CV_Blazor.Models
+﻿﻿namespace CV_Blazor.Models
 {
     public class Project
     {
-        public string Title { get; set; }
-        public string ShortDescription { get; set; }
-        public string MainImage { get; set; }
-        public List<string> SecondaryImages { get; set; }
-        public string ProjectLink { get; set; }
-        public string GithubLink { get; set; }
+        public string Title { get; set; } = string.Empty;
+        public string ShortDescription { get; set; } = string.Empty;
+        public string MainImage { get; set; } = string.Empty;
+        public List<string> SecondaryImages { get; set; } = new();
+        public string ProjectLink { get; set; } = string.Empty;
+        public string? GithubLink { get; set; }
         public string Slug => Title?.ToLower().Replace(" ", "-").Replace(".", "").Replace(",", "") ?? "";
     }
 }

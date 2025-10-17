@@ -56,7 +56,7 @@
             <div class="col-md-8 text-center text-md-start">
                 <h1 class="display-4">@Localizer["ab_Title"]</h1>
 
-                @foreach (var paragraph in Portfolio.Resume.Summary)
+                @foreach (var paragraph in Portfolio!.Resume.Summary)
                 {
                     <p class="lead">@paragraph</p>
                 }

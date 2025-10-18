@@ -8,9 +8,7 @@ namespace CV_Blazor.Services
 
         public CultureInfo CurrentCulture { get; private set; } = CultureInfo.CurrentUICulture;
 
-        public LocalizationService()
-        {
-        }
+        public LocalizationService() { }
 
         public void SetCulture(string cultureCode)
         {

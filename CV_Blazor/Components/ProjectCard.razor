@@ -28,6 +28,12 @@
         {
             <a href="@Project.GithubLink" class="btn btn-dark ms-2" target="_blank" @onclick:stopPropagation>GitHub</a>
         }
+
+        <div class="project-technologies">
+            <i class="devicon-unity-plain" title="Unity"></i>
+            <i class="devicon-csharp-plain" title="C#"></i>
+            <i class="devicon-blazor-original" title="Blazor"></i>
+        </div>
     </div>
 </div>
 
@@ -84,7 +90,6 @@
         {
             NavManager.NavigateTo($"/projects/{Project.Slug}");
         }
-        // If not a project, do nothing (no navigation)
     }
 
     public void Dispose()

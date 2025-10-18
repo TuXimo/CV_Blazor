@@ -1,4 +1,4 @@
-﻿.project-card {
+﻿﻿﻿﻿.project-card {
     border-radius: var(--project-card-border-radius);
     overflow: hidden;
     position: relative;
@@ -72,11 +72,12 @@ body.dark-mode .project-card:hover {
 .card-body {
     background-color: var(--light-card-body-background);
     color: var(--light-text-color);
-    position: absolute;
-    bottom: 0;  
-    width: 100%;
     padding: var(--project-card-padding);
     z-index: 2;
+    position: relative; /* Necesario para el z-index y el margen negativo */
+    margin-top: -50px; /* Sube el card-body para que se superponga a la imagen */
+    border-bottom-left-radius: var(--project-card-border-radius);
+    border-bottom-right-radius: var(--project-card-border-radius);
     
     /* Light mode background: semi-transparent white. Overridden in app.css for dark mode. */
 }
@@ -84,4 +85,27 @@ body.dark-mode .project-card:hover {
 body.dark-mode .card-body {
     background-color: var(--dark-card-background);
     color: var(--dark-text-color);
+}
+
+.project-technologies {
+    position: absolute; /* Posicionado relativo al .project-card */
+    bottom: var(--project-card-padding);
+    right: var(--project-card-padding);
+    display: flex;
+    gap: 0.5rem; /* Espacio entre iconos */
+}
+
+.project-technologies i {
+    font-size: 1.5rem; /* Tamaño de los iconos más pequeño */
+    opacity: 0.7;
+    transition: opacity 0.2s ease-in-out;
+    color: var(--light-text-color); /* Color por defecto (negro) */
+}
+
+body.dark-mode .project-technologies i {
+    color: var(--dark-text-color); /* Color para modo oscuro (blanco) */
+}
+
+.project-card:hover .project-technologies i {
+    opacity: 1;
 }

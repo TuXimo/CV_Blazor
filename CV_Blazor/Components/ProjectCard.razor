@@ -30,9 +30,11 @@
         }
 
         <div class="project-technologies">
-            <i class="devicon-unity-plain" title="Unity"></i>
-            <i class="devicon-csharp-plain" title="C#"></i>
-            <i class="devicon-blazor-original" title="Blazor"></i>
+            @foreach (var tech in Project.Technologies)
+            {
+                var techName = tech.Split('-')[0];
+                <i class="devicon-@tech" title="@(char.ToUpper(techName[0]) + techName.Substring(1))"></i>
+            }
         </div>
     </div>
 </div>

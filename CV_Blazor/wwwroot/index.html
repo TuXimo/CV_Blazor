@@ -34,7 +34,8 @@
     <script>
         window.blazorCulture = {
             get: () => window.localStorage['BlazorCulture'],
-            set: (value) => window.localStorage['BlazorCulture'] = value
+            set: (value) => window.localStorage['BlazorCulture'] = value,
+            getBrowserLanguage: () => (navigator.languages && navigator.languages.length) ? navigator.languages[0] : navigator.language
         };
     </script>
 </head>

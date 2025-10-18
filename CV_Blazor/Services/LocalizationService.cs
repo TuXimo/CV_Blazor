@@ -20,9 +20,13 @@ namespace CV_Blazor.Services
         public async Task SetCultureAsync(string cultureCode)
         {
             await _jsRuntime.InvokeVoidAsync("blazorCulture.set", cultureCode);
+            
+            // Obtenemos la URL actual sin los parámetros de consulta (query string).
+            var uriWithoutQuery = new Uri(_navManager.Uri).GetLeftPart(UriPartial.Path);
+
             // Forzar una recarga de la página para aplicar la nueva cultura en toda la aplicación.
             // El 'true' fuerza una recarga desde el servidor, limpiando el estado de WASM.
-            _navManager.NavigateTo(_navManager.Uri, forceLoad: true);
+            _navManager.NavigateTo(uriWithoutQuery, forceLoad: true);
         }
 
         internal void InitializeCulture(CultureInfo culture)

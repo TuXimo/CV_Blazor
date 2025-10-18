@@ -46,7 +46,16 @@ namespace CV_Blazor
             else
             {
                 // Si no hay parámetro, usar el valor de localStorage o el predeterminado
-                cultureCode = await js.InvokeAsync<string>("blazorCulture.get") ?? defaultCulture;
+                cultureCode = await js.InvokeAsync<string>("blazorCulture.get");
+                if (string.IsNullOrEmpty(cultureCode))
+                {
+                    // Si no hay nada en localStorage, intentar detectar el idioma del navegador
+                    var browserLanguage = await js.InvokeAsync<string>("blazorCulture.getBrowserLanguage");
+                    // Si el idioma del navegador es español, usar es-ES. Para todo lo demás, usar en-US.
+                    cultureCode = browserLanguage != null && browserLanguage.StartsWith("es") 
+                        ? "es-ES" 
+                        : defaultCulture;
+                }
             }
 
             var culture = new CultureInfo(cultureCode);

@@ -1,6 +1,6 @@
 ﻿@page "/projects/{ProjectSlug}"
 @using CV_Blazor.Models
-@inject CV_Blazor.Services.PortfolioService PortfolioService
+@inject Services.PortfolioService PortfolioService
 
 @code {
     [Parameter] public string ProjectSlug { get; set; } = "";

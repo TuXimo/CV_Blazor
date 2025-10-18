@@ -1,7 +1,8 @@
 html, body {
     font-family: var(--font-family-base);
     scroll-behavior: smooth; /* Para un desplazamiento suave al hacer clic en los enlaces del nav */
-    transition: background-color 0.3s ease, color 0.3s ease;
+    transition: background-color 0.3s ease, color 0.3s ease;    
+    overflow-x: hidden; /* Evita el scroll horizontal en toda la página */
 }
 
 /*

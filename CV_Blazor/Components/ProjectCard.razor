@@ -20,18 +20,20 @@
         <h5 class="card-title">@Project.Title</h5>
         <p class="card-text">@Project.ShortDescription</p>
 
-        <a class="btn btn-primary" href="@Project.ProjectLink" target="_blank" @onclick:stopPropagation>
-            @Localizer["ps_seeProject"]
-        </a>
-
-        @if (!string.IsNullOrEmpty(Project.GithubLink))
-        {
-            <a href="@Project.GithubLink" class="btn btn-dark ms-2" target="_blank" @onclick:stopPropagation>GitHub</a>
-        }
-
+        <div class="mt-auto">
+            <a class="btn btn-primary" href="@Project.ProjectLink" target="_blank" @onclick:stopPropagation>
+                @Localizer["ps_seeProject"]
+            </a>
+    
+            @if (!string.IsNullOrEmpty(Project.GithubLink))
+            {
+                <a href="@Project.GithubLink" class="btn btn-dark ms-2" target="_blank" @onclick:stopPropagation>GitHub</a>
+            }
+        </div>
+        
         <div class="project-technologies">
             @foreach (var tech in Project.Technologies)
-            {
+        {
                 var techName = tech.Split('-')[0];
                 <i class="devicon-@tech" title="@(char.ToUpper(techName[0]) + techName.Substring(1))"></i>
             }

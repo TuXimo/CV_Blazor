@@ -1,4 +1,4 @@
-﻿﻿﻿﻿.project-card {
+﻿﻿﻿﻿﻿.project-card {
     border-radius: var(--project-card-border-radius);
     overflow: hidden;
     position: relative;
@@ -7,6 +7,7 @@
     cursor: pointer;
     min-height: var(--project-card-min-height);
     background-color: var(--light-background);
+    height: 100%; /* Asegura que la tarjeta ocupe toda la altura de su contenedor */
     color: var(--light-text-color);
 }
 
@@ -79,6 +80,8 @@ body.dark-mode .project-card:hover {
     border-bottom-left-radius: var(--project-card-border-radius);
     border-bottom-right-radius: var(--project-card-border-radius);
     
+    display: flex; /* Habilita Flexbox */
+    flex-direction: column; /* Apila los elementos verticalmente */
     /* Light mode background: semi-transparent white. Overridden in app.css for dark mode. */
 }
 

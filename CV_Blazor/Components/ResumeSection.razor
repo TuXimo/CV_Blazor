@@ -5,22 +5,10 @@
 
 @inherits LayoutComponentBase
 @inject IStringLocalizer<Resources> Localizer
-@inject LocalizationService LocService
-@implements IDisposable
 
 
 @code {
     [Parameter] public PortfolioViewModel? Portfolio { get; set; }
-
-    protected override void OnInitialized()
-    {
-        LocService.OnChange += StateHasChanged;
-    }
-
-    public void Dispose()
-    {
-        LocService.OnChange -= StateHasChanged;
-    }
 }
 
 <section id="resume" class="container py-5">

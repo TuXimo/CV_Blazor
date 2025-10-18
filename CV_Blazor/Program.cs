@@ -18,7 +18,7 @@ namespace CV_Blazor
 
             builder.Services.AddScoped<PortfolioService>();
             builder.Services.AddScoped<SkillService>();
-            builder.Services.AddSingleton<LocalizationService>();
+            builder.Services.AddScoped<LocalizationService>();
 
             builder.Services.AddLocalization();
 

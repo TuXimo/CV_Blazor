@@ -8,7 +8,6 @@
 @implements IAsyncDisposable
 
 @inject IStringLocalizer<Resources> Localizer
-@inject LocalizationService LocService
 
 
 @code {
@@ -18,11 +17,6 @@
 
     [Inject]
     private IJSRuntime JSRuntime { get; set; } = null!;
-
-    protected override void OnInitialized()
-    {
-        LocService.OnChange += StateHasChanged;
-    }
 
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
@@ -39,7 +33,6 @@
 
     public async ValueTask DisposeAsync()
     {
-        LocService.OnChange -= StateHasChanged;
         if (_aboutMeModule != null)
         {
             await _aboutMeModule.InvokeVoidAsync("destroyCodeParticles");

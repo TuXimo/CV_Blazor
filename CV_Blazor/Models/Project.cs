@@ -9,6 +9,6 @@
         public string ProjectLink { get; set; } = string.Empty;
         public string? GithubLink { get; set; }
         public List<string> Technologies { get; set; } = new();
-        public string Slug => Title?.ToLower().Replace(" ", "-").Replace(".", "").Replace(",", "") ?? "";
+        public string Slug => string.IsNullOrWhiteSpace(Title) ? "untitled-project" : Title.ToLower().Replace(" ", "-").Replace(".", "").Replace(",", "");
     }
 }

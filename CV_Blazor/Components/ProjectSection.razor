@@ -4,9 +4,7 @@
 @using CV_Blazor.Services
 
 @inject IStringLocalizer<Resources> Localizer
-@inject LocalizationService LocService
 @implements IDisposable
-
 
 
 @code {
@@ -19,14 +17,8 @@
         activeTab = tab;
     }
 
-    protected override void OnInitialized()
-    {
-        LocService.OnChange += StateHasChanged;
-    }
-
     public void Dispose()
     {
-        LocService.OnChange -= StateHasChanged;
     }
 }
 

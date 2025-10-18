@@ -6,7 +6,6 @@
 @using Microsoft.Extensions.Localization
 
 @inject SkillService SkillService
-@inject LocalizationService LocService
 @inject IStringLocalizer<Resources> Localizer
 
 @implements IDisposable
@@ -79,14 +78,7 @@
 
     protected override async Task OnInitializedAsync()
     {
-        LocService.OnChange += OnLocalizationChanged;
         await LoadSkillsAsync();
-    }
-
-    private async void OnLocalizationChanged()
-    {
-        await LoadSkillsAsync();
-        StateHasChanged();
     }
 
     private async Task LoadSkillsAsync()
@@ -94,6 +86,7 @@
         // Detener y eliminar el timer anterior si existe
         _timer?.Dispose();
 
+        var random = new Random();
         var skills = (await SkillService.GetSkillsAsync()).ToList();
 
         SkillsWithPosition = skills.Select(s =>
@@ -104,11 +97,11 @@
                 IconPath = s.IconPath,
                 Description = s.Description,
                 Proficiency = s.Proficiency,
-                X = new Random().Next(IconSize / 2, AnimationWidth - IconSize / 2),
-                Y = new Random().Next(IconSize / 2, AnimationHeight - IconSize / 2)
+                X = random.Next(IconSize / 2, AnimationWidth - IconSize / 2),
+                Y = random.Next(IconSize / 2, AnimationHeight - IconSize / 2)
             };
-            skill.Dx = skill.OriginalDx = (new Random().NextDouble() * 2 - 1) * 2;
-            skill.Dy = skill.OriginalDy = (new Random().NextDouble() * 2 - 1) * 2;
+            skill.Dx = skill.OriginalDx = (random.NextDouble() * 2 - 1) * 2;
+            skill.Dy = skill.OriginalDy = (random.NextDouble() * 2 - 1) * 2;
             return skill;
         }).ToList();
 
@@ -207,7 +200,6 @@
 
     public void Dispose()
     {
-        LocService.OnChange -= OnLocalizationChanged;
         _timer?.Dispose();
     }
 

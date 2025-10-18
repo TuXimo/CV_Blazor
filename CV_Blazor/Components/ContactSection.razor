@@ -4,9 +4,7 @@
 
 @inject IJSRuntime JSRuntime
 @inject IStringLocalizer<Resources> Localizer
-
 @implements IDisposable
-@inject LocalizationService LocService
 
 @code {
     private bool isCopied = false;
@@ -40,13 +38,11 @@
 
     protected override void OnInitialized()
     {
-        LocService.OnChange += StateHasChanged;
         showGitHub = true;
     }
 
     public void Dispose()
     {
-        LocService.OnChange -= StateHasChanged;
     }
 }
 

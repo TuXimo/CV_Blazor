@@ -5,10 +5,9 @@
 @using Microsoft.JSInterop
 @inject IJSRuntime JSRuntime
 @inject IStringLocalizer<Resources> Localizer
-@inject LocalizationService LocService
 
-@* NO BORRAR QUE ROMPE LA LOCALIZACIÓN *@
-@inject NavigationManager NavigationManager  
+@inject NavigationManager NavigationManager
+@inject LocalizationService LocService
 
 
 <nav class="navbar navbar-expand-lg fixed-top">
@@ -59,9 +58,7 @@
     {
         var currentCulture = CultureInfo.CurrentUICulture.Name;
         var newCulture = currentCulture == "es-ES" ? "en-US" : "es-ES";
-
-        await JSRuntime.InvokeVoidAsync("blazorCulture.set", newCulture);
-        LocService.SetCulture(newCulture);
+        await LocService.SetCultureAsync(newCulture);
     }
     
 

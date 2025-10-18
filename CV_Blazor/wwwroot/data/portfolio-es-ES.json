@@ -63,9 +63,9 @@
       "projectLink": "https://play.google.com/store/apps/details?id=com.tuximo.tightropewalker",
       "githubLink": "",
       "technologies": [
-        "blender-original",
-        "csharp-plain",
         "android-plain",
+        "csharp-plain",
+        "blender-original",
         "unity-plain"
       ]
     },
@@ -77,10 +77,10 @@
       "projectLink": "https://3d.maximobrunetti.com.ar",
       "githubLink": "",
       "technologies": [
-        "unity-plain",
         "threejs-original",
         "typescript-plain",
-        "blender-original"
+        "blender-original",
+        "unity-plain"
       ]
     }
   ],
@@ -97,7 +97,7 @@
       ],
       "projectLink": "https://tinincho.itch.io/la-ultima-risa",
       "githubLink": "",
-      "technologies": [ "unity-plain", "csharp-plain" ]
+      "technologies": [ "csharp-plain", "unity-plain" ]
     },
     {
       "title": "Simulador de Terremotos (Proyecto Universitario)",
@@ -109,9 +109,9 @@
       "projectLink": "https://tuximo.itch.io/school-earthquake-quiz",
       "githubLink": "",
       "technologies": [
-        "unity-plain",
         "csharp-plain",
-        "blender-original"
+        "blender-original",
+        "unity-plain"
       ]
     },
     {
@@ -121,7 +121,7 @@
       "secondaryImages": [ "/img/jams/sa/sec.png" ],
       "projectLink": "https://amrasmithandir.itch.io/sorpresas-amargas",
       "githubLink": "",
-      "technologies": [ "unity-plain", "csharp-plain" ]
+      "technologies": [ "csharp-plain", "unity-plain" ]
     }
   ]
 }

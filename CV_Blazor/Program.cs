@@ -1,3 +1,5 @@
+using Microsoft.AspNetCore.Components;
+
 namespace CV_Blazor
 {
     using Microsoft.AspNetCore.Components.Web;
@@ -26,14 +28,28 @@ namespace CV_Blazor
 
             const string defaultCulture = "en-US";
 
+            // 1. Obtener servicios necesarios
             var js = host.Services.GetRequiredService<IJSRuntime>();
-            var result = await js.InvokeAsync<string>("blazorCulture.get");
-            var culture = CultureInfo.GetCultureInfo(result ?? defaultCulture);
+            var navManager = host.Services.GetRequiredService<NavigationManager>();
 
-            if (result == null)
+            // 2. Extraer el parámetro 'lang' de la URL
+            var uri = new Uri(navManager.Uri);
+            var langQuery = System.Web.HttpUtility.ParseQueryString(uri.Query).Get("lang");
+
+            string cultureCode;
+            if (!string.IsNullOrEmpty(langQuery) && (langQuery == "en-US" || langQuery == "es-ES"))
             {
-                await js.InvokeVoidAsync("blazorCulture.set", defaultCulture);
+                // Si el parámetro 'lang' es válido, usarlo y guardarlo
+                cultureCode = langQuery;
+                await js.InvokeVoidAsync("blazorCulture.set", cultureCode);
             }
+            else
+            {
+                // Si no hay parámetro, usar el valor de localStorage o el predeterminado
+                cultureCode = await js.InvokeAsync<string>("blazorCulture.get") ?? defaultCulture;
+            }
+
+            var culture = new CultureInfo(cultureCode);
 
             CultureInfo.DefaultThreadCurrentCulture = culture;
             CultureInfo.DefaultThreadCurrentUICulture = culture;

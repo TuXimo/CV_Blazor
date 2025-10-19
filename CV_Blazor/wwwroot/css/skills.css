@@ -164,25 +164,29 @@ body.dark-mode .level-block {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: flex-start; /* 🟢 para que el scroll arranque desde arriba */
+    justify-content: flex-start;
     gap: 0.8rem;
-    flex: 0 0 60px; /* columna fija */
-    max-height: var(--skills-main-container-height); /* 🟢 se adapta al alto del contenedor */
-    overflow-y: auto; /* 🟢 activa el scroll vertical si se excede */
-    scrollbar-width: thin; /* 🟢 estiliza scrollbar en Firefox */
-    scrollbar-color: var(--light-border-color) transparent; /* 🟢 color claro */
+    flex: 0 0 60px;
+    max-height: var(--skills-main-container-height);
+    overflow-y: auto;
     background-color: transparent;
     border-right: 1px solid var(--light-border-color);
+    padding: 12px 0; /* 🟢 margen interno arriba y abajo */
+
+    /* 🕶️ Scroll invisible pero funcional */
+    scrollbar-width: none;
+    -ms-overflow-style: none;
 }
 
 body.dark-mode .skills-bookmarks {
     border-right: 1px solid var(--dark-border-color);
-    scrollbar-color: var(--dark-border-color) transparent; /* 🟢 color oscuro */
 }
 
+/* 🕶️ Scroll invisible en WebKit */
 .skills-bookmarks::-webkit-scrollbar {
-    width: 6px;
+    display: none;
 }
+
 
 .skills-bookmarks::-webkit-scrollbar-track {
     background: transparent;

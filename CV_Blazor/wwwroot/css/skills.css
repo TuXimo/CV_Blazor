@@ -161,24 +161,25 @@ body.dark-mode .level-block {
 
 /* === Marcadores laterales === */
 .skills-bookmarks {
-    position: absolute;
-    left: 0;
-    top: 50%;
-    transform: translateY(-50%);
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
     gap: 0.8rem;
-    z-index: 10; /* por encima de la animación */
-    pointer-events: auto;
-    padding: 0.5rem;
+    flex: 0 0 60px; /* ancho fijo de la columna */
+    background-color: transparent; /* o si querés darle un leve fondo, podés hacerlo */
+    border-right: 1px solid var(--light-border-color);
+}
+
+body.dark-mode .skills-bookmarks {
+    border-right: 1px solid var(--dark-border-color);
 }
 
 .skill-bookmark {
     width: 36px;
     height: 36px;
     cursor: pointer;
-    transition: transform 0.25s ease, filter 0.25s ease;
+    transition: transform 0.25s ease, filter 0.25s ease, opacity 0.25s;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -192,7 +193,7 @@ body.dark-mode .level-block {
     border-radius: 6px;
 }
 
-/* Skill seleccionada = más alta y más brillante */
+/* Skill seleccionada */
 .skill-bookmark.active {
     transform: translateY(-6px) scale(1.15);
     opacity: 1;

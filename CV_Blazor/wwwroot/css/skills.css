@@ -164,15 +164,37 @@ body.dark-mode .level-block {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start; /* 🟢 para que el scroll arranque desde arriba */
     gap: 0.8rem;
-    flex: 0 0 60px; /* ancho fijo de la columna */
-    background-color: transparent; /* o si querés darle un leve fondo, podés hacerlo */
+    flex: 0 0 60px; /* columna fija */
+    max-height: var(--skills-main-container-height); /* 🟢 se adapta al alto del contenedor */
+    overflow-y: auto; /* 🟢 activa el scroll vertical si se excede */
+    scrollbar-width: thin; /* 🟢 estiliza scrollbar en Firefox */
+    scrollbar-color: var(--light-border-color) transparent; /* 🟢 color claro */
+    background-color: transparent;
     border-right: 1px solid var(--light-border-color);
 }
 
 body.dark-mode .skills-bookmarks {
     border-right: 1px solid var(--dark-border-color);
+    scrollbar-color: var(--dark-border-color) transparent; /* 🟢 color oscuro */
+}
+
+.skills-bookmarks::-webkit-scrollbar {
+    width: 6px;
+}
+
+.skills-bookmarks::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.skills-bookmarks::-webkit-scrollbar-thumb {
+    background-color: var(--light-border-color);
+    border-radius: 3px;
+}
+
+body.dark-mode .skills-bookmarks::-webkit-scrollbar-thumb {
+    background-color: var(--dark-border-color);
 }
 
 .skill-bookmark {

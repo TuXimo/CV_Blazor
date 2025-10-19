@@ -1,5 +1,6 @@
 ﻿/* Contenedor principal para la división 50/50 */
 .skills-main-container {
+    position: relative;
     display: flex;
     width: 100%;
     height: var(--skills-main-container-height);
@@ -156,4 +157,48 @@ body.dark-mode .level-block {
 
 .level-block.empty {
     background-color: transparent;
+}
+
+/* === Marcadores laterales === */
+.skills-bookmarks {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.8rem;
+    z-index: 10; /* por encima de la animación */
+    pointer-events: auto;
+    padding: 0.5rem;
+}
+
+.skill-bookmark {
+    width: 36px;
+    height: 36px;
+    cursor: pointer;
+    transition: transform 0.25s ease, filter 0.25s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0.8;
+}
+
+.skill-bookmark img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    border-radius: 6px;
+}
+
+/* Skill seleccionada = más alta y más brillante */
+.skill-bookmark.active {
+    transform: translateY(-6px) scale(1.15);
+    opacity: 1;
+    filter: drop-shadow(0 0 4px var(--light-accent));
+}
+
+body.dark-mode .skill-bookmark.active {
+    filter: drop-shadow(0 0 6px var(--dark-accent));
 }

@@ -12,42 +12,59 @@
 
 <section id="skills" class="container py-5">
     <h2 class="section-title">@Localizer["nav_Skills"]</h2>
-    
+
     <div class="skills-main-container border">
 
-        @* Lado izquierdo para los iconos en movimiento *@
-        <div class="skills-icons-animation-area">
-            @if (SkillsWithPosition != null)
+        <!-- 🧭 Marcadores laterales superpuestos -->
+        <div class="skills-bookmarks">
+            @if (skills != null)
             {
-                @foreach (var skill in SkillsWithPosition)
+                @foreach (var skill in skills)
                 {
-                    <div class="skill-icon-container"
-                                      style="left: @(FormatDouble(skill.X))px; top: @(FormatDouble(skill.Y))px;"
-                                      @onmouseover="@(() => OnHoverSkill(skill))"
-                                      @onmouseout="@(() => OnMouseOutSkill())">
+                    var isActive = skill == selectedSkill;
+                    <div class="skill-bookmark @(isActive ? "active" : "")"
+                         @onclick="() => SelectSkill(skill)"
+                         @onmouseover="() => HoverBookmark(skill)">
                         <img src="@skill.IconPath" alt="@skill.Name" />
                     </div>
                 }
             }
         </div>
 
-        @* Lado derecho para los detalles de la habilidad *@
+        <!-- 🎮 Lado izquierdo: íconos animados -->
+        <div class="skills-icons-animation-area">
+            @if (SkillsWithPosition != null)
+            {
+                @foreach (var skill in SkillsWithPosition)
+                {
+                    <div class="skill-icon-container"
+                         style="left: @(FormatDouble(skill.X))px; top: @(FormatDouble(skill.Y))px;"
+                         @onmouseover="@(() => OnHoverSkill(skill))"
+                         @onmouseout="@(() => OnMouseOutSkill())">
+                        <img src="@skill.IconPath" alt="@skill.Name" />
+                    </div>
+                }
+            }
+        </div>
+
+        <!-- 📘 Lado derecho: detalles -->
         <div class="skills-details">
             @if (CurrentSkill != null)
             {
                 <div class="skill-details-content animated-fade-in">
                     <h3 class="skill-title">@CurrentSkill.Name</h3>
 
-                    @* Nivel de habilidad en texto *@
-                    <p class="skill-level-text">@Localizer["ss_levelLabel"]: @(GetProficiencyText(CurrentSkill.Proficiency))</p>
+                    <p class="skill-level-text">
+                        @Localizer["ss_levelLabel"]: @(GetProficiencyText(CurrentSkill.Proficiency))
+                    </p>
 
-                    @* Cuadros de nivel rectangulares y discretos *@
                     <div class="skill-level">
                         @for (int i = 1; i <= 5; i++)
                         {
                             <span class="level-block @(i <= CurrentSkill.Proficiency ? "filled" : "empty")"></span>
                         }
                     </div>
+
                     <p class="skill-description">@CurrentSkill.Description</p>
                 </div>
             }
@@ -58,7 +75,10 @@
 
 @code {
     private List<SkillWithPosition> SkillsWithPosition = new();
+    private List<Skill>? skills;
+    private Skill? selectedSkill;
     private Skill? CurrentSkill;
+
     private System.Threading.Timer? _timer;
     private SkillWithPosition? _hoveredSkill;
 
@@ -66,16 +86,7 @@
     private const int AnimationHeight = 400;
     private const int IconSize = 80;
 
-    private class SkillWithPosition : Skill
-    {
-        public double X { get; set; }
-        public double Y { get; set; }
-        public double Dx { get; set; }
-        public double Dy { get; set; }
-        public double OriginalDx { get; set; }
-        public double OriginalDy { get; set; }
-    }
-
+    // 🧩 Al inicializar: carga todo y arranca la animación
     protected override async Task OnInitializedAsync()
     {
         await LoadSkillsAsync();
@@ -83,11 +94,10 @@
 
     private async Task LoadSkillsAsync()
     {
-        // Detener y eliminar el timer anterior si existe
         _timer?.Dispose();
 
         var random = new Random();
-        var skills = (await SkillService.GetSkillsAsync()).ToList();
+        skills = (await SkillService.GetSkillsAsync()).ToList();
 
         SkillsWithPosition = skills.Select(s =>
         {
@@ -108,9 +118,9 @@
         if (SkillsWithPosition.Any())
         {
             CurrentSkill = SkillsWithPosition.First();
+            selectedSkill = skills.First();
         }
 
-        // Crear un nuevo timer
         _timer = new System.Threading.Timer(UpdatePositions, null, 0, 16);
     }
 
@@ -160,12 +170,14 @@
         InvokeAsync(StateHasChanged);
     }
 
+    // 🖱️ Hover en íconos animados
     private void OnHoverSkill(SkillWithPosition hoveredSkill)
     {
         if (_hoveredSkill == hoveredSkill) return;
 
         _hoveredSkill = hoveredSkill;
         CurrentSkill = hoveredSkill;
+        selectedSkill = skills?.FirstOrDefault(s => s.Name == hoveredSkill.Name);
 
         _hoveredSkill.Dx = 0;
         _hoveredSkill.Dy = 0;
@@ -198,11 +210,25 @@
         }
     }
 
+    // 🔹 Click o hover en marcador
+    private void SelectSkill(Skill skill)
+    {
+        selectedSkill = skill;
+        CurrentSkill = SkillsWithPosition.FirstOrDefault(s => s.Name == skill.Name);
+    }
+
+    private void HoverBookmark(Skill skill)
+    {
+        CurrentSkill = SkillsWithPosition.FirstOrDefault(s => s.Name == skill.Name);
+        selectedSkill = skill;
+    }
+
     public void Dispose()
     {
         _timer?.Dispose();
     }
 
+    // 🔠 Utilidades
     private string GetProficiencyText(int proficiency)
     {
         return proficiency switch
@@ -219,5 +245,15 @@
     private string FormatDouble(double value)
     {
         return value.ToString(CultureInfo.InvariantCulture);
+    }
+
+    private class SkillWithPosition : Skill
+    {
+        public double X { get; set; }
+        public double Y { get; set; }
+        public double Dx { get; set; }
+        public double Dy { get; set; }
+        public double OriginalDx { get; set; }
+        public double OriginalDy { get; set; }
     }
 }

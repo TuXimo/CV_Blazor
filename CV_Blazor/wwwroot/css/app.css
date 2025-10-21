@@ -324,3 +324,18 @@ body.dark-mode .brand-name {
 code {
     color: #c02d76;
 }
+
+/* === Home Section responsive (solo mobile) === */
+@media (max-width: 768px) {
+
+    /* 1️⃣ Centra los botones en Home */
+    #home .d-flex {
+        justify-content: center;
+    }
+
+    #home .about-me-btn {
+        flex: 1 1 auto;
+        min-width: 140px;
+        text-align: center;
+    }
+}

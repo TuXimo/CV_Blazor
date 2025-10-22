@@ -159,4 +159,7 @@
   <data name="ps_bitter_surprises_desc" xml:space="preserve">
     <value>A 2D psychological horror game developed in 3 days for a Game Jam.</value>
   </data>
+  <data name="ps_edu_unimendoza_desc" xml:space="preserve">
+    <value>Graduated with a focus on game mechanics design and programming, completing a comprehensive curriculum that included software architecture, 3D modeling, and project management.</value>
+  </data>
 </root>

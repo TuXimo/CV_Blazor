@@ -159,4 +159,7 @@
   <data name="ps_bitter_surprises_desc" xml:space="preserve">
     <value>Juego de horror psicológico en 2D desarrollado en 3 días para una Game Jam.</value>
   </data>
+  <data name="ps_edu_unimendoza_desc" xml:space="preserve">
+    <value>Egresado con un enfoque en el diseño y programación de mecánicas de juego, completando un plan de estudios integral que incluyó arquitectura de software, modelado 3D y gestión de proyectos.</value>
+  </data>
 </root>

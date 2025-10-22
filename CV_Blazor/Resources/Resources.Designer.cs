@@ -204,6 +204,15 @@ namespace CV_Blazor.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Graduated with a focus on game mechanics design and programming, completing a comprehensive curriculum that included software architecture, 3D modeling, and project management..
+        /// </summary>
+        public static string ps_edu_unimendoza_desc {
+            get {
+                return ResourceManager.GetString("ps_edu_unimendoza_desc", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Technician in Video Game Development.
         /// </summary>
         public static string ps_edu_unimendoza_title {

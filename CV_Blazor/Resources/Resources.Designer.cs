@@ -168,6 +168,123 @@ namespace CV_Blazor.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to A 2D psychological horror game developed in 3 days for a Game Jam..
+        /// </summary>
+        public static string ps_bitter_surprises_desc {
+            get {
+                return ResourceManager.GetString("ps_bitter-surprises_desc", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Bitter Surprises.
+        /// </summary>
+        public static string ps_bitter_surprises_title {
+            get {
+                return ResourceManager.GetString("ps_bitter-surprises_title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to An academic simulator developed for the university, focused on simulating an earthquake and localized in several languages for a global audience..
+        /// </summary>
+        public static string ps_earthquake_simulator_desc {
+            get {
+                return ResourceManager.GetString("ps_earthquake-simulator_desc", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Earthquake Simulator (University Project).
+        /// </summary>
+        public static string ps_earthquake_simulator_title {
+            get {
+                return ResourceManager.GetString("ps_earthquake-simulator_title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Technician in Video Game Development.
+        /// </summary>
+        public static string ps_edu_unimendoza_title {
+            get {
+                return ResourceManager.GetString("ps_edu_unimendoza_title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Developed and programmed gameplay mechanics and combat systems for a hack and slash style action role-playing game..
+        /// </summary>
+        public static string ps_exp_abi_ach_1 {
+            get {
+                return ResourceManager.GetString("ps_exp_abi_ach_1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Responsible for implementing animation systems and enemy logic in Unity..
+        /// </summary>
+        public static string ps_exp_abi_ach_2 {
+            get {
+                return ResourceManager.GetString("ps_exp_abi_ach_2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Unity Programmer.
+        /// </summary>
+        public static string ps_exp_abi_title {
+            get {
+                return ResourceManager.GetString("ps_exp_abi_title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to I performed the animation cleanup and optimization process in Unreal Engine to improve the movement fidelity and project efficiency..
+        /// </summary>
+        public static string ps_exp_xowen_ach_1 {
+            get {
+                return ResourceManager.GetString("ps_exp_xowen_ach_1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to I collaborated in integrating animations into the game engine..
+        /// </summary>
+        public static string ps_exp_xowen_ach_2 {
+            get {
+                return ResourceManager.GetString("ps_exp_xowen_ach_2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Animation Clean Up (Intern).
+        /// </summary>
+        public static string ps_exp_xowen_title {
+            get {
+                return ResourceManager.GetString("ps_exp_xowen_title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to An interactive resume hosted on www.3d.maximobrunetti.com.ar, developed with Needle Engine and Three.js to create an immersive experience..
+        /// </summary>
+        public static string ps_interactive_website_desc {
+            get {
+                return ResourceManager.GetString("ps_interactive-website_desc", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Interactive Personal Website.
+        /// </summary>
+        public static string ps_interactive_website_title {
+            get {
+                return ResourceManager.GetString("ps_interactive-website_title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to My projects.
         /// </summary>
         public static string ps_myProjects {
@@ -182,6 +299,69 @@ namespace CV_Blazor.Resources {
         public static string ps_seeProject {
             get {
                 return ResourceManager.GetString("ps_seeProject", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to I am a software developer with experience in C# and Unity..
+        /// </summary>
+        public static string ps_summary_1 {
+            get {
+                return ResourceManager.GetString("ps_summary_1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to I am passionate about creating innovative mechanics..
+        /// </summary>
+        public static string ps_summary_2 {
+            get {
+                return ResourceManager.GetString("ps_summary_2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to I am looking to contribute to challenging projects..
+        /// </summary>
+        public static string ps_summary_3 {
+            get {
+                return ResourceManager.GetString("ps_summary_3", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to A game developed for the Global Game Jam 2024..
+        /// </summary>
+        public static string ps_the_last_laugh_desc {
+            get {
+                return ResourceManager.GetString("ps_the-last-laugh_desc", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The Last Laugh.
+        /// </summary>
+        public static string ps_the_last_laugh_title {
+            get {
+                return ResourceManager.GetString("ps_the-last-laugh_title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to A mobile game developed in Unity, where the character&apos;s control is based on the device&apos;s gyroscope, simulating the balance of a tightrope walker..
+        /// </summary>
+        public static string ps_tightrope_walker_desc {
+            get {
+                return ResourceManager.GetString("ps_tightrope-walker_desc", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tightrope Walker: Gyroscope.
+        /// </summary>
+        public static string ps_tightrope_walker_title {
+            get {
+                return ResourceManager.GetString("ps_tightrope-walker_title", resourceCulture);
             }
         }
         

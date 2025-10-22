@@ -17,30 +17,36 @@
         <!-- Professional Experience -->
         <div class="col-md-6 mb-4">
             <h3>@Localizer["rs_xp"]</h3>
-            @foreach (var exp in Portfolio!.Resume.ProfessionalExperience)
+            @if (Portfolio?.Resume?.ProfessionalExperience != null)
             {
-                <div class="card p-3 mb-2">
-                    <h5>@exp.Title</h5>
-                    <p class="mb-1"><strong>@exp.Company</strong> | @exp.Period</p>
-                    <ul class="mb-0">
-                        @foreach (var achievement in exp.Achievements)
-                        {
-                            <li>@achievement</li>
-                        }
-                    </ul>
-                </div>
+                @foreach (var exp in Portfolio.Resume.ProfessionalExperience)
+                {
+                    <div class="card p-3 mb-2">
+                        <h5>@Localizer[$"ps_exp_{exp.Slug}_title"]</h5>
+                        <p class="mb-1"><strong>@exp.Company</strong> | @exp.Period</p>
+                        <ul class="mb-0">
+                            @foreach (var achievementKey in exp.AchievementKeys)
+                            {
+                                <li>@Localizer[achievementKey]</li>
+                            }
+                        </ul>
+                    </div>
+                }
             }
         </div>
 
         <!-- Education -->
         <div class="col-md-6 mb-4">
             <h3>@Localizer["rs_education"]</h3>
-            @foreach (var edu in Portfolio!.Resume.Education)
+            @if (Portfolio?.Resume?.Education != null)
             {
-                <div class="card p-3 mb-2">
-                    <h5>@edu.Title</h5>
-                    <p class="mb-1"><strong>@edu.Institution</strong> | @edu.Period</p>
-                </div>
+                @foreach (var edu in Portfolio.Resume.Education)
+                {
+                    <div class="card p-3 mb-2">
+                        <h5>@Localizer[$"ps_edu_{edu.Slug}_title"]</h5>
+                        <p class="mb-1"><strong>@edu.Institution</strong> | @edu.Period</p>
+                    </div>
+                }
             }
         </div>
     </div>

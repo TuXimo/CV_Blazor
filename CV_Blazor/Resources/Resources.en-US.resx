@@ -99,4 +99,64 @@
   <data name="ss_Photoshop_Description" xml:space="preserve">
     <value>Basic knowledge of Adobe Photoshop for image editing, resizing, and adaptation for different platforms. I have experience creating user interface (UI) elements, such as text, for implementation in projects.</value>
   </data>
+  <data name="ps_summary_1" xml:space="preserve">
+    <value>I am a software developer with experience in C# and Unity.</value>
+  </data>
+  <data name="ps_summary_2" xml:space="preserve">
+    <value>I am passionate about creating innovative mechanics.</value>
+  </data>
+  <data name="ps_summary_3" xml:space="preserve">
+    <value>I am looking to contribute to challenging projects.</value>
+  </data>
+  <data name="ps_exp_xowen_title" xml:space="preserve">
+    <value>Animation Clean Up (Intern)</value>
+  </data>
+  <data name="ps_exp_xowen_ach_1" xml:space="preserve">
+    <value>I performed the animation cleanup and optimization process in Unreal Engine to improve the movement fidelity and project efficiency.</value>
+  </data>
+  <data name="ps_exp_xowen_ach_2" xml:space="preserve">
+    <value>I collaborated in integrating animations into the game engine.</value>
+  </data>
+  <data name="ps_exp_abi_title" xml:space="preserve">
+    <value>Unity Programmer</value>
+  </data>
+  <data name="ps_exp_abi_ach_1" xml:space="preserve">
+    <value>Developed and programmed gameplay mechanics and combat systems for a hack and slash style action role-playing game.</value>
+  </data>
+  <data name="ps_exp_abi_ach_2" xml:space="preserve">
+    <value>Responsible for implementing animation systems and enemy logic in Unity.</value>
+  </data>
+  <data name="ps_edu_unimendoza_title" xml:space="preserve">
+    <value>Technician in Video Game Development</value>
+  </data>
+  <data name="ps_tightrope-walker_title" xml:space="preserve">
+    <value>Tightrope Walker: Gyroscope</value>
+  </data>
+  <data name="ps_tightrope-walker_desc" xml:space="preserve">
+    <value>A mobile game developed in Unity, where the character's control is based on the device's gyroscope, simulating the balance of a tightrope walker.</value>
+  </data>
+  <data name="ps_interactive-website_title" xml:space="preserve">
+    <value>Interactive Personal Website</value>
+  </data>
+  <data name="ps_interactive-website_desc" xml:space="preserve">
+    <value>An interactive resume hosted on www.3d.maximobrunetti.com.ar, developed with Needle Engine and Three.js to create an immersive experience.</value>
+  </data>
+  <data name="ps_the-last-laugh_title" xml:space="preserve">
+    <value>The Last Laugh</value>
+  </data>
+  <data name="ps_the-last-laugh_desc" xml:space="preserve">
+    <value>A game developed for the Global Game Jam 2024.</value>
+  </data>
+  <data name="ps_earthquake-simulator_title" xml:space="preserve">
+    <value>Earthquake Simulator (University Project)</value>
+  </data>
+  <data name="ps_earthquake-simulator_desc" xml:space="preserve">
+    <value>An academic simulator developed for the university, focused on simulating an earthquake and localized in several languages for a global audience.</value>
+  </data>
+  <data name="ps_bitter-surprises_title" xml:space="preserve">
+    <value>Bitter Surprises</value>
+  </data>
+  <data name="ps_bitter-surprises_desc" xml:space="preserve">
+    <value>A 2D psychological horror game developed in 3 days for a Game Jam.</value>
+  </data>
 </root>

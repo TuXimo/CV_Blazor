@@ -172,7 +172,7 @@ namespace CV_Blazor.Resources {
         /// </summary>
         public static string ps_bitter_surprises_desc {
             get {
-                return ResourceManager.GetString("ps_bitter-surprises_desc", resourceCulture);
+                return ResourceManager.GetString("ps_bitter_surprises_desc", resourceCulture);
             }
         }
         
@@ -181,7 +181,7 @@ namespace CV_Blazor.Resources {
         /// </summary>
         public static string ps_bitter_surprises_title {
             get {
-                return ResourceManager.GetString("ps_bitter-surprises_title", resourceCulture);
+                return ResourceManager.GetString("ps_bitter_surprises_title", resourceCulture);
             }
         }
         
@@ -190,7 +190,7 @@ namespace CV_Blazor.Resources {
         /// </summary>
         public static string ps_earthquake_simulator_desc {
             get {
-                return ResourceManager.GetString("ps_earthquake-simulator_desc", resourceCulture);
+                return ResourceManager.GetString("ps_earthquake_simulator_desc", resourceCulture);
             }
         }
         
@@ -199,7 +199,7 @@ namespace CV_Blazor.Resources {
         /// </summary>
         public static string ps_earthquake_simulator_title {
             get {
-                return ResourceManager.GetString("ps_earthquake-simulator_title", resourceCulture);
+                return ResourceManager.GetString("ps_earthquake_simulator_title", resourceCulture);
             }
         }
         
@@ -215,27 +215,27 @@ namespace CV_Blazor.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Developed and programmed gameplay mechanics and combat systems for a hack and slash style action role-playing game..
         /// </summary>
-        public static string ps_exp_abi_ach_1 {
+        public static string ps_exp_abi_rached_ach_1 {
             get {
-                return ResourceManager.GetString("ps_exp_abi_ach_1", resourceCulture);
+                return ResourceManager.GetString("ps_exp_abi_rached_ach_1", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Responsible for implementing animation systems and enemy logic in Unity..
         /// </summary>
-        public static string ps_exp_abi_ach_2 {
+        public static string ps_exp_abi_rached_ach_2 {
             get {
-                return ResourceManager.GetString("ps_exp_abi_ach_2", resourceCulture);
+                return ResourceManager.GetString("ps_exp_abi_rached_ach_2", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Unity Programmer.
         /// </summary>
-        public static string ps_exp_abi_title {
+        public static string ps_exp_abi_rached_title {
             get {
-                return ResourceManager.GetString("ps_exp_abi_title", resourceCulture);
+                return ResourceManager.GetString("ps_exp_abi_rached_title", resourceCulture);
             }
         }
         
@@ -271,7 +271,7 @@ namespace CV_Blazor.Resources {
         /// </summary>
         public static string ps_interactive_website_desc {
             get {
-                return ResourceManager.GetString("ps_interactive-website_desc", resourceCulture);
+                return ResourceManager.GetString("ps_interactive_website_desc", resourceCulture);
             }
         }
         
@@ -280,7 +280,7 @@ namespace CV_Blazor.Resources {
         /// </summary>
         public static string ps_interactive_website_title {
             get {
-                return ResourceManager.GetString("ps_interactive-website_title", resourceCulture);
+                return ResourceManager.GetString("ps_interactive_website_title", resourceCulture);
             }
         }
         
@@ -334,7 +334,7 @@ namespace CV_Blazor.Resources {
         /// </summary>
         public static string ps_the_last_laugh_desc {
             get {
-                return ResourceManager.GetString("ps_the-last-laugh_desc", resourceCulture);
+                return ResourceManager.GetString("ps_the_last_laugh_desc", resourceCulture);
             }
         }
         
@@ -343,7 +343,7 @@ namespace CV_Blazor.Resources {
         /// </summary>
         public static string ps_the_last_laugh_title {
             get {
-                return ResourceManager.GetString("ps_the-last-laugh_title", resourceCulture);
+                return ResourceManager.GetString("ps_the_last_laugh_title", resourceCulture);
             }
         }
         
@@ -352,7 +352,7 @@ namespace CV_Blazor.Resources {
         /// </summary>
         public static string ps_tightrope_walker_desc {
             get {
-                return ResourceManager.GetString("ps_tightrope-walker_desc", resourceCulture);
+                return ResourceManager.GetString("ps_tightrope_walker_desc", resourceCulture);
             }
         }
         
@@ -361,7 +361,7 @@ namespace CV_Blazor.Resources {
         /// </summary>
         public static string ps_tightrope_walker_title {
             get {
-                return ResourceManager.GetString("ps_tightrope-walker_title", resourceCulture);
+                return ResourceManager.GetString("ps_tightrope_walker_title", resourceCulture);
             }
         }
         

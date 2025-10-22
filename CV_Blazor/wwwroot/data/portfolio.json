@@ -16,12 +16,12 @@
         ]
       },
       {
-        "slug": "abi-rached",
+        "slug": "abi_rached",
         "company": "Abi Rached Studio (Independent Studio)",
         "period": "April 2024 - August 2025",
         "achievementKeys": [
-          "ps_exp_abi_ach_1",
-          "ps_exp_abi_ach_2"
+          "ps_exp_abi_rached_ach_1",
+          "ps_exp_abi_rached_ach_2"
         ]
       }
     ],
@@ -35,7 +35,7 @@
   },
   "projects": [
     {
-      "slug": "tightrope-walker",
+      "slug": "tightrope_walker",
       "mainImage": "/img/projects/tw/main.png",
       "secondaryImages": [
         "/img/projects/tw/t1.png",
@@ -53,7 +53,7 @@
       ]
     },
     {
-      "slug": "interactive-website",
+      "slug": "interactive_website",
       "mainImage": "/img/projects/3d/m1.png",
       "secondaryImages": [],
       "projectLink": "https://3d.maximobrunetti.com.ar",
@@ -68,7 +68,7 @@
   ],
   "jams": [
     {
-      "slug": "the-last-laugh",
+      "slug": "the_last_laugh",
       "mainImage": "/img/jams/lr/m1.png",
       "secondaryImages": [
         "/img/jams/lr/s1.png",
@@ -80,7 +80,7 @@
       "technologies": [ "csharp-plain", "unity-plain" ]
     },
     {
-      "slug": "earthquake-simulator",
+      "slug": "earthquake_simulator",
       "mainImage": "/img/jams/earths/m1.png",
       "secondaryImages": [
         "/img/jams/earths/s1.png"
@@ -94,7 +94,7 @@
       ]
     },
     {
-      "slug": "bitter-surprises",
+      "slug": "bitter_surprises",
       "mainImage": "/img/jams/sa/main.png",
       "secondaryImages": [ "/img/jams/sa/sec.png" ],
       "projectLink": "https://amrasmithandir.itch.io/sorpresas-amargas",

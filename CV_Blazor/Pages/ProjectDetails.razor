@@ -1,43 +1,44 @@
-﻿@* @page "/projects/{ProjectSlug}" *@
-@* @using CV_Blazor.Models *@
-@* @inject Services.PortfolioService PortfolioService *@
-@* *@
-@* @code { *@
-@*     [Parameter] public string ProjectSlug { get; set; } = ""; *@
-@* *@
-@*     private Project? CurrentProject; *@
-@* *@
-@*     protected override async Task OnInitializedAsync() *@
-@*     { *@
-@*         var portfolio = await PortfolioService.GetPortfolioAsync(); *@
-@*         CurrentProject = portfolio.Projects.Concat(portfolio.Jams) *@
-@*                                          .FirstOrDefault(p => p.Slug == ProjectSlug); *@
-@*     } *@
-@* } *@
-@* *@
-@* @if (CurrentProject == null) *@
-@* { *@
-@*     <p>Project not found.</p> *@
-@* } *@
-@* else *@
-@* { *@
-@*     <h2>@CurrentProject.Title</h2> *@
-@*     <p>@CurrentProject.ShortDescription</p> *@
-@*     <img src="@CurrentProject.MainImage" alt="@CurrentProject.Title" class="img-fluid mb-3" /> *@
-@* *@
-@*     @if (CurrentProject.SecondaryImages?.Count > 0) *@
-@*     { *@
-@*         <div class="d-flex mb-3"> *@
-@*             @foreach (var img in CurrentProject.SecondaryImages) *@
-@*             { *@
-@*                 <img src="@img" class="img-thumbnail me-2" style="width: 100px; height: auto;" /> *@
-@*             } *@
-@*         </div> *@
-@*     } *@
-@* *@
-@*     <a href="@CurrentProject.ProjectLink" class="btn btn-primary" target="_blank">Visit Project</a> *@
-@*     @if (!string.IsNullOrEmpty(CurrentProject.GithubLink)) *@
-@*     { *@
-@*         <a href="@CurrentProject.GithubLink" class="btn btn-dark ms-2" target="_blank">GitHub</a> *@
-@*     } *@
-@* } *@
+﻿@page "/projects/{ProjectSlug}"
+@using CV_Blazor.Models
+@inject Services.PortfolioService PortfolioService
+@inject IStringLocalizer<Resources> Localizer
+
+@code {
+    [Parameter] public string ProjectSlug { get; set; } = "";
+
+    private Project? CurrentProject;
+
+    protected override async Task OnInitializedAsync()
+    {
+        var portfolio = await PortfolioService.GetPortfolioAsync();
+        CurrentProject = portfolio.Projects.Concat(portfolio.Jams)
+                                         .FirstOrDefault(p => p.Slug == ProjectSlug);
+    }
+}
+
+@if (CurrentProject == null)
+{
+    <p>Project not found.</p>
+}
+else
+{
+    <h2>@Localizer[$"ps_{CurrentProject.Slug}_title"]</h2>
+    <p>@Localizer[$"ps_{CurrentProject.Slug}_desc"]</p>
+    <img src="@CurrentProject.MainImage" alt="@Localizer[$"ps_{CurrentProject.Slug}_title"]" class="img-fluid mb-3" />
+
+    @if (CurrentProject.SecondaryImages?.Count > 0)
+    {
+        <div class="d-flex mb-3">
+            @foreach (var img in CurrentProject.SecondaryImages)
+            {
+                <img src="@img" class="img-thumbnail me-2" style="width: 100px; height: auto;" />
+            }
+        </div>
+    }
+
+    <a href="@CurrentProject.ProjectLink" class="btn btn-primary" target="_blank">@Localizer["ps_seeProject"]</a>
+    @if (!string.IsNullOrEmpty(CurrentProject.GithubLink))
+    {
+        <a href="@CurrentProject.GithubLink" class="btn btn-dark ms-2" target="_blank">GitHub</a>
+    }
+}

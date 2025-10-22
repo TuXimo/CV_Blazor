@@ -48,24 +48,44 @@
         </li>
     </ul>
 
-    <div class="row">
-        @if (activeTab == "Projects")
-        {
+    @if (activeTab == "Projects")
+    {
+        <!-- Mobile: horizontal scroll list -->
+        <div class="projects-scroll d-md-none">
+            @foreach (var project in Portfolio.Projects)
+            {
+                <ProjectCard Project="project" IsProject="true" />
+            }
+        </div>
+
+        <!-- Desktop: original grid -->
+        <div class="row d-none d-md-flex">
             @foreach (var project in Portfolio.Projects)
             {
                 <div class="col-md-6 col-lg-4 mb-4">
                     <ProjectCard Project="project" IsProject="true" />
                 </div>
             }
-        }
-        else if (activeTab == "Jams")
-        {
+        </div>
+    }
+    else if (activeTab == "Jams")
+    {
+        <!-- Mobile: horizontal scroll list for jams -->
+        <div class="projects-scroll d-md-none">
+            @foreach (var jam in Portfolio.Jams)
+            {
+                <ProjectCard Project="jam" IsProject="false" />
+            }
+        </div>
+
+        <!-- Desktop: original grid for jams -->
+        <div class="row d-none d-md-flex">
             @foreach (var jam in Portfolio.Jams)
             {
                 <div class="col-md-6 col-lg-4 mb-4">
                     <ProjectCard Project="jam" IsProject="false" />
                 </div>
             }
-        }
-    </div>
+        </div>
+    }
 </section>

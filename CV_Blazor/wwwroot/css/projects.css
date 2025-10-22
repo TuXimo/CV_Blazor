@@ -127,3 +127,57 @@ body.dark-mode .project-technologies i {
 .project-card:hover .project-technologies i {
     opacity: 1;
 }
+
+/* File: `CV_Blazor/wwwroot/css/projects.css` */
+/* Mobile horizontal scroll for projects and hide descriptions */
+@media (max-width: 768px) {
+  .projects-scroll {
+    display: flex;
+    gap: 1rem;
+    overflow-x: auto;
+    padding: 1rem;
+    -webkit-overflow-scrolling: touch;
+    scroll-snap-type: x mandatory;
+  }
+
+  .projects-scroll::-webkit-scrollbar {
+    height: 8px;
+  }
+  .projects-scroll::-webkit-scrollbar-thumb {
+    background: rgba(0,0,0,0.15);
+    border-radius: 4px;
+  }
+
+  .projects-scroll .project-card {
+    flex: 0 0 85%;
+    max-width: 85%;
+    scroll-snap-align: center;
+    margin: 0;
+    box-shadow: 0 6px 12px rgba(0,0,0,0.08);
+  }
+
+  /* Hide the description paragraph on mobile, keep the title */
+  .projects-scroll .card-text {
+    display: none;
+  }
+
+  /* Tighter card-body for mobile */
+  .projects-scroll .card-body {
+    padding: 0.75rem;
+    margin-top: -40px;
+  }
+
+  .projects-scroll .card-title {
+    font-size: 1rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  /* Optional: hide tech icons on very small screens to keep it clean */
+  .projects-scroll .project-technologies {
+    display: none;
+  }
+}
+
+/* End of mobile tweaks */

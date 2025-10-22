@@ -1,0 +1,37 @@
+[
+  {
+    "Name": "C#",
+    "IconPath": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/csharp/csharp-original.svg",
+    "Proficiency": 4
+  },
+  {
+    "Name": "Unity",
+    "IconPath": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/unity/unity-original.svg",
+    "Proficiency": 4
+  },
+  {
+    "Name": "Unreal",
+    "IconPath": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/unrealengine/unrealengine-original.svg",
+    "Proficiency": 3
+  },
+  {
+    "Name": "Blender",
+    "IconPath": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/blender/blender-original.svg",
+    "Proficiency": 3
+  },
+  {
+    "Name": "JS/TS",
+    "IconPath": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/typescript/typescript-original.svg",
+    "Proficiency": 3
+  },
+  {
+    "Name": "Git",
+    "IconPath": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/git/git-original.svg",
+    "Proficiency": 4
+  },
+  {
+    "Name": "Photoshop",
+    "IconPath": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/photoshop/photoshop-original.svg",
+    "Proficiency": 2
+  }
+]

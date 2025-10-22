@@ -39,4 +39,14 @@
     </EmbeddedResource>
   </ItemGroup>
 
+  <ItemGroup>
+    <_ContentIncludedByDefault Remove="wwwroot\icons\skills\blender.png" />
+    <_ContentIncludedByDefault Remove="wwwroot\icons\skills\csharp.png" />
+    <_ContentIncludedByDefault Remove="wwwroot\icons\skills\git.png" />
+    <_ContentIncludedByDefault Remove="wwwroot\icons\skills\photoshop.png" />
+    <_ContentIncludedByDefault Remove="wwwroot\icons\skills\ts.png" />
+    <_ContentIncludedByDefault Remove="wwwroot\icons\skills\unity.png" />
+    <_ContentIncludedByDefault Remove="wwwroot\icons\skills\unreal.png" />
+  </ItemGroup>
+
 </Project>

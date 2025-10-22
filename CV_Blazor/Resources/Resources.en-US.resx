@@ -1,110 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <root>
-  <!-- 
-    Microsoft ResX Schema 
-    
-    Version 2.0
-    
-    The primary goals of this format is to allow a simple XML format 
-    that is mostly human readable. The generation and parsing of the 
-    various data types are done through the TypeConverter classes 
-    associated with the data types.
-    
-    Example:
-    
-    ... ado.net/XML headers & schema ...
-    <resheader name="resmimetype">text/microsoft-resx</resheader>
-    <resheader name="version">2.0</resheader>
-    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
-    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
-    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
-    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
-    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
-        <value>[base64 mime encoded serialized .NET Framework object]</value>
-    </data>
-    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
-        <comment>This is a comment</comment>
-    </data>
-                
-    There are any number of "resheader" rows that contain simple 
-    name/value pairs.
-    
-    Each data row contains a name, and value. The row also contains a 
-    type or mimetype. Type corresponds to a .NET class that support 
-    text/value conversion through the TypeConverter architecture. 
-    Classes that don't support this are serialized and stored with the 
-    mimetype set.
-    
-    The mimetype is used for serialized objects, and tells the 
-    ResXResourceReader how to depersist the object. This is currently not 
-    extensible. For a given mimetype the value must be set accordingly:
-    
-    Note - application/x-microsoft.net.object.binary.base64 is the format 
-    that the ResXResourceWriter will generate, however the reader can 
-    read any of the formats listed below.
-    
-    mimetype: application/x-microsoft.net.object.binary.base64
-    value   : The object must be serialized with 
-            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
-            : and then encoded with base64 encoding.
-    
-    mimetype: application/x-microsoft.net.object.soap.base64
-    value   : The object must be serialized with 
-            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
-            : and then encoded with base64 encoding.
-
-    mimetype: application/x-microsoft.net.object.bytearray.base64
-    value   : The object must be serialized into a byte array 
-            : using a System.ComponentModel.TypeConverter
-            : and then encoded with base64 encoding.
-    -->
-  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
-    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
-    <xsd:element name="root" msdata:IsDataSet="true">
-      <xsd:complexType>
-        <xsd:choice maxOccurs="unbounded">
-          <xsd:element name="metadata">
-            <xsd:complexType>
-              <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" />
-              </xsd:sequence>
-              <xsd:attribute name="name" use="required" type="xsd:string" />
-              <xsd:attribute name="type" type="xsd:string" />
-              <xsd:attribute name="mimetype" type="xsd:string" />
-              <xsd:attribute ref="xml:space" />
-            </xsd:complexType>
-          </xsd:element>
-          <xsd:element name="assembly">
-            <xsd:complexType>
-              <xsd:attribute name="alias" type="xsd:string" />
-              <xsd:attribute name="name" type="xsd:string" />
-            </xsd:complexType>
-          </xsd:element>
-          <xsd:element name="data">
-            <xsd:complexType>
-              <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
-                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
-              </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
-              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
-              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
-              <xsd:attribute ref="xml:space" />
-            </xsd:complexType>
-          </xsd:element>
-          <xsd:element name="resheader">
-            <xsd:complexType>
-              <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
-              </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required" />
-            </xsd:complexType>
-          </xsd:element>
-        </xsd:choice>
-      </xsd:complexType>
-    </xsd:element>
-  </xsd:schema>
   <resheader name="resmimetype">
     <value>text/microsoft-resx</value>
   </resheader>
@@ -182,5 +77,26 @@
   </data>
   <data name="nav_Home" xml:space="preserve">
     <value>Home</value>
+  </data>
+  <data name="ss_C#_Description" xml:space="preserve">
+    <value>Solid experience in C# with a primary focus on video game development in the Unity engine. I have extensive knowledge of design patterns (such as Singleton, Observer, and Factory) and best practices. Additionally, I have worked with the .NET environment, including projects with ASP.NET and Blazor, which allows me to create web applications like this one.</value>
+  </data>
+  <data name="ss_Unity_Description" xml:space="preserve">
+    <value>Programmer with experience in the Unity engine, focused on 3D game development. I excel in programming game mechanics, creating simulators, and implementing user interface (UI) systems. I am also familiar with asset integration and modification, and I have knowledge of ShaderLab for creating visual effects and optimizing performance for mobile platforms.</value>
+  </data>
+  <data name="ss_Unreal_Description" xml:space="preserve">
+    <value>I have worked with the Unreal engine, focusing on creating 3D environments, including landscapes and platforms. I have experience in asset integration, prototyping virtual reality (VR) projects, and working with animations.</value>
+  </data>
+  <data name="ss_Blender_Description" xml:space="preserve">
+    <value>I have modeled and textured in 3D using Blender, focusing on optimizing models with high polygon density and multiple materials. I have experience creating animations from scratch and integrating them directly into my video game projects.</value>
+  </data>
+  <data name="ss_JS/TS_Description" xml:space="preserve">
+    <value>I have knowledge of JavaScript and TypeScript, mainly applied in the development of interactive and web experiences. I have experience working with Needle Engine within Unity and with the Three.js library for 3D web projects. Additionally, I have basic experience in creating web pages.</value>
+  </data>
+  <data name="ss_Git_Description" xml:space="preserve">
+    <value>I have experience using Git for both individual and team projects, demonstrating a solid understanding of version control workflows. I strategically use commits and tags as checkpoints to manage the code history. I have worked with platforms like GitHub and GitLab for collaboration and project deployment.</value>
+  </data>
+  <data name="ss_Photoshop_Description" xml:space="preserve">
+    <value>Basic knowledge of Adobe Photoshop for image editing, resizing, and adaptation for different platforms. I have experience creating user interface (UI) elements, such as text, for implementation in projects.</value>
   </data>
 </root>

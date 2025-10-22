@@ -204,6 +204,42 @@ namespace CV_Blazor.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to I have modeled and textured in 3D using Blender, focusing on optimizing models with high polygon density and multiple materials. I have experience creating animations from scratch and integrating them directly into my video game projects..
+        /// </summary>
+        public static string ss_Blender_Description {
+            get {
+                return ResourceManager.GetString("ss_Blender_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Solid experience in C# with a primary focus on video game development in the Unity engine. I have extensive knowledge of design patterns (such as Singleton, Observer, and Factory) and best practices. Additionally, I have worked with the .NET environment, including projects with ASP.NET and Blazor, which allows me to create web applications like this one..
+        /// </summary>
+        public static string ss_C__Description {
+            get {
+                return ResourceManager.GetString("ss_C#_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to I have experience using Git for both individual and team projects, demonstrating a solid understanding of version control workflows. I strategically use commits and tags as checkpoints to manage the code history. I have worked with platforms like GitHub and GitLab for collaboration and project deployment..
+        /// </summary>
+        public static string ss_Git_Description {
+            get {
+                return ResourceManager.GetString("ss_Git_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to I have knowledge of JavaScript and TypeScript, mainly applied in the development of interactive and web experiences. I have experience working with Needle Engine within Unity and with the Three.js library for 3D web projects. Additionally, I have basic experience in creating web pages..
+        /// </summary>
+        public static string ss_JS_TS_Description {
+            get {
+                return ResourceManager.GetString("ss_JS/TS_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Basic.
         /// </summary>
         public static string ss_level1 {
@@ -254,6 +290,33 @@ namespace CV_Blazor.Resources {
         public static string ss_levelLabel {
             get {
                 return ResourceManager.GetString("ss_levelLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Basic knowledge of Adobe Photoshop for image editing, resizing, and adaptation for different platforms. I have experience creating user interface (UI) elements, such as text, for implementation in projects..
+        /// </summary>
+        public static string ss_Photoshop_Description {
+            get {
+                return ResourceManager.GetString("ss_Photoshop_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Programmer with experience in the Unity engine, focused on 3D game development. I excel in programming game mechanics, creating simulators, and implementing user interface (UI) systems. I am also familiar with asset integration and modification, and I have knowledge of ShaderLab for creating visual effects and optimizing performance for mobile platforms..
+        /// </summary>
+        public static string ss_Unity_Description {
+            get {
+                return ResourceManager.GetString("ss_Unity_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to I have worked with the Unreal engine, focusing on creating 3D environments, including landscapes and platforms. I have experience in asset integration, prototyping virtual reality (VR) projects, and working with animations..
+        /// </summary>
+        public static string ss_Unreal_Description {
+            get {
+                return ResourceManager.GetString("ss_Unreal_Description", resourceCulture);
             }
         }
     }

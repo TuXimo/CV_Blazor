@@ -65,7 +65,7 @@
                         }
                     </div>
 
-                    <p class="skill-description">@CurrentSkill.Description</p>
+                    <p class="skill-description">@Localizer[$"ss_{CurrentSkill.Name}_Description"]</p>
                 </div>
             }
         </div>
@@ -105,7 +105,7 @@
             {
                 Name = s.Name,
                 IconPath = s.IconPath,
-                Description = s.Description,
+                // Description = s.Description, // La descripción ahora viene del localizador
                 Proficiency = s.Proficiency,
                 X = random.Next(IconSize / 2, AnimationWidth - IconSize / 2),
                 Y = random.Next(IconSize / 2, AnimationHeight - IconSize / 2)

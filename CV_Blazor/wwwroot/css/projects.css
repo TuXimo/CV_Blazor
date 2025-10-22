@@ -111,6 +111,8 @@ body.dark-mode .card-body {
     right: var(--project-card-padding);
     display: flex;
     gap: 0.5rem; /* Espacio entre iconos */
+
+    z-index: 1; /* Menor que el botón */
 }
 
 .project-technologies i {
@@ -181,3 +183,27 @@ body.dark-mode .project-technologies i {
 }
 
 /* End of mobile tweaks */
+
+.btn-hover-effect {
+    transition: transform 0.2s ease-in-out;
+}
+
+.btn-hover-effect:hover {
+    transform: scale(1.05);
+}
+
+.btn-hover-effect {
+    position: relative; /* Asegura que z-index funcione */
+    z-index: 2; /* Mayor que las tecnologías */
+    transition: transform 0.2s ease-in-out;
+}
+
+.project-card .btn-hover-effect {
+    position: relative;
+    z-index: 5; /* asegura que esté por encima de los íconos */
+    background-color: var(--light-card-body-background);
+}
+
+body.dark-mode .project-card .btn-hover-effect {
+    background-color: var(--dark-card-background);
+}

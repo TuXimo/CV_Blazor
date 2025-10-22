@@ -9,7 +9,6 @@
 @inject NavigationManager NavigationManager
 @inject LocalizationService LocService
 
-
 <nav class="navbar navbar-expand-lg fixed-top @(isDarkMode ? "navbar-dark" : "")">
     <div class="container-fluid">
         <!-- Nombre -->
@@ -50,9 +49,10 @@
     private string CurrentLanguageName =>
         CultureInfo.CurrentUICulture.Name == "es-ES" ? "EN" : "ES";
 
-    // Módulo JS aislado solo para el scroll
-    private IJSObjectReference? _scrollModule; 
+    private IJSObjectReference? _navModule;
+    private IJSObjectReference? _navManager;
     private bool isDarkMode;
+    private readonly string _version = "1.2";
 
     private async Task ChangeLanguage()
     {
@@ -60,24 +60,19 @@
         var newCulture = currentCulture == "es-ES" ? "en-US" : "es-ES";
         await LocService.SetCultureAsync(newCulture);
     }
-    
 
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
         if (firstRender)
         {
-            // Lógica del modo oscuro (SIN TOCAR) - Llama a la función global de site.js
             isDarkMode = await JSRuntime.InvokeAsync<bool>("applySavedTheme");
             StateHasChanged();
 
-            // Lógica del scroll (NUEVA Y AISLADA)
-            // 1. Importa el módulo específico para el scroll.
-            _scrollModule = await JSRuntime.InvokeAsync<IJSObjectReference>("import", "./js/navmenu.js");
-            
-            // 2. Llama a la función de inicialización desde ese módulo.
-            if (_scrollModule is not null)
+            _navModule = await JSRuntime.InvokeAsync<IJSObjectReference>("import", $"./js/navmenu.js?v={_version}");
+
+            if (_navModule is not null)
             {
-                await _scrollModule.InvokeVoidAsync("initializeNavbarScroll");
+                _navManager = await _navModule.InvokeAsync<IJSObjectReference>("initialize");
             }
         }
     }
@@ -90,11 +85,14 @@
 
     public async ValueTask DisposeAsync()
     {
-        // Lógica de limpieza para el módulo de scroll (NUEVA Y AISLADA)
-        if (_scrollModule != null)
-        { 
-            await _scrollModule.InvokeVoidAsync("disposeNavbarScroll");
-            await _scrollModule.DisposeAsync();
+        if (_navManager != null)
+        {
+            await _navManager.InvokeVoidAsync("dispose");
+            await _navManager.DisposeAsync();
+        }
+        if (_navModule != null)
+        {
+            await _navModule.DisposeAsync();
         }
     }
 }

@@ -87,6 +87,7 @@ body.dark-mode .about-me-btn:hover {
     height: var(--profile-image-size);
     border-radius: var(--profile-image-border-radius);
     object-fit: cover;
+    cursor: pointer;
     box-shadow: var(--light-profile-image-shadow);
     transition: transform 0.1s linear, box-shadow 0.3s ease; /* Transición suave para el giro y la sombra */
 }

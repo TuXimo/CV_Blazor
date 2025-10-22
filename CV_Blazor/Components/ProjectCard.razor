@@ -8,7 +8,6 @@
 <div class="card project-card"
      @onmouseenter="MouseEnter"
      @onmouseleave="MouseLeave"
-     @onclick="GoToProjectDetail"
      style="cursor:pointer;">
     <div class="card-inner">
         <div class="project-image-container">
@@ -22,14 +21,9 @@
             </div>
     
             <div class="mt-auto">
-                <a class="btn btn-primary" href="@Project.ProjectLink" target="_blank" @onclick:stopPropagation>
+                <a class="btn btn-primary btn-hover-effect" href="@Project.ProjectLink" target="_blank" @onclick:stopPropagation>
                     <i class="@GetProjectLinkIconClass() me-2"></i> @Localizer["ps_seeProject"]
                 </a>
-        
-                @if (!string.IsNullOrEmpty(Project.GithubLink))
-                {
-                    <a href="@Project.GithubLink" class="btn btn-dark ms-2" target="_blank" @onclick:stopPropagation>GitHub</a>
-                }
             </div>
             
             <div class="project-technologies">
@@ -45,7 +39,6 @@
 
 @code {
     [Parameter] public Project Project { get; set; } = null!;
-    [Parameter] public bool IsProject { get; set; } = true;
 
     private string? currentImage;
     private int currentIndex = 0;
@@ -89,14 +82,6 @@
         StateHasChanged();
     }
 
-    private void GoToProjectDetail()
-    {
-        if (IsProject)
-        {
-            NavManager.NavigateTo($"/projects/{Project.Slug}");
-        }
-    }
-
     private string GetProjectLinkIconClass()
     {
         if (string.IsNullOrEmpty(Project.ProjectLink))
@@ -119,3 +104,13 @@
         _slideshowTimer?.Dispose();
     }
 }
+
+<style>
+    .btn-hover-effect {
+        transition: transform 0.2s ease-in-out;
+    }
+
+    .btn-hover-effect:hover {
+        transform: scale(1.05);
+    }
+</style>

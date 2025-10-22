@@ -162,4 +162,10 @@
   <data name="ps_edu_unimendoza_desc" xml:space="preserve">
     <value>Graduated with a focus on game mechanics design and programming, completing a comprehensive curriculum that included software architecture, 3D modeling, and project management.</value>
   </data>
+  <data name="ps_portfolio_website_title" xml:space="preserve">
+    <value>Portfolio Website</value>
+  </data>
+  <data name="ps_portfolio_website_desc" xml:space="preserve">
+    <value>This portfolio website is built with Blazor .NET, showcasing my skills in web development.</value>
+  </data>
 </root>

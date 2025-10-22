@@ -303,6 +303,24 @@ namespace CV_Blazor.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to This portfolio website is built with Blazor .NET, showcasing my skills in web development..
+        /// </summary>
+        public static string ps_portfolio_website_desc {
+            get {
+                return ResourceManager.GetString("ps_portfolio_website_desc", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Portfolio Website.
+        /// </summary>
+        public static string ps_portfolio_website_title {
+            get {
+                return ResourceManager.GetString("ps_portfolio_website_title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to See project.
         /// </summary>
         public static string ps_seeProject {

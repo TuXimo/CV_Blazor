@@ -162,4 +162,10 @@
   <data name="ps_edu_unimendoza_desc" xml:space="preserve">
     <value>Egresado con un enfoque en el diseño y programación de mecánicas de juego, completando un plan de estudios integral que incluyó arquitectura de software, modelado 3D y gestión de proyectos.</value>
   </data>
+  <data name="ps_portfolio_website_title" xml:space="preserve">
+    <value>Sitio Web de Portafolio</value>
+  </data>
+  <data name="ps_portfolio_website_desc" xml:space="preserve">
+    <value>Este sitio web de portafolio está construido con Blazor .NET, mostrando mis habilidades en desarrollo web.</value>
+  </data>
 </root>

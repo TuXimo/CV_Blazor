@@ -35,15 +35,15 @@
       }
     ]
   },
-  "projects": [
+  "projects": [    
     {
       "slug": "tightrope_walker",
-      "mainImage": "/img/projects/tw/main.png",
+      "mainImage": "/img/projects/tw/main.webp",
       "secondaryImages": [
-        "/img/projects/tw/t1.png",
-        "/img/projects/tw/t2.png",
-        "/img/projects/tw/t3.png",
-        "/img/projects/tw/t4.png"
+        "/img/projects/tw/t1.webp",
+        "/img/projects/tw/t2.webp",
+        "/img/projects/tw/t3.webp",
+        "/img/projects/tw/t4.webp"
       ],
       "projectLink": "https://play.google.com/store/apps/details?id=com.tuximo.tightropewalker",
       "technologies": [
@@ -54,8 +54,21 @@
       ]
     },
     {
+      "slug": "portfolio_website",
+      "mainImage": "/img/projects/portfolio/main.webp",
+      "secondaryImages": [],
+      "projectLink": "https://maximobrunetti.com.ar",
+      "technologies": [
+        "csharp-plain",
+        "blazor-plain",
+        "dotnet-plain",
+        "javascript-plain",
+        "json-plain"
+      ]
+    },
+    {
       "slug": "interactive_website",
-      "mainImage": "/img/projects/3d/m1.png",
+      "mainImage": "/img/projects/3d/m1.webp",
       "secondaryImages": [],
       "projectLink": "https://3d.maximobrunetti.com.ar",
       "technologies": [
@@ -69,20 +82,20 @@
   "jams": [
     {
       "slug": "the_last_laugh",
-      "mainImage": "/img/jams/lr/m1.png",
+      "mainImage": "/img/jams/lr/m1.webp",
       "secondaryImages": [
-        "/img/jams/lr/s1.png",
-        "/img/jams/lr/s2.png",
-        "/img/jams/lr/s3.png"
+        "/img/jams/lr/s1.webp",
+        "/img/jams/lr/s2.webp",
+        "/img/jams/lr/s3.webp"
       ],
       "projectLink": "https://tinincho.itch.io/la-ultima-risa",
       "technologies": [ "csharp-plain", "unity-plain" ]
     },
     {
       "slug": "earthquake_simulator",
-      "mainImage": "/img/jams/earths/m1.png",
+      "mainImage": "/img/jams/earths/m1.webp",
       "secondaryImages": [
-        "/img/jams/earths/s1.png"
+        "/img/jams/earths/s1.webp"
       ],
       "projectLink": "https://tuximo.itch.io/school-earthquake-quiz",
       "technologies": [
@@ -93,8 +106,8 @@
     },
     {
       "slug": "bitter_surprises",
-      "mainImage": "/img/jams/sa/main.png",
-      "secondaryImages": [ "/img/jams/sa/sec.png" ],
+      "mainImage": "/img/jams/sa/main.webp",
+      "secondaryImages": [ "/img/jams/sa/sec.webp" ],
       "projectLink": "https://amrasmithandir.itch.io/sorpresas-amargas",
       "technologies": [ "csharp-plain", "unity-plain" ]
     }

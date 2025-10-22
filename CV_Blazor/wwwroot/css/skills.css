@@ -44,17 +44,17 @@ body.dark-mode .skills-icons-animation-area {
     height: 100%;
     object-fit: contain;
     border-radius: var(--skill-icon-border-radius);
-    transition: transform 0.2s, box-shadow 0.2s;
+    transition: transform 0.2s, filter 0.2s;
 }
 
 .skill-icon-container img:hover {
     transform: var(--skill-icon-hover-transform);
-    box-shadow: var(--light-skill-icon-hover-shadow);
+    filter: drop-shadow(0 0 12px rgba(0, 0, 0, 0.35));
     z-index: 10;
 }
 
 body.dark-mode .skill-icon-container img:hover {
-    box-shadow: var(--dark-skill-icon-hover-shadow);
+    filter: drop-shadow(0 0 12px rgba(255, 255, 255, 0.25));
 }
 
 /* Lado derecho: Sección de detalles */

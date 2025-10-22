@@ -12,13 +12,13 @@
      style="cursor:pointer;">
     <div class="card-inner">
         <div class="project-image-container">
-            <img src="@currentImage" class="card-img-top" alt="@Project.Title" />
+            <img src="@currentImage" class="card-img-top" alt="@Localizer[$"ps_{Project.Slug}_title"]" />
         </div>
     
         <div class="card-body">
             <div class="card-text-content">
-                <h5 class="card-title">@Project.Title</h5>
-                <p class="card-text">@Project.ShortDescription</p>
+                <h5 class="card-title">@Localizer[$"ps_{Project.Slug}_title"]</h5>
+                <p class="card-text">@Localizer[$"ps_{Project.Slug}_desc"]</p>
             </div>
     
             <div class="mt-auto">

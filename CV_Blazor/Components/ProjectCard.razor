@@ -11,7 +11,7 @@
      style="cursor:pointer;">
     <div class="card-inner">
         <div class="project-image-container">
-            <img src="@currentImage" class="card-img-top" alt="@Localizer[$"ps_{Project.Slug}_title"]" />
+            <img src="@_currentImage" class="card-img-top" alt="@Localizer[$"ps_{Project.Slug}_title"]" />
         </div>
     
         <div class="card-body">
@@ -40,35 +40,36 @@
 @code {
     [Parameter] public Project Project { get; set; } = null!;
 
-    private string? currentImage;
-    private int currentIndex = 0;
+    private string? _currentImage;
+    private int _currentIndex;
     private Timer? _slideshowTimer;
-
-    [Inject] private NavigationManager NavManager { get; set; } = null!;
 
     protected override void OnInitialized()
     {
-        currentImage = Project.MainImage;
+        _currentImage = Project.MainImage;
     }
 
     private void MouseEnter()
     {
-        if (Project.SecondaryImages == null || Project.SecondaryImages.Count == 0)
+        if (Project.SecondaryImages.Count == 0)
             return;
 
-        currentIndex = -1;
+        _currentIndex = -1;
         ShowNextImage();
 
-        _slideshowTimer = new Timer(async state => await TimerCallback(state), null, 1500, 1500);
+        _slideshowTimer = new Timer(async void (state) =>
+        {
+            await TimerCallback();
+        }, null, 1500, 1500);
     }
 
     private void ShowNextImage()
     {
-        currentIndex = (currentIndex + 1) % Project.SecondaryImages.Count;
-        currentImage = Project.SecondaryImages[currentIndex];
+        _currentIndex = (_currentIndex + 1) % Project.SecondaryImages.Count;
+        _currentImage = Project.SecondaryImages[_currentIndex];
     }
 
-    private async Task TimerCallback(object? state)
+    private async Task TimerCallback()
     {
         // Invocamos el cambio de imagen y la actualización de la UI en un solo paso.
         await InvokeAsync(() => { ShowNextImage(); StateHasChanged();});
@@ -78,7 +79,7 @@
     {
         _slideshowTimer?.Dispose();
 
-        currentImage = Project.MainImage;
+        _currentImage = Project.MainImage;
         StateHasChanged();
     }
 

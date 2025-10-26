@@ -1,7 +1,4 @@
 ﻿@using CV_Blazor.Models
-@using CV_Blazor.Components
-@using System.Collections.Generic
-@using CV_Blazor.Services
 
 @inject IStringLocalizer<Resources> Localizer
 @implements IDisposable
@@ -10,11 +7,11 @@
 @code {
     [Parameter] public PortfolioViewModel Portfolio { get; set; } = new();
 
-    private string activeTab = "Projects";
+    private string _activeTab = "Projects";
 
     private void SetTab(string tab)
     {
-        activeTab = tab;
+        _activeTab = tab;
     }
 
     public void Dispose()
@@ -29,7 +26,7 @@
 
     <ul class="nav nav-tabs mb-4">
         <li class="nav-item">
-            <a class='nav-link @(activeTab == "Projects" ? "active" : "")'
+            <a class='nav-link @(_activeTab == "Projects" ? "active" : "")'
                href=""
                @onclick="@(() => SetTab("Projects"))"
                @onclick:preventDefault>
@@ -38,7 +35,7 @@
             </a>
         </li>
         <li class="nav-item">
-            <a class='nav-link @(activeTab == "Jams" ? "active" : "")'
+            <a class='nav-link @(_activeTab == "Jams" ? "active" : "")'
                href=""
                @onclick="@(() => SetTab("Jams"))"
                @onclick:preventDefault>
@@ -48,7 +45,7 @@
         </li>
     </ul>
 
-    @if (activeTab == "Projects")
+    @if (_activeTab == "Projects")
     {
         <!-- Mobile: horizontal scroll list -->
         <div class="projects-scroll d-md-none">
@@ -68,7 +65,7 @@
             }
         </div>
     }
-    else if (activeTab == "Jams")
+    else if (_activeTab == "Jams")
     {
         <!-- Mobile: horizontal scroll list for jams -->
         <div class="projects-scroll d-md-none">

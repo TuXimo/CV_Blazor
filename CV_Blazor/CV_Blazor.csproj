@@ -49,4 +49,16 @@
     <_ContentIncludedByDefault Remove="wwwroot\icons\skills\unreal.png" />
   </ItemGroup>
 
+    <ItemGroup>
+        <!-- Incluye el netlify.toml en el proyecto -->
+        <None Include="netlify.toml" CopyToOutputDirectory="PreserveNewest" />
+    </ItemGroup>
+
+    <Target Name="CopyNetlifyConfigToPublish" AfterTargets="Publish">
+        <Copy
+                SourceFiles="netlify.toml"
+                DestinationFolder="$(PublishDir)"
+                SkipUnchangedFiles="true"
+        />
+    </Target>
 </Project>

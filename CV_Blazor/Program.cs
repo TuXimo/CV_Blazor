@@ -21,7 +21,9 @@ namespace CV_Blazor
             builder.Services.AddScoped<LocalizationService>();
             builder.Services.AddLocalization();
 
+
             var host = builder.Build();
+            
 
             const string defaultCulture = "en-US";
             string cultureCode = defaultCulture;

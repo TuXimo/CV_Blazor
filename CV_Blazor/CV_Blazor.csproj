@@ -52,6 +52,7 @@
     <ItemGroup>
         <!-- Incluye el netlify.toml en el proyecto -->
         <None Include="netlify.toml" CopyToOutputDirectory="PreserveNewest" />
+        <None Include="wwwroot\sitemap.xml" />
     </ItemGroup>
 
     <Target Name="CopyNetlifyConfigToPublish" AfterTargets="Publish">

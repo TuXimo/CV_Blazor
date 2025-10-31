@@ -24,55 +24,11 @@ namespace CV_Blazor
 
             var host = builder.Build();
             
+            // La cultura ya fue establecida por el script de pre-boot en index.html 
+            // y cargada por el Blazor runtime. Solo la recuperamos.
+            var culture = CultureInfo.CurrentUICulture;
 
-            const string defaultCulture = "en-US";
-            string cultureCode = defaultCulture;
-
-            try
-            {
-                var js = host.Services.GetRequiredService<IJSRuntime>();
-                var navManager = host.Services.GetRequiredService<NavigationManager>();
-
-                // Intentar obtener parámetro "lang" de la URL
-                try
-                {
-                    var uri = new Uri(navManager.Uri);
-                    var langQuery = System.Web.HttpUtility.ParseQueryString(uri.Query).Get("lang");
-                    if (!string.IsNullOrEmpty(langQuery) && (langQuery == "en-US" || langQuery == "es-ES"))
-                    {
-                        cultureCode = langQuery;
-                        await js.InvokeVoidAsync("blazorCulture.set", cultureCode);
-                    }
-                    else
-                    {
-                        // Intentar leer de localStorage
-                        var storedCulture = await js.InvokeAsync<string>("blazorCulture.get");
-                        if (!string.IsNullOrEmpty(storedCulture))
-                        {
-                            cultureCode = storedCulture;
-                        }
-                        else
-                        {
-                            // Detectar idioma del navegador
-                            var browserLang = await js.InvokeAsync<string>("blazorCulture.getBrowserLanguage");
-                            cultureCode = browserLang != null && browserLang.StartsWith("es") ? "es-ES" : defaultCulture;
-                        }
-                    }
-                }
-                catch
-                {
-                    // Si falla todo lo anterior, usar valor por defecto
-                    cultureCode = defaultCulture;
-                }
-
-            }
-            catch
-            {
-                cultureCode = defaultCulture;
-            }
-
-            // Aplicar cultura
-            var culture = new CultureInfo(cultureCode);
+            // Aplicamos la cultura al hilo de la aplicación y el UI para consistencia.
             CultureInfo.DefaultThreadCurrentCulture = culture;
             CultureInfo.DefaultThreadCurrentUICulture = culture;
 
@@ -84,12 +40,10 @@ namespace CV_Blazor
             }
             catch
             {
-                // Ignorar errores en bots
+                // Ignorar errores, por ejemplo, si se está ejecutando en un contexto limitado como un bot.
             }
 
             await host.RunAsync();
         }
     }
 }
-
-//dotnet publish -c Release -r browser-wasm --self-contained

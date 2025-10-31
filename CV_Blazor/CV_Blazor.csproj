@@ -4,7 +4,9 @@
     <TargetFramework>net8.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
-	<BlazorWebAssemblyLoadAllGlobalizationData>true</BlazorWebAssemblyLoadAllGlobalizationData>
+    <BlazorWebAssemblyLoadAllGlobalizationData>false</BlazorWebAssemblyLoadAllGlobalizationData>
+    <SupportedCultures>en-US;es-ES</SupportedCultures>
+    <InvariantGlobalization>false</InvariantGlobalization>
     <RuntimeIdentifier>browser-wasm</RuntimeIdentifier>
     <UseBlazorWebAssembly>true</UseBlazorWebAssembly>
   </PropertyGroup>

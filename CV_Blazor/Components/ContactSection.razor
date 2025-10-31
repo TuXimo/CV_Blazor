@@ -51,7 +51,7 @@
     <p class="text-center">@Localizer["cs_contactMe"]</p>
     <ul class="list-unstyled d-flex justify-content-center">
         <li class="mx-3 d-flex flex-column align-items-center">
-            <a href="mailto:tuximodev@gmail.com">
+            <a href="mailto:tuximodev@gmail.com" aria-label="Send an email to Máximo Brunetti">
                 <i class="fas fa-envelope fa-2x"></i>
             </a>
             <button class="btn btn-link p-0 text-dark d-flex align-items-center mt-1" @onclick="CopyEmail" style="font-size: 1rem; text-decoration: none;">
@@ -68,24 +68,24 @@
             </button>
         </li>
         <li class="mx-3 d-flex flex-column align-items-center">
-            <a href="https://www.linkedin.com/in/maximobrunetti/" target="_blank">
+            <a href="https://www.linkedin.com/in/maximobrunetti/" target="_blank" aria-label="View LinkedIn profile">
                 <i class="fab fa-linkedin fa-2x"></i>
             </a>
             <small class="text-muted mt-1">LinkedIn</small>
         </li>
         <li class="mx-3 d-flex flex-column align-items-center">
-            <a href="@(showGitHub ? gitHubUrl : gitLabUrl)" target="_blank">
+            <a href="@(showGitHub ? gitHubUrl : gitLabUrl)" target="_blank" aria-label="@(showGitHub ? "View GitHub profile" : "View GitLab profile")">
                 <i class="fab @(showGitHub ? "fa-github" : "fa-gitlab") fa-2x"></i>
             </a>
             <div class="d-flex align-items-center mt-1">
                 <small class="text-muted">@(showGitHub ? "GitHub" : "GitLab")&nbsp;</small>
-                <button class="btn btn-link p-0 text-dark" @onclick="ToggleGitPlatform" style="line-height: 1;">
+                <button class="btn btn-link p-0 text-dark" @onclick="ToggleGitPlatform" style="line-height: 1;" aria-label="Switch between GitHub and GitLab">
                     <i class="fas fa-refresh"></i>
                 </button>
             </div>
         </li>
         <li class="mx-3 d-flex flex-column align-items-center">
-            <a href="https://t.me/maximobrunetti" target="_blank">
+            <a href="https://t.me/maximobrunetti" target="_blank" aria-label="Contact on Telegram">
                 <i class="fab fa-telegram fa-2x"></i>
             </a>
             <small class="text-muted mt-1">Telegram</small>

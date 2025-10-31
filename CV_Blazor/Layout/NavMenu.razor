@@ -16,12 +16,12 @@
 
         <!-- Menú y botones juntos en desktop -->
         <div class="d-flex align-items-center order-lg-2">
-            <button class="btn btn-link nav-icon me-2 no-underline" @onclick="ChangeLanguage">
+            <button class="btn btn-link nav-icon me-2 no-underline" @onclick="ChangeLanguage" aria-label="Change language">
                 @CurrentLanguageName
                 <i class="fas fa-globe"></i>
             </button>
 
-            <button class="btn btn-link nav-icon me-2" @onclick="ToggleTheme">
+            <button class="btn btn-link nav-icon me-2" @onclick="ToggleTheme" aria-label="@(isDarkMode ? "Switch to light mode" : "Switch to dark mode")">                
                 <i class="fas @(isDarkMode ? "fa-sun fa-fw" : "fa-moon fa-fw")"></i>
             </button>
 

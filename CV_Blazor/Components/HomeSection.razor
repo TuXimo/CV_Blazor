@@ -66,16 +66,21 @@
                         "es-ES" => "files/cv_es.pdf",
                         _ => "files/cv_en.pdf"
                     };
+                    var downloadName = culture switch
+                    {
+                        "es-ES" => "Curriculum_MáximoBrunetti.pdf",
+                        _ => "Resume_MaximoBrunetti.pdf"
+                    };
                 }
 
                 <div class="d-flex flex-wrap gap-3 mt-3">
                     <a href="#projects" class="btn btn-primary btn-lg about-me-btn">@Localizer["ab_Projects"]</a>
-                    <a href="@cvFile" class="btn btn-primary btn-lg about-me-btn" download>@Localizer["ab_DownloadCV"]</a>
+                    <a href="@cvFile" class="btn btn-primary btn-lg about-me-btn" download="@downloadName">@Localizer["ab_DownloadCV"]</a>
                 </div>
             </div>
 
             <div class="col-md-4 mt-4 mt-md-0 text-center profile-image-container">
-                <img src="img/profile.jpg" alt="Maximo Brunetti" class="profile-image" />
+                <img src="img/profile.jpg" alt="Maximo Brunetti" class="profile-image" loading="lazy" />
             </div>
         </div>
     </div>

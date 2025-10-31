@@ -21,8 +21,7 @@
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
         if (firstRender)
-        {
-            _aboutMeModule = await JSRuntime.InvokeAsync<IJSObjectReference>("import", "./js/about-me.js");
+        {            _aboutMeModule = await JSRuntime.InvokeAsync<IJSObjectReference>("import", "./js/about-me.js");
             if (_aboutMeModule is not null)
             {
                 await _aboutMeModule.InvokeVoidAsync("createCodeParticles");
@@ -80,7 +79,7 @@
             </div>
 
             <div class="col-md-4 mt-4 mt-md-0 text-center profile-image-container">
-                <img src="img/profile.jpg" alt="Maximo Brunetti" class="profile-image" loading="lazy" />
+                <img src="img/profile.jpg" alt="Maximo Brunetti" class="profile-image" />
             </div>
         </div>
     </div>

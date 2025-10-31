@@ -13,7 +13,8 @@
 
     protected override async Task OnInitializedAsync()
     {
-        Console.WriteLine($"Hola Wachos {DateTime.Now} versión 1.0.0");
+        const string intro = "Hola Wacho!";
+        Console.WriteLine(intro);
         await LoadPortfolioAsync();
     }
 
